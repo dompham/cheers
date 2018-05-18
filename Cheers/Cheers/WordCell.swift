@@ -12,6 +12,7 @@ class WordCell : UICollectionViewCell {
     let wordLabel: UILabel = {
         let label = UILabel();
         label.text = "Test";
+        label.translatesAutoresizingMaskIntoConstraints = false;
         return label;
     }()
     
@@ -23,7 +24,11 @@ class WordCell : UICollectionViewCell {
     func setupViews() {
         backgroundColor = .gray;
         addSubview(wordLabel);
-        wordLabel.topAnchor.constraintEqualToSystemSpacingBelow(<#T##anchor: NSLayoutYAxisAnchor##NSLayoutYAxisAnchor#>, multiplier: <#T##CGFloat#>)
+        wordLabel.topAnchor.constraint(equalTo: self.topAnchor).isActive = true;
+        wordLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true;
+        wordLabel.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true;
+        wordLabel.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true;
+    
     }
     
     required init?(coder aDecoder: NSCoder) {
