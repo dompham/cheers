@@ -9,8 +9,21 @@
 import UIKit
 
 class WordCell : UICollectionViewCell {
+    let wordLabel: UILabel = {
+        let label = UILabel();
+        label.text = "Test";
+        return label;
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame);
+        setupViews();
+    }
+    
+    func setupViews() {
+        backgroundColor = .gray;
+        addSubview(wordLabel);
+        wordLabel.topAnchor.constraintEqualToSystemSpacingBelow(<#T##anchor: NSLayoutYAxisAnchor##NSLayoutYAxisAnchor#>, multiplier: <#T##CGFloat#>)
     }
     
     required init?(coder aDecoder: NSCoder) {

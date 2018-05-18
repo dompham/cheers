@@ -13,7 +13,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView?.backgroundColor = .gray;
+        collectionView?.backgroundColor = .white;
         collectionView?.register(WordCell.self, forCellWithReuseIdentifier: cellId)
     }
     
@@ -23,7 +23,6 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath);
-        cell.backgroundColor = .white;
         return cell;
     }
     
