@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3EEE24BA20AF411F004BBE08 /* HomeDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEE24B920AF411F004BBE08 /* HomeDataSource.swift */; };
+		3EEE24BC20AF4176004BBE08 /* BeerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEE24BB20AF4176004BBE08 /* BeerCell.swift */; };
+		3EEFE51520AF3E3200FBCF92 /* HomeDataSourceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEFE51420AF3E3200FBCF92 /* HomeDataSourceController.swift */; };
+		5992D0129EEACC5946E272D5 /* Pods_Cheers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 450FE11C67BE9623C3865D51 /* Pods_Cheers.framework */; };
 		6536C2B920AE7415002088A3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6536C2B820AE7415002088A3 /* AppDelegate.swift */; };
 		6536C2C220AE7415002088A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6536C2C120AE7415002088A3 /* Assets.xcassets */; };
 		6536C2C520AE7415002088A3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6536C2C320AE7415002088A3 /* LaunchScreen.storyboard */; };
@@ -15,6 +19,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		21DD3CF7AE49E66C7CA978F5 /* Pods-Cheers.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cheers.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Cheers/Pods-Cheers.debug.xcconfig"; sourceTree = "<group>"; };
+		3EEE24B920AF411F004BBE08 /* HomeDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDataSource.swift; sourceTree = "<group>"; };
+		3EEE24BB20AF4176004BBE08 /* BeerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerCell.swift; sourceTree = "<group>"; };
+		3EEFE51420AF3E3200FBCF92 /* HomeDataSourceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDataSourceController.swift; sourceTree = "<group>"; };
+		450FE11C67BE9623C3865D51 /* Pods_Cheers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cheers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6536C2B520AE7415002088A3 /* Cheers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cheers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6536C2B820AE7415002088A3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6536C2C120AE7415002088A3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -22,6 +31,7 @@
 		6536C2C620AE7415002088A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6536C2CC20AE75D4002088A3 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		6536C2CE20AE7B04002088A3 /* WordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordCell.swift; sourceTree = "<group>"; };
+		ED09316966F32CC8C4E3C9FA /* Pods-Cheers.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cheers.release.xcconfig"; path = "Pods/Target Support Files/Pods-Cheers/Pods-Cheers.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +39,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5992D0129EEACC5946E272D5 /* Pods_Cheers.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		30FF815D8560D950D4FDA29E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				21DD3CF7AE49E66C7CA978F5 /* Pods-Cheers.debug.xcconfig */,
+				ED09316966F32CC8C4E3C9FA /* Pods-Cheers.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		6536C2AC20AE7415002088A3 = {
 			isa = PBXGroup;
 			children = (
 				6536C2B720AE7415002088A3 /* Cheers */,
 				6536C2B620AE7415002088A3 /* Products */,
+				30FF815D8560D950D4FDA29E /* Pods */,
+				B31D8E7B90F4747EDA7F5E0D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -57,11 +79,22 @@
 				6536C2B820AE7415002088A3 /* AppDelegate.swift */,
 				6536C2CC20AE75D4002088A3 /* HomeController.swift */,
 				6536C2CE20AE7B04002088A3 /* WordCell.swift */,
+				3EEFE51420AF3E3200FBCF92 /* HomeDataSourceController.swift */,
+				3EEE24B920AF411F004BBE08 /* HomeDataSource.swift */,
+				3EEE24BB20AF4176004BBE08 /* BeerCell.swift */,
 				6536C2C120AE7415002088A3 /* Assets.xcassets */,
 				6536C2C320AE7415002088A3 /* LaunchScreen.storyboard */,
 				6536C2C620AE7415002088A3 /* Info.plist */,
 			);
 			path = Cheers;
+			sourceTree = "<group>";
+		};
+		B31D8E7B90F4747EDA7F5E0D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				450FE11C67BE9623C3865D51 /* Pods_Cheers.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +104,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6536C2C920AE7415002088A3 /* Build configuration list for PBXNativeTarget "Cheers" */;
 			buildPhases = (
+				5027C4D79A4C14B104D12D92 /* [CP] Check Pods Manifest.lock */,
 				6536C2B120AE7415002088A3 /* Sources */,
 				6536C2B220AE7415002088A3 /* Frameworks */,
 				6536C2B320AE7415002088A3 /* Resources */,
+				00710B9DF02750A81C7A5990 /* [CP] Embed Pods Frameworks */,
+				888C9F500842AC678BF88EA4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -129,12 +165,69 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		00710B9DF02750A81C7A5990 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Cheers/Pods-Cheers-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/LBTAComponents/LBTAComponents.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LBTAComponents.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Cheers/Pods-Cheers-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5027C4D79A4C14B104D12D92 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Cheers-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		888C9F500842AC678BF88EA4 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Cheers/Pods-Cheers-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		6536C2B120AE7415002088A3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3EEE24BA20AF411F004BBE08 /* HomeDataSource.swift in Sources */,
 				6536C2CF20AE7B04002088A3 /* WordCell.swift in Sources */,
+				3EEFE51520AF3E3200FBCF92 /* HomeDataSourceController.swift in Sources */,
+				3EEE24BC20AF4176004BBE08 /* BeerCell.swift in Sources */,
 				6536C2CD20AE75D4002088A3 /* HomeController.swift in Sources */,
 				6536C2B920AE7415002088A3 /* AppDelegate.swift in Sources */,
 			);
@@ -270,6 +363,7 @@
 		};
 		6536C2CA20AE7415002088A3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 21DD3CF7AE49E66C7CA978F5 /* Pods-Cheers.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -288,6 +382,7 @@
 		};
 		6536C2CB20AE7415002088A3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ED09316966F32CC8C4E3C9FA /* Pods-Cheers.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
