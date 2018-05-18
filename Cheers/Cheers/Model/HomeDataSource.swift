@@ -11,8 +11,16 @@ import LBTAComponents
 class HomeDatasource : Datasource {
     let words = ["IPA", "Pilsner", "Lager"]
     
+    override func headerClasses() -> [DatasourceCell.Type]? {
+        return [RecentHeader.self]
+    }
+    
     override func cellClasses() -> [DatasourceCell.Type] {
-        return [BeerCell.self]
+        return [RecentBeerCell.self]
+    }
+    
+    override func footerClasses() -> [DatasourceCell.Type]? {
+        return [RecentFooter.self]
     }
     
     override func item(_ indexPath: IndexPath) -> Any? {

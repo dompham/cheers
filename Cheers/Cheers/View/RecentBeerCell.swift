@@ -8,7 +8,7 @@
 
 import LBTAComponents
 
-class BeerCell: DatasourceCell {
+class RecentBeerCell: DatasourceCell {
     
     let beerLabel : UILabel = {
     let label = UILabel()
