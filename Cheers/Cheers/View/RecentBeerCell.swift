@@ -8,10 +8,12 @@
 
 import LBTAComponents
 
+let cheersOrange : UIColor = UIColor(r: 255, g: 181, b: 69)
+let cheersBlue : UIColor = UIColor(r: 68, g: 142, b: 255)
+
 //AKA UserCell
 class RecentBeerCell: DatasourceCell {
     
-
     
     // Profile picture
     let profileImageView : UIImageView = {
@@ -27,7 +29,6 @@ class RecentBeerCell: DatasourceCell {
         let name = UILabel()
         name.text = "dompham"
         name.font = UIFont.boldSystemFont(ofSize: 16)
-        //name.backgroundColor = .purple
         return name
     }()
     
@@ -35,7 +36,7 @@ class RecentBeerCell: DatasourceCell {
     let beerLabel : UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14)
-        label.textColor = UIColor(r: 226, g: 169, b: 54)
+        label.textColor = cheersBlue
         return label
     }()
     
@@ -44,14 +45,25 @@ class RecentBeerCell: DatasourceCell {
         let recentCheer = UITextView()
         recentCheer.text = "Not only does this beer taste delicious, it feels “delicious” in the mouth. The rich body matches the flavor profile. This is a big beer but not overwhelming."
         recentCheer.font = UIFont.systemFont(ofSize: 15)
+        recentCheer.backgroundColor = .clear
         return recentCheer
     }()
     
     // Add button
-    let addBuddyButton : UIButton = {
-        let addButton = UIButton()
-        addButton.backgroundColor = .cyan
-        return addButton
+    let subBuddyButton : UIButton = {
+        let subButton = UIButton()
+        
+        subButton.layer.cornerRadius = 5
+        subButton.layer.borderColor = cheersBlue.cgColor
+        subButton.layer.borderWidth = 1
+        subButton.setTitle("Subscribe", for: .normal)
+        subButton.setTitleColor(cheersBlue, for: .normal)
+        subButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 12)
+        subButton.titleEdgeInsets = UIEdgeInsetsMake(0, -28, 0, 0)
+        subButton.setImage(#imageLiteral(resourceName: "sub_button"), for: .normal)
+        subButton.imageView?.contentMode = .scaleAspectFit
+        subButton.imageEdgeInsets = UIEdgeInsetsMake(4, -6, 4, 0)
+        return subButton
     }()
     
     override func setupViews() {
@@ -61,19 +73,19 @@ class RecentBeerCell: DatasourceCell {
         addSubview(beerLabel)
         addSubview(usernameLabel)
         addSubview(recentCheerText)
-        addSubview(addBuddyButton)
+        addSubview(subBuddyButton)
         
         // MARK: Constraints for Recent Cell Subviews
         
         profileImageView.anchor(self.topAnchor, left: self.leftAnchor, bottom: nil, right: nil, topConstant: 12, leftConstant: 12, bottomConstant: 0, rightConstant: 0, widthConstant: 50, heightConstant: 50)
         
-        usernameLabel.anchor(profileImageView.topAnchor, left: profileImageView.rightAnchor, bottom: nil, right: addBuddyButton.leftAnchor, topConstant: 0, leftConstant: 8, bottomConstant: 0, rightConstant: 12, widthConstant: 0, heightConstant: 20)
+        usernameLabel.anchor(profileImageView.topAnchor, left: profileImageView.rightAnchor, bottom: nil, right: subBuddyButton.leftAnchor, topConstant: 0, leftConstant: 8, bottomConstant: 0, rightConstant: 12, widthConstant: 0, heightConstant: 22)
 
-        beerLabel.anchor(usernameLabel.bottomAnchor, left: profileImageView.rightAnchor, bottom: nil, right: addBuddyButton.leftAnchor, topConstant: 0, leftConstant: 8, bottomConstant: 0, rightConstant: 12, widthConstant: 0, heightConstant: 20)
+        beerLabel.anchor(usernameLabel.bottomAnchor, left: profileImageView.rightAnchor, bottom: nil, right: subBuddyButton.leftAnchor, topConstant: 0, leftConstant: 8, bottomConstant: 0, rightConstant: 12, widthConstant: 0, heightConstant: 22)
 
         recentCheerText.anchor(beerLabel.bottomAnchor, left: beerLabel.leftAnchor, bottom: self.bottomAnchor, right: self.rightAnchor, topConstant: -4, leftConstant: -4, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 0)
         
-        addBuddyButton.anchor(topAnchor, left: nil, bottom: nil, right: self.rightAnchor, topConstant: 12, leftConstant: 0, bottomConstant: 0, rightConstant: 12, widthConstant: 120, heightConstant: 34)
+        subBuddyButton.anchor(topAnchor, left: nil, bottom: nil, right: self.rightAnchor, topConstant: 12, leftConstant: 0, bottomConstant: 0, rightConstant: 12, widthConstant: 120, heightConstant: 34)
         
     }
     

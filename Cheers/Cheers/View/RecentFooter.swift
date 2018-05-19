@@ -9,8 +9,16 @@
 import LBTAComponents
 
 class RecentFooter: DatasourceCell {
+    let textLabel : UILabel = {
+        let label = UILabel()
+        label.text = "Show me more"
+        label.font = UIFont.systemFont(ofSize: 14)
+        label.textColor = cheersBlue
+        return label
+    }()
+    
     override func setupViews() {
         super.setupViews()
-        backgroundColor = .green
-    }
+        addSubview(textLabel)
+        textLabel.anchor(topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, topConstant: 0, leftConstant: 12, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 0)    }
 }
