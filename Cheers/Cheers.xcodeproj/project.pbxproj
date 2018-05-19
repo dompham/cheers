@@ -17,6 +17,7 @@
 		6536C2B920AE7415002088A3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6536C2B820AE7415002088A3 /* AppDelegate.swift */; };
 		6536C2C220AE7415002088A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6536C2C120AE7415002088A3 /* Assets.xcassets */; };
 		6536C2C520AE7415002088A3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6536C2C320AE7415002088A3 /* LaunchScreen.storyboard */; };
+		65953B8A20B0BA2C002B5774 /* FeedViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65953B8920B0BA2C002B5774 /* FeedViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		6536C2C120AE7415002088A3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6536C2C420AE7415002088A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6536C2C620AE7415002088A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		65953B8920B0BA2C002B5774 /* FeedViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewCell.swift; sourceTree = "<group>"; };
 		ED09316966F32CC8C4E3C9FA /* Pods-Cheers.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cheers.release.xcconfig"; path = "Pods/Target Support Files/Pods-Cheers/Pods-Cheers.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -80,6 +82,7 @@
 				3EEE24BD20AF472E004BBE08 /* RecentHeader.swift */,
 				3EEE24BB20AF4176004BBE08 /* RecentBeerCell.swift */,
 				3EEE24BF20AF4EE1004BBE08 /* RecentFooter.swift */,
+				65953B8920B0BA2C002B5774 /* FeedViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -239,6 +242,7 @@
 				3EEFE51520AF3E3200FBCF92 /* HomeDataSourceController.swift in Sources */,
 				650CAB7820B0924600B143EB /* Cheer.swift in Sources */,
 				3EEE24BC20AF4176004BBE08 /* RecentBeerCell.swift in Sources */,
+				65953B8A20B0BA2C002B5774 /* FeedViewCell.swift in Sources */,
 				3EEE24C020AF4EE1004BBE08 /* RecentFooter.swift in Sources */,
 				6536C2B920AE7415002088A3 /* AppDelegate.swift in Sources */,
 				3EEE24BE20AF472E004BBE08 /* RecentHeader.swift in Sources */,

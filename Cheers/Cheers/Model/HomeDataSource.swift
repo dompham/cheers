@@ -20,7 +20,7 @@ class HomeDatasource : Datasource {
     }
     
     override func cellClasses() -> [DatasourceCell.Type] {
-        return [RecentBeerCell.self]
+        return [RecentBeerCell.self, FeedViewCall.self ]
     }
     
     override func footerClasses() -> [DatasourceCell.Type]? {
