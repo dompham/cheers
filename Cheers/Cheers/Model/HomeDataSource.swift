@@ -15,6 +15,8 @@ class HomeDatasource : Datasource {
         return [recentCheer1, recentCheer2]
     }()
     
+    let feedCheers = ["cheer1", "cheer2"]
+    
     override func headerClasses() -> [DatasourceCell.Type]? {
         return [RecentHeader.self]
     }
@@ -36,6 +38,9 @@ class HomeDatasource : Datasource {
     }
     
     override func numberOfItems(_ section: Int) -> Int {
+        if (section == 1) {
+            return feedCheers.count
+        }
         return cheers.count
     }
 }
