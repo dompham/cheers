@@ -7,10 +7,12 @@
 //
 
 import Foundation
+import UIKit
 
 struct Cheer {
     let name : String
     let beer : String
     let location : String
     let review : String
+    let profileImage : UIImage
 }
