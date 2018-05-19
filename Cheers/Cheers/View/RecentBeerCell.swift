@@ -56,6 +56,9 @@ class RecentBeerCell: DatasourceCell {
         //recentCheer.text = "Not only does this beer taste delicious, it feels “delicious” in the mouth. The rich body matches the flavor profile. This is a big beer but not overwhelming."
         recentCheer.font = UIFont.systemFont(ofSize: 15)
         recentCheer.backgroundColor = .clear
+        recentCheer.isScrollEnabled = false
+        recentCheer.showsVerticalScrollIndicator = false
+        recentCheer.isEditable = false
         return recentCheer
     }()
     
@@ -78,10 +81,9 @@ class RecentBeerCell: DatasourceCell {
     
     override func setupViews() {
         super.setupViews()
-        //backgroundColor = .blue
+        backgroundColor = .white
         separatorLineView.isHidden = false
         separatorLineView.backgroundColor = UIColor(r: 230, g: 230, b: 230)
-        //separatorLineView.backgroundColor = .purple
 
         
         addSubview(profileImageView)
