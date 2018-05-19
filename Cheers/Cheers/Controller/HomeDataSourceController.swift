@@ -23,13 +23,42 @@ class HomeDatasourceController: DatasourceController {
     //MARK: Nav Bar
     private func setupNavigationBarItems(){
         
+        // MARK: Nav Title
+        
         let titleImage = UIImageView(image: #imageLiteral(resourceName: "beer_cheers"))
         titleImage.frame = CGRect(x: 0, y: 0, width: 34, height: 34)
         titleImage.contentMode = .scaleAspectFit
         navigationItem.titleView = titleImage
         
+        // MARK: Search Button
+        
+        let searchButton = UIButton(type: .system)
+        searchButton.setImage(#imageLiteral(resourceName: "search"), for: .normal)
+        // iOS 11 buttons need constraints
+        let widthConstraintSearch = searchButton.widthAnchor.constraint(equalToConstant: 28)
+        let heightConstraintSearch = searchButton.heightAnchor.constraint(equalToConstant: 28)
+        heightConstraintSearch.isActive = true
+        widthConstraintSearch.isActive = true
+        searchButton.contentMode = .scaleAspectFit
+        
+        // MARK: Settings Button
+        
+        let settingsButton = UIButton(type: .system)
+        settingsButton.setImage(#imageLiteral(resourceName: "settings"), for: .normal)
+        // iOS 11 buttons need constraints
+        let widthConstraintSettings = settingsButton.widthAnchor.constraint(equalToConstant: 28)
+        let heightConstraintSettings = settingsButton.heightAnchor.constraint(equalToConstant: 28)
+        heightConstraintSettings.isActive = true
+        widthConstraintSettings.isActive = true
+        settingsButton.contentMode = .scaleAspectFit
+        
+        navigationItem.rightBarButtonItems = [UIBarButtonItem(customView: settingsButton), UIBarButtonItem(customView: searchButton)]
+        
+        navigationController?.navigationBar.backgroundColor = .white
+        navigationController?.navigationBar.isTranslucent = false
     }
     
+    // MARK: Cell Setup
     //Cell height
     override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if let recentCheer = self.datasource?.item(indexPath) as? Cheer {
