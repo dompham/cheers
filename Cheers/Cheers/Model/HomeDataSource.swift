@@ -9,7 +9,7 @@
 import LBTAComponents
 
 class HomeDatasource : Datasource {
-    let words = ["IPA", "Pilsner", "Lager"]
+    let words = ["IPA @ The Ugly Dog", "Pilsner @ Clems", "Lager @ Bridges"]
     
     override func headerClasses() -> [DatasourceCell.Type]? {
         return [RecentHeader.self]

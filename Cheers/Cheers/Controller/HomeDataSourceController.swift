@@ -11,9 +11,14 @@ import LBTAComponents
 class HomeDatasourceController: DatasourceController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView?.backgroundColor = .gray;
+        //collectionView?.backgroundColor = .gray;
         let homeDatasource = HomeDatasource()
         self.datasource = homeDatasource
+    }
+    
+    //Cell height
+    override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: view.frame.width, height: 150)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
