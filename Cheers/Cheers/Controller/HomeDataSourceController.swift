@@ -78,10 +78,10 @@ class HomeDatasourceController: DatasourceController {
             let attributes = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 15)]
             
             let estimateFrame = NSString(string: recentCheer.review).boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: attributes, context: nil)
-            
+            print(estimateFrame.height)
             return CGSize(width: view.frame.width, height: estimateFrame.height + 90)
         }
-        return CGSize(width: view.frame.width, height: 200)
+        return CGSize(width: view.frame.width, height: 500)
     }
     
     //MARK: Header footer sizing
