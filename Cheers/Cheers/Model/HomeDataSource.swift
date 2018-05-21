@@ -18,7 +18,9 @@ class HomeDatasource : Datasource {
     let feedCheers : [Cheer] = {
         let cheer1 = Cheer(name: "oramos", beer: "Coffee Stout", location: "@ The Ugly Dog", review: "Have to drink something heavy first then ease into something light.", profileImage: #imageLiteral(resourceName: "oramos"))
         let cheer2 = Cheer(name: "hmykel", beer: "Cali Creamin", location: "@ Bridges", review: "What is there to say but that it was refreshing and got me lit like a lantern.", profileImage: #imageLiteral(resourceName: "hmykel"))
-        return [cheer1, cheer2]
+        let cheer3 = Cheer(name: "oramos", beer: "Spaten Lager", location: "@ My Place", review: "Easy to drink German beer.", profileImage: #imageLiteral(resourceName: "oramos"))
+        let cheer4 = Cheer(name: "hmykel", beer: "Guinness Stout", location: "@ Clems", review: "Beer was very dense and felt like a full meal.  Definitely not one to drink with food.", profileImage: #imageLiteral(resourceName: "hmykel"))
+        return [cheer1, cheer2, cheer3, cheer4]
     }()
     
     override func headerClasses() -> [DatasourceCell.Type]? {
