@@ -13,7 +13,6 @@ class FeedViewCall : DatasourceCell {
     // Profile picture
     let profileImageView : UIImageView = {
         let image = UIImageView()
-        image.image = #imageLiteral(resourceName: "oramos")
         image.layer.cornerRadius = 10
         image.layer.masksToBounds = true
         return image
@@ -22,7 +21,6 @@ class FeedViewCall : DatasourceCell {
     // Username
     let usernameLabel : UILabel = {
         let name = UILabel()
-        name.text = "oramos"
         name.font = UIFont.boldSystemFont(ofSize: 16)
         name.backgroundColor = .white
         return name
@@ -33,7 +31,6 @@ class FeedViewCall : DatasourceCell {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14)
         label.textColor = cheersBlue
-        label.text = "Some Dark Stout"
         label.backgroundColor = .white
         return label
     }()
@@ -44,13 +41,11 @@ class FeedViewCall : DatasourceCell {
         label.font = UIFont.systemFont(ofSize: 12)
         label.backgroundColor = .clear
         label.textColor = cheersBlue
-        label.text = "@ The Ugly Dog"
         return label
     }()
     
     let feedCheerText : UITextView = {
         let feedCheer = UITextView()
-        feedCheer.text = "Have to drink something heavy first then ease into something light."
         feedCheer.font = UIFont.systemFont(ofSize: 15)
         feedCheer.backgroundColor = .clear
         feedCheer.isScrollEnabled = false
@@ -100,5 +95,16 @@ class FeedViewCall : DatasourceCell {
         viewPostButton.anchor(self.topAnchor, left: nil, bottom: nil, right: self.rightAnchor, topConstant: 16, leftConstant: 0, bottomConstant: 0, rightConstant: 12, widthConstant: 34, heightConstant: 36)
         
         locationLabel.anchor(feedCheerText.bottomAnchor, left: beerLabel.leftAnchor, bottom: self.bottomAnchor, right: nil, topConstant: 0, leftConstant: 0, bottomConstant: 5, rightConstant: 0, widthConstant: 0, heightConstant: 0)
+    }
+    
+    override var datasourceItem: Any? {
+        didSet {
+            guard let cheer = datasourceItem as? Cheer else {return}
+            usernameLabel.text = cheer.name
+            beerLabel.text = cheer.beer
+            feedCheerText.text = cheer.review
+            locationLabel.text = cheer.location
+            profileImageView.image = cheer.profileImage
+        }
     }
 }

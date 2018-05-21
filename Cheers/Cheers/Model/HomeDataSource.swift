@@ -34,6 +34,10 @@ class HomeDatasource : Datasource {
     }
     
     override func item(_ indexPath: IndexPath) -> Any? {
+        
+        if indexPath.section == 1 {
+            return feedCheers[indexPath.item]
+        }
         return recentCheers[indexPath.item]
     }
     

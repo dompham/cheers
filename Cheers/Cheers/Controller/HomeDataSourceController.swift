@@ -81,6 +81,7 @@ class HomeDatasourceController: DatasourceController {
     // MARK: Cell Setup
     //Cell height
     override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        // If recent cheer size this way otherwise its feed cheer size that way
         if let recentCheer = self.datasource?.item(indexPath) as? RecentCheer {
             // Dynamic height for review
             let approxWidth = view.frame.width - 12 - 50 - 12 - 2
@@ -90,8 +91,19 @@ class HomeDatasourceController: DatasourceController {
             let estimateFrame = NSString(string: recentCheer.review).boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: attributes, context: nil)
             print(estimateFrame.height)
             return CGSize(width: view.frame.width, height: estimateFrame.height + 90)
+            
+        } else if let cheer = self.datasource?.item(indexPath) as? Cheer {
+            // Dynamic height for review
+            let approxWidth = view.frame.width - 12 - 50 - 12 - 2
+            let size = CGSize(width: approxWidth, height: 1000)
+            let attributes = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 15)]
+            
+            let estimateFrame = NSString(string: cheer.review).boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: attributes, context: nil)
+            print(estimateFrame.height)
+            return CGSize(width: view.frame.width, height: estimateFrame.height + 90)
+            
         }
-        return CGSize(width: view.frame.width, height: 500)
+        return CGSize(width: view.frame.width, height: 200)
     }
     
     //MARK: Header footer sizing
