@@ -12,10 +12,13 @@ import UIKit
 class TabBarViewController : UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        let homeVC = ExploreViewController()
-        homeVC.tabBarItem = UITabBarItem(tabBarSystemItem: .more, tag: 0)
-        let viewControllerList = [ homeVC ]
-        viewControllers = viewControllerList
+        let tab1 = HomeDatasourceController()
+        let tab2 = CheersViewController()
+        let homeNavController = UINavigationController(rootViewController: tab1)
+        
+        tab1.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 0)
+        tab2.tabBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 1)
+        viewControllers = [homeNavController, tab2]
         
     }
 }
