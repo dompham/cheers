@@ -13,7 +13,7 @@ class FeedViewCall : DatasourceCell {
     // Profile picture
     let profileImageView : UIImageView = {
         let image = UIImageView()
-        image.image = #imageLiteral(resourceName: "dpham_stub_pic")
+        image.image = #imageLiteral(resourceName: "oramos")
         image.layer.cornerRadius = 10
         image.layer.masksToBounds = true
         return image
@@ -22,7 +22,7 @@ class FeedViewCall : DatasourceCell {
     // Username
     let usernameLabel : UILabel = {
         let name = UILabel()
-        name.text = "dompham"
+        name.text = "oramos"
         name.font = UIFont.boldSystemFont(ofSize: 16)
         name.backgroundColor = .white
         return name
@@ -33,7 +33,7 @@ class FeedViewCall : DatasourceCell {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14)
         label.textColor = cheersBlue
-        label.text = "adfsafasdfasf"
+        label.text = "Some Dark Stout"
         label.backgroundColor = .white
         return label
     }()
@@ -44,13 +44,13 @@ class FeedViewCall : DatasourceCell {
         label.font = UIFont.systemFont(ofSize: 12)
         label.backgroundColor = .clear
         label.textColor = cheersBlue
-        //label.text = "@ The Ugly Dog"
+        label.text = "@ The Ugly Dog"
         return label
     }()
     
     let feedCheerText : UITextView = {
         let feedCheer = UITextView()
-        feedCheer.text = "Not only does this beer taste delicious, it feels “delicious” in the mouth."
+        feedCheer.text = "Have to drink something heavy first then ease into something light."
         feedCheer.font = UIFont.systemFont(ofSize: 15)
         feedCheer.backgroundColor = .clear
         feedCheer.isScrollEnabled = false
@@ -62,7 +62,7 @@ class FeedViewCall : DatasourceCell {
     // View post button
     let viewPostButton : UIButton = {
         let viewPostButton = UIButton()
-        
+        viewPostButton.backgroundColor = .white
         viewPostButton.layer.cornerRadius = 5
         viewPostButton.layer.borderColor = cheersBlue.cgColor
         viewPostButton.layer.borderWidth = 1
@@ -86,6 +86,7 @@ class FeedViewCall : DatasourceCell {
         addSubview(usernameLabel)
         addSubview(beerLabel)
         addSubview(feedCheerText)
+        addSubview(locationLabel)
         addSubview(viewPostButton)
         
         profileImageView.anchor(self.topAnchor, left: self.leftAnchor, bottom: nil, right: nil, topConstant: 12, leftConstant: 12, bottomConstant: 0, rightConstant: 0, widthConstant: 50, heightConstant: 50)
@@ -96,7 +97,8 @@ class FeedViewCall : DatasourceCell {
         
         feedCheerText.anchor(beerLabel.bottomAnchor, left: beerLabel.leftAnchor, bottom: nil, right: self.rightAnchor, topConstant: -4, leftConstant: -4, bottomConstant: 0, rightConstant: 10, widthConstant: 0, heightConstant: 0)
         
-        viewPostButton.anchor(self.topAnchor, left: nil, bottom: nil, right: self.rightAnchor, topConstant: 16, leftConstant: 0, bottomConstant: 0, rightConstant: 12, widthConstant: 36, heightConstant: 36)
+        viewPostButton.anchor(self.topAnchor, left: nil, bottom: nil, right: self.rightAnchor, topConstant: 16, leftConstant: 0, bottomConstant: 0, rightConstant: 12, widthConstant: 34, heightConstant: 36)
         
+        locationLabel.anchor(feedCheerText.bottomAnchor, left: beerLabel.leftAnchor, bottom: self.bottomAnchor, right: nil, topConstant: 0, leftConstant: 0, bottomConstant: 5, rightConstant: 0, widthConstant: 0, heightConstant: 0)
     }
 }

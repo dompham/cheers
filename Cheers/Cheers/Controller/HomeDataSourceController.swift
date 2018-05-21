@@ -27,10 +27,20 @@ class HomeDatasourceController: DatasourceController {
         
         // MARK: Nav Title
         
-        let titleImage = UIImageView(image: #imageLiteral(resourceName: "beer_cheers"))
-        titleImage.frame = CGRect(x: 0, y: 0, width: 34, height: 34)
+        let titleImage = UIImageView(image: #imageLiteral(resourceName: "main_icon"))
+//        let titleImage = UIImageView(image: #imageLiteral(resourceName: "beer_cheers"))
+
+        
+       // titleImage.frame = CGRect(x: 0, y: 5, width: 20, height: 20)
+        
+        let widthTitle = titleImage.widthAnchor.constraint(equalToConstant: 36)
+        let heightTitle = titleImage.heightAnchor.constraint(equalToConstant: 36)
+        heightTitle.isActive = true
+        widthTitle.isActive = true
+        
         titleImage.contentMode = .scaleAspectFit
         navigationItem.titleView = titleImage
+
         
         // MARK: Search Button
         

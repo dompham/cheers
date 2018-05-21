@@ -11,7 +11,7 @@ import LBTAComponents
 class RecentHeader: DatasourceCell {
     let textLabel : UILabel = {
         let label = UILabel()
-        label.text = "RECENT CHEERS"
+        label.text = "RECENT CHEER"
         label.font = UIFont.systemFont(ofSize: 16)
         
         return label

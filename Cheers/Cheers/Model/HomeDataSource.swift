@@ -11,11 +11,11 @@ import LBTAComponents
 class HomeDatasource : Datasource {
     let cheers : [Cheer] = {
         let recentCheer1 = Cheer(name: "dompham", beer: "Sculpin IPA", location: "@ The Ugly Dog", review: "Beer was OK, but I prefer the grapefruit version.", profileImage: #imageLiteral(resourceName: "dpham_stub_pic") )
-        let recentCheer2 = Cheer(name: "hmykel", beer: "Cali Creamin", location: "@ Bridges", review: "What is there to say but that it was refreshing and got me lit like a lantern.  It had a nice color and was good on the pallette. I'm not sure if thats how you correctly spell pallette.", profileImage: #imageLiteral(resourceName: "dpham_stub_pic"))
-        return [recentCheer1, recentCheer2]
+//        let recentCheer2 = Cheer(name: "hmykel", beer: "Cali Creamin", location: "@ Bridges", review: "What is there to say but that it was refreshing and got me lit like a lantern.", profileImage: #imageLiteral(resourceName: "hmykel"))
+        return [recentCheer1]
     }()
     
-    let feedCheers = ["cheer1", "cheer2"]
+    let feedCheers = ["cheer1"]
     
     override func headerClasses() -> [DatasourceCell.Type]? {
         return [RecentHeader.self]
