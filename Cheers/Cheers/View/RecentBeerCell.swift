@@ -114,7 +114,7 @@ class RecentBeerCell: DatasourceCell {
     
     override var datasourceItem: Any? {
         didSet {
-            guard let recentCheer = datasourceItem as? Cheer else {return}
+            guard let recentCheer = datasourceItem as? RecentCheer else {return}
             usernameLabel.text = recentCheer.name
             beerLabel.text = recentCheer.beer
             recentCheerText.text = recentCheer.review

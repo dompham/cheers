@@ -81,7 +81,7 @@ class HomeDatasourceController: DatasourceController {
     // MARK: Cell Setup
     //Cell height
     override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if let recentCheer = self.datasource?.item(indexPath) as? Cheer {
+        if let recentCheer = self.datasource?.item(indexPath) as? RecentCheer {
             // Dynamic height for review
             let approxWidth = view.frame.width - 12 - 50 - 12 - 2
             let size = CGSize(width: approxWidth, height: 1000)
