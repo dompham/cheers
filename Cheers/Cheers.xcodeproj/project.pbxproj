@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		3EB141ED20B356AB00E4D853 /* Cheer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB141EC20B356AB00E4D853 /* Cheer.swift */; };
+		3EB141EF20B368EF00E4D853 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB141EE20B368EF00E4D853 /* TabBarViewController.swift */; };
+		3EB141F120B3693F00E4D853 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB141F020B3693F00E4D853 /* ExploreViewController.swift */; };
+		3EB141F320B3696900E4D853 /* CheersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB141F220B3696900E4D853 /* CheersViewController.swift */; };
+		3EB141F520B3698000E4D853 /* HonorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB141F420B3698000E4D853 /* HonorsViewController.swift */; };
+		3EB141F720B3699200E4D853 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB141F620B3699200E4D853 /* ProfileViewController.swift */; };
 		3EEE24BA20AF411F004BBE08 /* HomeDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEE24B920AF411F004BBE08 /* HomeDataSource.swift */; };
 		3EEE24BC20AF4176004BBE08 /* RecentBeerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEE24BB20AF4176004BBE08 /* RecentBeerCell.swift */; };
 		3EEE24BE20AF472E004BBE08 /* RecentHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEE24BD20AF472E004BBE08 /* RecentHeader.swift */; };
@@ -24,6 +29,11 @@
 /* Begin PBXFileReference section */
 		21DD3CF7AE49E66C7CA978F5 /* Pods-Cheers.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cheers.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Cheers/Pods-Cheers.debug.xcconfig"; sourceTree = "<group>"; };
 		3EB141EC20B356AB00E4D853 /* Cheer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cheer.swift; sourceTree = "<group>"; };
+		3EB141EE20B368EF00E4D853 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		3EB141F020B3693F00E4D853 /* ExploreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
+		3EB141F220B3696900E4D853 /* CheersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheersViewController.swift; sourceTree = "<group>"; };
+		3EB141F420B3698000E4D853 /* HonorsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HonorsViewController.swift; sourceTree = "<group>"; };
+		3EB141F620B3699200E4D853 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		3EEE24B920AF411F004BBE08 /* HomeDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDataSource.swift; sourceTree = "<group>"; };
 		3EEE24BB20AF4176004BBE08 /* RecentBeerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentBeerCell.swift; sourceTree = "<group>"; };
 		3EEE24BD20AF472E004BBE08 /* RecentHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentHeader.swift; sourceTree = "<group>"; };
@@ -65,6 +75,11 @@
 			isa = PBXGroup;
 			children = (
 				3EEFE51420AF3E3200FBCF92 /* HomeDataSourceController.swift */,
+				3EB141EE20B368EF00E4D853 /* TabBarViewController.swift */,
+				3EB141F020B3693F00E4D853 /* ExploreViewController.swift */,
+				3EB141F220B3696900E4D853 /* CheersViewController.swift */,
+				3EB141F420B3698000E4D853 /* HonorsViewController.swift */,
+				3EB141F620B3699200E4D853 /* ProfileViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -257,14 +272,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3EB141F320B3696900E4D853 /* CheersViewController.swift in Sources */,
 				3EEE24BA20AF411F004BBE08 /* HomeDataSource.swift in Sources */,
 				3EEFE51520AF3E3200FBCF92 /* HomeDataSourceController.swift in Sources */,
 				650CAB7820B0924600B143EB /* RecentCheer.swift in Sources */,
+				3EB141F720B3699200E4D853 /* ProfileViewController.swift in Sources */,
 				3EEE24BC20AF4176004BBE08 /* RecentBeerCell.swift in Sources */,
 				65953B8A20B0BA2C002B5774 /* FeedViewCell.swift in Sources */,
+				3EB141F520B3698000E4D853 /* HonorsViewController.swift in Sources */,
 				3EEE24C020AF4EE1004BBE08 /* RecentFooter.swift in Sources */,
 				6536C2B920AE7415002088A3 /* AppDelegate.swift in Sources */,
 				3EEE24BE20AF472E004BBE08 /* RecentHeader.swift in Sources */,
+				3EB141EF20B368EF00E4D853 /* TabBarViewController.swift in Sources */,
+				3EB141F120B3693F00E4D853 /* ExploreViewController.swift in Sources */,
 				3EB141ED20B356AB00E4D853 /* Cheer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

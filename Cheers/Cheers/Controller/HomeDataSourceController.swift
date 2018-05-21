@@ -11,7 +11,10 @@ import LBTAComponents
 class HomeDatasourceController: DatasourceController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView?.backgroundColor = UIColor(r: 255, g: 245, b: 232)
+        //221, 235, 255
+//        collectionView?.backgroundColor = UIColor(r: 255, g: 245, b: 232)
+        collectionView?.backgroundColor = UIColor(r: 221, g: 245, b: 255)
+
         collectionView?.showsVerticalScrollIndicator = false
         setupNavigationBarItems()
         let homeDatasource = HomeDatasource()
@@ -118,6 +121,6 @@ class HomeDatasourceController: DatasourceController {
         if (section == 1) {
             return .zero
         }
-        return CGSize(width: view.frame.width, height: 64)
+        return CGSize(width: view.frame.width, height: 54)
     }
 }

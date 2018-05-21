@@ -22,7 +22,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
 //        let homeController = HomeController(collectionViewLayout: UICollectionViewFlowLayout())
 //        window?.rootViewController = UINavigationController(rootViewController: homeController);
-        window?.rootViewController = UINavigationController(rootViewController: HomeDatasourceController())
+        //window?.rootViewController = UINavigationController(rootViewController: HomeDatasourceController())
+        
+        let tabBarController = UITabBarController()
+        let tab1 = HomeDatasourceController()
+        let tab2 = CheersViewController()
+        
+        tab1.tabBarItem = UITabBarItem(tabBarSystemItem: .more, tag: 0)
+        tab2.tabBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 1)
+        tabBarController.viewControllers = [tab1, tab2]
+
+        window?.rootViewController = UINavigationController(rootViewController: tabBarController)
+
+
         return true
     }
 
