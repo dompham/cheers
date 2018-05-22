@@ -12,13 +12,22 @@ import UIKit
 class TabBarViewController : UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        let tab1 = HomeDatasourceController()
-        let tab2 = CheersViewController()
-        let homeNavController = UINavigationController(rootViewController: tab1)
+        let homeVC = HomeDatasourceController()
+        let exploreVC = ExploreViewController()
+        let cheersVC = CheersViewController()
+        let honorsVC = HonorsViewController()
+        let profileVC = ProfileViewController()
         
-        tab1.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 0)
-        tab2.tabBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 1)
-        viewControllers = [homeNavController, tab2]
+        let homeNavController = UINavigationController(rootViewController: homeVC)
+
+//        homeVC.tabBarItem = UITabBarItem(title: "Home", image: hom
+        homeVC.tabBarItem = UITabBarItem(title: "Home", image: #imageLiteral(resourceName: "homeGray"), selectedImage: #imageLiteral(resourceName: "homeGray"))
+//        exploreVC.tabBarItem = UITabBarItem(title: "Explore", image: #imageLiteral(resourceName: "exploreGray"), selectedImage: #imageLiteral(resourceName: "explore"))
+//        cheersVC.tabBarItem = UITabBarItem(title: "Cheers", image: #imageLiteral(resourceName: "cheersGrayIcon"), selectedImage: #imageLiteral(resourceName: "cheersMainIcon"))
+//        honorsVC.tabBarItem = UITabBarItem(title: "Honors", image: #imageLiteral(resourceName: "honorsGray"), selectedImage: #imageLiteral(resourceName: "honors"))
+//        profileVC.tabBarItem = UITabBarItem(title: "Profile", image: #imageLiteral(resourceName: "profileGray"), selectedImage: #imageLiteral(resourceName: "profile"))
+
+        viewControllers = [homeNavController]//, exploreVC, cheersVC, honorsVC, profileVC]
         
     }
 }

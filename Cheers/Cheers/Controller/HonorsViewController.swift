@@ -7,3 +7,10 @@
 //
 
 import Foundation
+import UIKit
+
+class HonorsViewController : UIViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+}
