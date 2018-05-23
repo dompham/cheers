@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseDatabase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,23 +21,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow(frame: UIScreen.main.bounds);
         window?.makeKeyAndVisible();
-        
-//        let homeController = HomeController(collectionViewLayout: UICollectionViewFlowLayout())
-//        window?.rootViewController = UINavigationController(rootViewController: homeController);
-       // window?.rootViewController = UINavigationController(rootViewController: HomeDatasourceController())
-        
-        
-        //let tabBarController = UITabBarController()
-//        let tab1 = HomeDatasourceController()
-//        let tab2 = CheersViewController()
-//
-//        tab1.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 0)
-//        tab2.tabBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 1)
-//        tabBarController.viewControllers = [tab1, tab2]
-//
         window?.rootViewController = TabBarViewController()
+        
+        FirebaseApp.configure()
 
-
+        
         return true
     }
 

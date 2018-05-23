@@ -23,6 +23,7 @@
 		6536C2B920AE7415002088A3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6536C2B820AE7415002088A3 /* AppDelegate.swift */; };
 		6536C2C220AE7415002088A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6536C2C120AE7415002088A3 /* Assets.xcassets */; };
 		6536C2C520AE7415002088A3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6536C2C320AE7415002088A3 /* LaunchScreen.storyboard */; };
+		655CC16420B5160D009B242E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 655CC16320B5160C009B242E /* GoogleService-Info.plist */; };
 		65953B8A20B0BA2C002B5774 /* FeedViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65953B8920B0BA2C002B5774 /* FeedViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +47,7 @@
 		6536C2C120AE7415002088A3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6536C2C420AE7415002088A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6536C2C620AE7415002088A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		655CC16320B5160C009B242E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		65953B8920B0BA2C002B5774 /* FeedViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewCell.swift; sourceTree = "<group>"; };
 		ED09316966F32CC8C4E3C9FA /* Pods-Cheers.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cheers.release.xcconfig"; path = "Pods/Target Support Files/Pods-Cheers/Pods-Cheers.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -132,6 +134,7 @@
 				3EEE24C120AF500F004BBE08 /* Controller */,
 				6536C2C120AE7415002088A3 /* Assets.xcassets */,
 				6536C2C320AE7415002088A3 /* LaunchScreen.storyboard */,
+				655CC16320B5160C009B242E /* GoogleService-Info.plist */,
 				6536C2C620AE7415002088A3 /* Info.plist */,
 			);
 			path = Cheers;
@@ -157,7 +160,6 @@
 				6536C2B220AE7415002088A3 /* Frameworks */,
 				6536C2B320AE7415002088A3 /* Resources */,
 				00710B9DF02750A81C7A5990 /* [CP] Embed Pods Frameworks */,
-				071721833DA29575E2C02BB4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -208,6 +210,7 @@
 			files = (
 				6536C2C520AE7415002088A3 /* LaunchScreen.storyboard in Resources */,
 				6536C2C220AE7415002088A3 /* Assets.xcassets in Resources */,
+				655CC16420B5160D009B242E /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,30 +224,27 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Cheers/Pods-Cheers-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/LBTAComponents/LBTAComponents.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxGesture/RxGesture.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LBTAComponents.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxGesture.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Cheers/Pods-Cheers-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		071721833DA29575E2C02BB4 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Cheers/Pods-Cheers-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		5027C4D79A4C14B104D12D92 /* [CP] Check Pods Manifest.lock */ = {

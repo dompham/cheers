@@ -7,8 +7,14 @@
 //
 
 import LBTAComponents
+import RxGesture
+import RxSwift
+import FirebaseDatabase
+import Firebase
 
 class FeedViewCall : DatasourceCell {
+    let disposeBag = DisposeBag()
+    var ref: DatabaseReference!
     
     // Profile picture
     let profileImageView : UIImageView = {
@@ -73,10 +79,12 @@ class FeedViewCall : DatasourceCell {
    
     override func setupViews() {
         super.setupViews()
+        connectDB()
         backgroundColor = .white
         separatorLineView.isHidden = false
         separatorLineView.backgroundColor = .white
         
+        // MARK: Placement and constraints
         addSubview(profileImageView)
         addSubview(usernameLabel)
         addSubview(beerLabel)
@@ -95,6 +103,21 @@ class FeedViewCall : DatasourceCell {
         viewPostButton.anchor(self.topAnchor, left: nil, bottom: nil, right: self.rightAnchor, topConstant: 16, leftConstant: 0, bottomConstant: 0, rightConstant: 12, widthConstant: 34, heightConstant: 36)
         
         locationLabel.anchor(feedCheerText.bottomAnchor, left: beerLabel.leftAnchor, bottom: self.bottomAnchor, right: nil, topConstant: 0, leftConstant: 0, bottomConstant: 5, rightConstant: 0, widthConstant: 0, heightConstant: 0)
+        
+        // MARK: UI Wiring
+        setupViewPostButton(viewPostButton)
+    }
+    
+    func setupViewPostButton (_ button : UIButton) {
+        button.rx.tapGesture()
+            .when(.recognized)
+            .subscribe(onNext: { _ in
+                print("Button tapped!")
+            }).disposed(by: disposeBag)
+    }
+    
+    func connectDB(){
+        ref = Database.database().reference()
     }
     
     override var datasourceItem: Any? {

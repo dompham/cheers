@@ -8,4 +8,7 @@ target 'Cheers' do
   # Pods for Cheers
 
   pod 'LBTAComponents'
+  pod 'Firebase/Core'
+  pod 'Firebase/Database'
+  pod "RxGesture"
 end
