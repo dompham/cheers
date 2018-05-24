@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Cheers/Controller/CheersViewController.swift"
-            timestampString = "548812973.725647"
+            timestampString = "548813192.2247421"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
             landmarkName = "setupLoginSeparators(for:)"
             landmarkType = "7">
          </BreakpointContent>

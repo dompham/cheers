@@ -15,17 +15,20 @@ class CheersViewController : UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .gray
         setupLoginSeparators(for: self.view)
+        setupContentsTopHalf()
+        setupContentsBottomHalf()
     }
     
     func setupLoginSeparators(for v : UIView){
         
         var topHalf = UIView()
         topHalf.backgroundColor = .red
+        
         var bottomHalf = UIView()
         bottomHalf.backgroundColor = .green
         
-//        var bounds: CGRect = UIScreen.mainScreen().bounds
-        //let w:Int  = Int(view.bounds.size.width)
+        
+
         let h:Double  = Double(view.bounds.size.height)
         
         v.addSubview(topHalf)
@@ -45,6 +48,14 @@ class CheersViewController : UIViewController {
         })
     }
     
+    func setupContentsTopHalf (){
+        let loginLogoImage = UIImage()
+        loginLogoIma
+    }
+    
+    func setupContentsBottomHalf () {
+        
+    }
     
     
 }
