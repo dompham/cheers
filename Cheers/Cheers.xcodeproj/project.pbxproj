@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E101DA120B632A60067C378 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E101DA020B632A60067C378 /* LogInView.swift */; };
 		3EB141ED20B356AB00E4D853 /* Cheer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB141EC20B356AB00E4D853 /* Cheer.swift */; };
 		3EB141EF20B368EF00E4D853 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB141EE20B368EF00E4D853 /* TabBarViewController.swift */; };
 		3EB141F120B3693F00E4D853 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB141F020B3693F00E4D853 /* ExploreViewController.swift */; };
@@ -29,6 +30,7 @@
 
 /* Begin PBXFileReference section */
 		21DD3CF7AE49E66C7CA978F5 /* Pods-Cheers.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cheers.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Cheers/Pods-Cheers.debug.xcconfig"; sourceTree = "<group>"; };
+		3E101DA020B632A60067C378 /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
 		3EB141EC20B356AB00E4D853 /* Cheer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cheer.swift; sourceTree = "<group>"; };
 		3EB141EE20B368EF00E4D853 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		3EB141F020B3693F00E4D853 /* ExploreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
@@ -76,8 +78,8 @@
 		3EEE24C120AF500F004BBE08 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				3EEFE51420AF3E3200FBCF92 /* HomeDataSourceController.swift */,
 				3EB141EE20B368EF00E4D853 /* TabBarViewController.swift */,
+				3EEFE51420AF3E3200FBCF92 /* HomeDataSourceController.swift */,
 				3EB141F020B3693F00E4D853 /* ExploreViewController.swift */,
 				3EB141F220B3696900E4D853 /* CheersViewController.swift */,
 				3EB141F420B3698000E4D853 /* HonorsViewController.swift */,
@@ -103,6 +105,7 @@
 				3EEE24BB20AF4176004BBE08 /* RecentBeerCell.swift */,
 				3EEE24BF20AF4EE1004BBE08 /* RecentFooter.swift */,
 				65953B8920B0BA2C002B5774 /* FeedViewCell.swift */,
+				3E101DA020B632A60067C378 /* LogInView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -160,6 +163,7 @@
 				6536C2B220AE7415002088A3 /* Frameworks */,
 				6536C2B320AE7415002088A3 /* Resources */,
 				00710B9DF02750A81C7A5990 /* [CP] Embed Pods Frameworks */,
+				49B6B8858883996D55560D37 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -229,6 +233,7 @@
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxGesture/RxGesture.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -239,12 +244,28 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxGesture.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Cheers/Pods-Cheers-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		49B6B8858883996D55560D37 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Cheers/Pods-Cheers-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		5027C4D79A4C14B104D12D92 /* [CP] Check Pods Manifest.lock */ = {
@@ -272,6 +293,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E101DA120B632A60067C378 /* LogInView.swift in Sources */,
 				3EB141F320B3696900E4D853 /* CheersViewController.swift in Sources */,
 				3EEE24BA20AF411F004BBE08 /* HomeDataSource.swift in Sources */,
 				3EEFE51520AF3E3200FBCF92 /* HomeDataSourceController.swift in Sources */,
@@ -425,10 +447,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VUPJGYTX6Q;
 				INFOPLIST_FILE = Cheers/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dompham.Cheers;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -444,10 +463,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VUPJGYTX6Q;
 				INFOPLIST_FILE = Cheers/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dompham.Cheers;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

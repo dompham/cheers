@@ -10,17 +10,17 @@ PODS:
   - FirebaseAnalytics (5.0.0):
     - FirebaseCore (~> 5.0)
     - FirebaseInstanceID (~> 3.0)
-    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
+    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
     - nanopb (~> 0.3)
   - FirebaseCore (5.0.1):
-    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
+    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
   - FirebaseDatabase (5.0.0):
     - FirebaseCore (~> 5.0)
     - leveldb-library (~> 1.18)
   - FirebaseInstanceID (3.0.0):
     - FirebaseCore (~> 5.0)
   - GoogleToolboxForMac/Defines (2.1.4)
-  - "GoogleToolboxForMac/NSData+zlib (2.1.4)":
+  - GoogleToolboxForMac/NSData+zlib (2.1.4):
     - GoogleToolboxForMac/Defines (= 2.1.4)
   - LBTAComponents (1.0.1)
   - leveldb-library (1.20)
@@ -35,27 +35,14 @@ PODS:
     - RxCocoa (~> 4.0)
     - RxSwift (~> 4.0)
   - RxSwift (4.1.2)
+  - SnapKit (4.0.0)
 
 DEPENDENCIES:
   - Firebase/Core
   - Firebase/Database
   - LBTAComponents
   - RxGesture
-
-SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
-    - Firebase
-    - FirebaseAnalytics
-    - FirebaseCore
-    - FirebaseDatabase
-    - FirebaseInstanceID
-    - GoogleToolboxForMac
-    - LBTAComponents
-    - leveldb-library
-    - nanopb
-    - RxCocoa
-    - RxGesture
-    - RxSwift
+  - SnapKit (~> 4.0.0)
 
 SPEC CHECKSUMS:
   Firebase: d6861c2059d8c32d1e6dd8932e22ada346d90a3a
@@ -70,7 +57,8 @@ SPEC CHECKSUMS:
   RxCocoa: d88ba0f1f6abf040011a9eb4b539324fc426843a
   RxGesture: c278eb05b187abd47e11e65464ae4de53ab71d95
   RxSwift: e49536837d9901277638493ea537394d4b55f570
+  SnapKit: a42d492c16e80209130a3379f73596c3454b7694
 
-PODFILE CHECKSUM: 598071e3028f9a252c107a968de09ec674d9700b
+PODFILE CHECKSUM: 7054fc8399e08338be7319f3a546eb3d7c32e4fb
 
-COCOAPODS: 1.5.2
+COCOAPODS: 1.4.0
