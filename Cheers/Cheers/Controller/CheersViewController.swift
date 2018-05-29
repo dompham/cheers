@@ -49,14 +49,23 @@ class CheersViewController : UIViewController {
             logo.clipsToBounds = true
             return logo
         }()
-        
+        // MARK: Logo Title
         let logoTitle : UILabel = {
             let title = UILabel()
-            title.text = "Logo \n Title Title Title Title Title"
-            title.lineBreakMode = .byWordWrapping
-            title.numberOfLines = 2
-            title.font = UIFont.boldSystemFont(ofSize: 24)
-            title.backgroundColor = .white
+            title.text = "Cheers"
+            title.textColor = .white
+            title.font = UIFont(name: "HoeflerText-Black", size: 28)
+            title.backgroundColor = .clear
+            return title
+        }()
+        
+        //MARK: Logo subtitle
+        let logoSubTitle : UILabel = {
+            let title = UILabel()
+            title.text = "The Beer Network"
+            title.textColor = .white
+            title.font = UIFont(name: "HoeflerText-Regular", size: 18)
+            title.backgroundColor = .clear
             return title
         }()
         
@@ -175,6 +184,21 @@ class CheersViewController : UIViewController {
             makeLogo.height.width.equalTo(topHalf.snp.height).multipliedBy(0.180)
 //            makeLogo.width.equalTo()
         }
+        
+        //MARK: Constrain title
+        topHalf.addSubview(logoTitle)
+        logoTitle.snp.makeConstraints{(makeTitle) in
+            makeTitle.centerX.equalTo(logoImage.snp.centerX)
+            makeTitle.top.equalTo(logoImage.snp.bottom).offset(10)
+        }
+        
+        //MARK: Constrain subtitle
+        topHalf.addSubview(logoSubTitle)
+        logoSubTitle.snp.makeConstraints{(makeSubTitle) in
+            makeSubTitle.centerX.equalTo(logoImage.snp.centerX)
+            makeSubTitle.top.equalTo(logoTitle.snp.bottom).offset(5)
+        }
+        
         
         v.addSubview(bottomHalf)
         bottomHalf.snp.makeConstraints( {(makeBot) in
