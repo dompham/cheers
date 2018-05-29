@@ -13,7 +13,23 @@ import SnapKit
 class CheersViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .gray
+        // Set to light because of dark BG
+        UIApplication.shared.statusBarStyle = .lightContent
+        
+
+        // screen width and height:
+        let width = view.bounds.size.width
+        let height = view.bounds.size.height
+        
+        let imageViewBackground = UIImageView(frame: CGRect(x: 0, y: 0, width: width, height: height))
+        imageViewBackground.image = UIImage(named: "loginTaps.pdf")
+        
+        // you can change the content mode:
+        imageViewBackground.contentMode = .scaleAspectFit
+        
+        view.addSubview(imageViewBackground)
+        view.sendSubview(toBack: imageViewBackground)
+        
         setupLoginContainers(for: self.view)
         setupContentsTopHalf()
         setupContentsBottomHalf()
@@ -22,10 +38,10 @@ class CheersViewController : UIViewController {
     func setupLoginContainers(for v : UIView){
         
         let topHalf = UIView()
-        topHalf.backgroundColor = .red
+//        topHalf.backgroundColor = .red
         
         let bottomHalf = UIView()
-        bottomHalf.backgroundColor = .yellow
+//        bottomHalf.backgroundColor = .yellow
         
         //Placeholder for image logo and title
         let logoTitle : UILabel = {
@@ -38,25 +54,18 @@ class CheersViewController : UIViewController {
             return title
         }()
         
+        // MARK: Email view setups
         // Email field
         let emailField : UITextField = {
             let field = UITextField()
-            field.placeholder = "Email"
+            
+            field.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSAttributedStringKey.foregroundColor : UIColor.white])
             field.borderStyle = .none
             field.backgroundColor = .clear
-            field.textColor = UIColor(r: 127, g: 127, b: 127)
+            field.textColor = .white//UIColor(r: 127, g: 127, b: 127)
             field.layer.sublayerTransform = CATransform3DMakeTranslation(8, 0, 0);
             field.clearButtonMode = .whileEditing
             
-            //Left image
-//            field.leftViewMode = UITextFieldViewMode.always
-//            field.leftViewMode = .always
-//
-//            let imageView = UIImageView()
-//            imageView.frame = CGRect(x: 0, y: 0, width: 25, height: 25)
-//            let image = #imageLiteral(resourceName: "profileGray")
-//            imageView.image = image
-//            field.leftView = imageView
             return field
         }()
         
@@ -67,18 +76,22 @@ class CheersViewController : UIViewController {
             imageView.contentMode = .scaleAspectFit
 
             let image = #imageLiteral(resourceName: "un")
+            imageView.tintColor = .white
+
             imageView.image = image
             
             return imageView
         }()
         
+        // MARK: Password view setup
         // Password
         let pwField : UITextField = {
             let field = UITextField()
-            field.placeholder = "Password"
+
+            field.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedStringKey.foregroundColor : UIColor.white])
             field.borderStyle = .none
             field.backgroundColor = .clear
-            field.textColor = UIColor(r: 127, g: 127, b: 127)
+            field.textColor = .white//UIColor(r: 127, g: 127, b: 127)
             field.layer.sublayerTransform = CATransform3DMakeTranslation(8, 0, 0);
             field.clearButtonMode = .whileEditing
             field.isSecureTextEntry = true
@@ -86,26 +99,40 @@ class CheersViewController : UIViewController {
             return field
         }()
         
-        //Email image
+        //pw image
         let pwImage : UIImageView = {
             let imageView = UIImageView()
             imageView.frame = CGRect(x: 0, y: 0, width: 32, height: 32)
             imageView.contentMode = .scaleAspectFit
             let image = #imageLiteral(resourceName: "pw")
+            imageView.tintColor = .white
             imageView.image = image
             
             return imageView
         }()
         
+        // MARK: Login button
+        let loginButton : UIButton = {
+            let button = UIButton()
+            button.backgroundColor = .clear
+            button.setTitle("Log Me In!", for: .normal)
+            button.titleLabel?.font = UIFont(name: "AmericanTypewriter-Bold", size: 20)
+//            button.titleLabel?.font = UIFont.typewrit//americantyp(ofSize: 20)
+            button.layer.borderColor = UIColor(r: 255, g: 255, b: 255).cgColor
+            button.layer.borderWidth = 4.0
+            button.layer.cornerRadius = 8.0
+            return button
+        }()
+        
         // Gray lines
         let grayLine : UIView = {
             let line = UIView()
-            line.backgroundColor = UIColor(r: 127, g: 127, b: 127)
+            line.backgroundColor = .white//UIColor(r: 127, g: 127, b: 127)
             return line
         }()
         let grayLine2 : UIView = {
             let line = UIView()
-            line.backgroundColor = UIColor(r: 127, g: 127, b: 127)
+            line.backgroundColor = .white//UIColor(r: 127, g: 127, b: 127)
             return line
         }()
         
@@ -133,12 +160,11 @@ class CheersViewController : UIViewController {
             makeBot.bottom.equalTo(v.snp.bottom)
         })
         
-        // MARK: Email views
+        // MARK: Email Constraints
         bottomHalf.addSubview(emailField)
         emailField.snp.makeConstraints {(makeEmail) in
             makeEmail.top.equalTo(bottomHalf.snp.top)
             makeEmail.centerX.equalTo(bottomHalf.snp.centerX).offset(15)
-//            makeEmail.left.
             makeEmail.height.equalTo(45)
             makeEmail.width.equalTo(bottomHalf.snp.width).multipliedBy(0.55)
         }
@@ -159,7 +185,7 @@ class CheersViewController : UIViewController {
             makeLine.height.equalTo(0.5)
         }
         
-        // MARK: Password views
+        // MARK: Password Constraints
         bottomHalf.addSubview(pwField)
         pwField.snp.makeConstraints {(makePassword) in
             makePassword.top.equalTo(grayLine.snp.bottom).offset(15)
@@ -182,6 +208,15 @@ class CheersViewController : UIViewController {
             makeLine2.right.equalTo(pwField.snp.right)
             makeLine2.height.equalTo(0.5)
         }
+        
+        // MARK: Login button constraint
+        bottomHalf.addSubview(loginButton)
+        loginButton.snp.makeConstraints {(makeButton) in
+            makeButton.top.equalTo(grayLine2.snp.bottom).offset(20)
+            makeButton.height.equalTo(50)
+            makeButton.right.equalTo(pwField.snp.right)
+            makeButton.left.equalTo(pwImage.snp.left)
+        }
     }
     
     func setupContentsTopHalf (){
@@ -193,6 +228,8 @@ class CheersViewController : UIViewController {
     func setupContentsBottomHalf () {
         
     }
+    
+
     
     
 }
