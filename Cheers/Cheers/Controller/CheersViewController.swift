@@ -25,7 +25,7 @@ class CheersViewController : UIViewController {
         topHalf.backgroundColor = .red
         
         let bottomHalf = UIView()
-        bottomHalf.backgroundColor = .green
+        bottomHalf.backgroundColor = .yellow
         
         //Placeholder for image logo and title
         let logoTitle : UILabel = {
@@ -46,7 +46,7 @@ class CheersViewController : UIViewController {
             field.backgroundColor = .clear
             field.textColor = UIColor(r: 127, g: 127, b: 127)
             field.layer.sublayerTransform = CATransform3DMakeTranslation(8, 0, 0);
-
+            field.clearButtonMode = .whileEditing
             
             //Left image
 //            field.leftViewMode = UITextFieldViewMode.always
@@ -63,7 +63,9 @@ class CheersViewController : UIViewController {
         //Email image
         let emailImage : UIImageView = {
             let imageView = UIImageView()
-            imageView.frame = CGRect(x: 0, y: 0, width: 25, height: 25)
+            imageView.frame = CGRect(x: 0, y: 0, width: 32, height: 32)
+            imageView.contentMode = .scaleAspectFit
+
             let image = #imageLiteral(resourceName: "un")
             imageView.image = image
             
@@ -78,6 +80,8 @@ class CheersViewController : UIViewController {
             field.backgroundColor = .clear
             field.textColor = UIColor(r: 127, g: 127, b: 127)
             field.layer.sublayerTransform = CATransform3DMakeTranslation(8, 0, 0);
+            field.clearButtonMode = .whileEditing
+            field.isSecureTextEntry = true
 
             return field
         }()
@@ -85,7 +89,8 @@ class CheersViewController : UIViewController {
         //Email image
         let pwImage : UIImageView = {
             let imageView = UIImageView()
-            imageView.frame = CGRect(x: 0, y: 0, width: 25, height: 25)
+            imageView.frame = CGRect(x: 0, y: 0, width: 32, height: 32)
+            imageView.contentMode = .scaleAspectFit
             let image = #imageLiteral(resourceName: "pw")
             imageView.image = image
             
@@ -132,15 +137,17 @@ class CheersViewController : UIViewController {
         bottomHalf.addSubview(emailField)
         emailField.snp.makeConstraints {(makeEmail) in
             makeEmail.top.equalTo(bottomHalf.snp.top)
-            makeEmail.centerX.equalTo(bottomHalf.snp.centerX).offset(25)
-            makeEmail.height.equalTo(30)
+            makeEmail.centerX.equalTo(bottomHalf.snp.centerX).offset(15)
+//            makeEmail.left.
+            makeEmail.height.equalTo(45)
             makeEmail.width.equalTo(bottomHalf.snp.width).multipliedBy(0.55)
         }
         
         bottomHalf.addSubview(emailImage)
         emailImage.snp.makeConstraints { (makeImage) in
             makeImage.right.equalTo(emailField.snp.left)
-            makeImage.bottom.equalTo(emailField.snp.bottom).offset(-5)
+            makeImage.bottom.equalTo(emailField.snp.bottom).offset(-10)
+            makeImage.top.equalTo(emailField.snp.top).offset(5)
         }
         
         bottomHalf.addSubview(grayLine)
@@ -155,16 +162,17 @@ class CheersViewController : UIViewController {
         // MARK: Password views
         bottomHalf.addSubview(pwField)
         pwField.snp.makeConstraints {(makePassword) in
-            makePassword.top.equalTo(grayLine.snp.bottom).offset(5)
-            makePassword.centerX.equalTo(bottomHalf.snp.centerX).offset(25)
-            makePassword.height.equalTo(30)
+            makePassword.top.equalTo(grayLine.snp.bottom).offset(15)
+            makePassword.centerX.equalTo(bottomHalf.snp.centerX).offset(15)
+            makePassword.height.equalTo(45)
             makePassword.width.equalTo(bottomHalf.snp.width).multipliedBy(0.55)
         }
         
         bottomHalf.addSubview(pwImage)
         pwImage.snp.makeConstraints { (makeImage) in
             makeImage.right.equalTo(emailField.snp.left)
-            makeImage.bottom.equalTo(pwField.snp.bottom).offset(-5)
+            makeImage.bottom.equalTo(pwField.snp.bottom).offset(-10)
+            makeImage.top.equalTo(pwField.snp.top).offset(5)
         }
         
         bottomHalf.addSubview(grayLine2)
