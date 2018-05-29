@@ -23,17 +23,15 @@ class CheersViewController : UIViewController {
         
         let imageViewBackground = UIImageView(frame: CGRect(x: 0, y: 0, width: width, height: height))
         imageViewBackground.image = UIImage(named: "loginTaps.pdf")
-        
-        // you can change the content mode:
         imageViewBackground.contentMode = .scaleAspectFit
-        
         view.addSubview(imageViewBackground)
         view.sendSubview(toBack: imageViewBackground)
         
         setupLoginContainers(for: self.view)
-        setupContentsTopHalf()
-        setupContentsBottomHalf()
+
     }
+    
+
     
     func setupLoginContainers(for v : UIView){
         
@@ -44,6 +42,14 @@ class CheersViewController : UIViewController {
 //        bottomHalf.backgroundColor = .yellow
         
         //Placeholder for image logo and title
+        let logoImage : UIImageView = {
+            let logo = UIImageView(image: #imageLiteral(resourceName: "applogo"))
+            logo.contentMode = .scaleAspectFill
+            logo.layer.cornerRadius = 12.0
+            logo.clipsToBounds = true
+            return logo
+        }()
+        
         let logoTitle : UILabel = {
             let title = UILabel()
             title.text = "Logo \n Title Title Title Title Title"
@@ -124,7 +130,23 @@ class CheersViewController : UIViewController {
             return button
         }()
         
-        // Gray lines
+        // MARK: Can't login label
+        let helpLoginLabel : UILabel = {
+            let label = UILabel()
+            label.text = "Trouble logging in?"
+            label.textColor = .white
+            return label
+        }()
+        
+        // MARK: createAccount
+        let createAccountLabel : UILabel = {
+            let label = UILabel()
+            label.text = "First timer? Make a new account"
+            label.textColor = .white
+            return label
+        }()
+        
+        // MARK: Gray lines
         let grayLine : UIView = {
             let line = UIView()
             line.backgroundColor = .white//UIColor(r: 127, g: 127, b: 127)
@@ -146,11 +168,12 @@ class CheersViewController : UIViewController {
             makeTop.bottom.equalTo(v.snp.bottom).offset((h/1.8) * -1)
         }
         
-        // Constrain logo in topHalf
-        topHalf.addSubview(logoTitle)
-        logoTitle.snp.makeConstraints {(makeLogo) in
+        // MARK: Constrain logo in topHalf
+        topHalf.addSubview(logoImage)
+        logoImage.snp.makeConstraints {(makeLogo) in
             makeLogo.center.equalTo(topHalf)
-            makeLogo.height.equalTo(topHalf.snp.height).multipliedBy(0.33)
+            makeLogo.height.width.equalTo(topHalf.snp.height).multipliedBy(0.180)
+//            makeLogo.width.equalTo()
         }
         
         v.addSubview(bottomHalf)
@@ -214,20 +237,26 @@ class CheersViewController : UIViewController {
         loginButton.snp.makeConstraints {(makeButton) in
             makeButton.top.equalTo(grayLine2.snp.bottom).offset(20)
             makeButton.height.equalTo(50)
-            makeButton.right.equalTo(pwField.snp.right)
-            makeButton.left.equalTo(pwImage.snp.left)
+            makeButton.right.equalTo(pwField.snp.right).offset(-20)
+            makeButton.left.equalTo(pwImage.snp.left).offset(20)
+        }
+        
+        // MARK: help logging in constraints
+        bottomHalf.addSubview(helpLoginLabel)
+        helpLoginLabel.snp.makeConstraints {(makeHelp) in
+            makeHelp.top.equalTo(loginButton.snp.bottom).offset(15)
+            makeHelp.centerX.equalTo(loginButton.snp.centerX)
+        }
+        
+        //MARK: New account constraint
+        bottomHalf.addSubview(createAccountLabel)
+        createAccountLabel.snp.makeConstraints{(makeNewAccLabel) in
+            makeNewAccLabel.bottom.equalTo(bottomHalf.snp.bottom).offset(-60)
+            makeNewAccLabel.centerX.equalTo(helpLoginLabel.snp.centerX)
         }
     }
     
-    func setupContentsTopHalf (){
-        //Placeholder for now
-        //let loginLogoImage = UIImage()
-//        loginLogoIma
-    }
-    
-    func setupContentsBottomHalf () {
-        
-    }
+
     
 
     
