@@ -163,7 +163,6 @@
 				6536C2B220AE7415002088A3 /* Frameworks */,
 				6536C2B320AE7415002088A3 /* Resources */,
 				00710B9DF02750A81C7A5990 /* [CP] Embed Pods Frameworks */,
-				49B6B8858883996D55560D37 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -251,21 +250,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Cheers/Pods-Cheers-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		49B6B8858883996D55560D37 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Cheers/Pods-Cheers-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		5027C4D79A4C14B104D12D92 /* [CP] Check Pods Manifest.lock */ = {
@@ -447,7 +431,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VUPJGYTX6Q;
 				INFOPLIST_FILE = Cheers/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.dompham.Cheers;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -463,7 +451,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VUPJGYTX6Q;
 				INFOPLIST_FILE = Cheers/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.dompham.Cheers;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

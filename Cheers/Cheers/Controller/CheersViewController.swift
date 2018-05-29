@@ -50,7 +50,7 @@ class CheersViewController : UIViewController {
     
     func setupContentsTopHalf (){
         let loginLogoImage = UIImage()
-        loginLogoIma
+//        loginLogoIma
     }
     
     func setupContentsBottomHalf () {
