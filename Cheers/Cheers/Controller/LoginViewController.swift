@@ -23,7 +23,10 @@ class LoginViewController : UIViewController {
             .subscribe(onNext: { _ in
                 print("Signing in")
                 UIApplication.shared.statusBarStyle = .default
-                appDelegate.window!.rootViewController = TabBarViewController()
+                self.present(TabBarViewController(), animated: true, completion: { () in
+                    
+                })
+                //appDelegate.window!.rootViewController = TabBarViewController()
             }).disposed(by: disposeBag)
     }
 
