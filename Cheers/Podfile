@@ -11,5 +11,6 @@ target 'Cheers' do
   pod 'Firebase/Core'
   pod 'Firebase/Database'
   pod "RxGesture"
+  pod 'Firebase/Auth'
   pod 'SnapKit', '~> 4.0.0'
 end

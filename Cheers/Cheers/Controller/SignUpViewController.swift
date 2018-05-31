@@ -11,6 +11,7 @@ import UIKit
 import RxGesture
 import RxSwift
 import SnapKit
+import FirebaseAuth
 
 class SignUpViewController : UIViewController {
     let disposeBag = DisposeBag()
@@ -41,11 +42,40 @@ class SignUpViewController : UIViewController {
             .subscribe(onNext: { _ in
                 print("domp: Already have an acc")
                 UIApplication.shared.statusBarStyle = .default
-                var loginView = LoginViewController()
+                let loginView = LoginViewController()
                 loginView.modalTransitionStyle = .crossDissolve
                 self.present(loginView, animated: true, completion: { () in
                     
                 })
+            }).disposed(by: disposeBag)
+    }
+    
+    // MARK: Action - Create new account
+    func setCreateAccountAction (on button : UIButton, using emailField : UITextField, and passwordField : UITextField) {
+        button.rx.tapGesture()
+            .when(.recognized)
+            .subscribe(onNext: { _ in
+                print("domp: Creating new account")
+                guard let email = emailField.text, let password = passwordField.text
+                    else {
+                        return
+                }
+                print(email)
+                print(password)
+                Auth.auth().createUser(withEmail: email, password: password) { (authResult, error) in
+                    if (error != nil) {
+                        print(error)
+                        return
+                    } else {
+                        print("domp: User Created")
+                    }
+
+                }
+//                UIApplication.shared.statusBarStyle = .default
+//                var loginView = LoginViewController()
+//                loginView.modalTransitionStyle = .crossDissolve
+
+
             }).disposed(by: disposeBag)
     }
     
@@ -174,6 +204,8 @@ class SignUpViewController : UIViewController {
             button.layer.borderColor = UIColor(r: 255, g: 255, b: 255).cgColor
             button.layer.borderWidth = 4.0
             button.layer.cornerRadius = 8.0
+            
+            setCreateAccountAction(on: button, using: emailField, and: pwField)
             return button
         }()
         
@@ -182,6 +214,8 @@ class SignUpViewController : UIViewController {
             let label = UILabel()
             label.text = "Already have one?"
             label.textColor = .white
+            
+            setHaveAccountAction(label)
             return label
         }()
         
@@ -221,9 +255,6 @@ class SignUpViewController : UIViewController {
         bottomHalf.addSubview(grayLine3)
         bottomHalf.addSubview(createAccButton)
         bottomHalf.addSubview(backLabel)
-
-        // MARK: Setting UI Actions
-        setHaveAccountAction(backLabel)
 
         
         let h:Double  = Double(view.bounds.size.height)
