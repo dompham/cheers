@@ -8,8 +8,12 @@
 
 import Foundation
 import UIKit
+import FirebaseAuth
+import Firebase
+
 
 class TabBarViewController : UITabBarController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let homeVC = HomeDatasourceController()

@@ -12,12 +12,18 @@ import RxGesture
 import RxSwift
 import SnapKit
 import FirebaseAuth
+import Firebase
 
 class SignUpViewController : UIViewController {
     let disposeBag = DisposeBag()
-
+    var ref: DatabaseReference!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Set database reference
+        ref = Database.database().reference()
+        
         // Set to light because of dark BG
         UIApplication.shared.statusBarStyle = .lightContent
         
@@ -64,19 +70,40 @@ class SignUpViewController : UIViewController {
                 print(password)
                 Auth.auth().createUser(withEmail: email, password: password) { (authResult, error) in
                     if (error != nil) {
-                        print(error)
+                        print(error!)
                         return
                     } else {
-                        print("domp: User Created")
+                        print("domp: User Created and signed in for the first time, do something??")
+                        let user = authResult?.user
+                        myProfile.uid = user!.email
+                        myProfile.email = user!.email
+                        
+                        // Create user in db?
+                        self.createUserDB(for: user!)
+                        self.present(TabBarViewController(), animated: true, completion: { () in
+                            
+                        })
                     }
-
                 }
-//                UIApplication.shared.statusBarStyle = .default
-//                var loginView = LoginViewController()
-//                loginView.modalTransitionStyle = .crossDissolve
-
-
             }).disposed(by: disposeBag)
+    }
+    
+    func createUserDB(for user : User) {
+        // I dont think we need this for users
+//        let key = self.ref.child("users").childByAutoId().key
+        
+        //creating artist with the given values
+        let newUser = [
+                      "displayName": myProfile.displayName as String,
+                      "email": user.email! as String,
+                      "uid": user.uid as String,
+                      "subScribedTo": "TBD" as String,
+            "subscribers": "TBD" as String
+        ]
+        // Set user key in myprofile
+//        myProfile.dbKey = key
+        
+        self.ref.child("users").child(myProfile.displayName).setValue(newUser)
     }
     
     func initViews(for v : UIView) {

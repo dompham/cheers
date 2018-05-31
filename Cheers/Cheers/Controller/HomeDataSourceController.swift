@@ -9,20 +9,33 @@
 import LBTAComponents
 import Firebase
 import FirebaseDatabase
+import FirebaseAuth
 
 class HomeDatasourceController: DatasourceController {
+    var handle: AuthStateDidChangeListenerHandle?;
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
-        //221, 235, 255
-//        collectionView?.backgroundColor = UIColor(r: 255, g: 245, b: 232)
         collectionView?.backgroundColor = UIColor(r: 221, g: 245, b: 255)
-
         collectionView?.showsVerticalScrollIndicator = false
         setupNavigationBarItems()
         let homeDatasource = HomeDatasource()
         self.datasource = homeDatasource
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        handle = Auth.auth().addStateDidChangeListener { (auth, user) in
+            if let user = user {
+//                myProfile.uid = user.uid
+//                myProfile.email = user.email
+                print("domp: User signed in as ID: " + myProfile.uid! + " " + myProfile.email!)
+            }
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        Auth.auth().removeStateDidChangeListener(handle!)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -31,15 +44,8 @@ class HomeDatasourceController: DatasourceController {
     
     //MARK: Nav Bar
     private func setupNavigationBarItems(){
-        
-        // MARK: Nav Title
-        
-        let titleImage = UIImageView(image: #imageLiteral(resourceName: "main_icon"))
-//        let titleImage = UIImageView(image: #imageLiteral(resourceName: "beer_cheers"))
 
-        
-       // titleImage.frame = CGRect(x: 0, y: 5, width: 20, height: 20)
-        
+        let titleImage = UIImageView(image: #imageLiteral(resourceName: "main_icon"))
         let widthTitle = titleImage.widthAnchor.constraint(equalToConstant: 36)
         let heightTitle = titleImage.heightAnchor.constraint(equalToConstant: 36)
         heightTitle.isActive = true

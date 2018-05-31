@@ -11,25 +11,45 @@ import UIKit
 import SnapKit
 import RxSwift
 import RxGesture
+import FirebaseAuth
 
 class LoginViewController : UIViewController {
     let disposeBag = DisposeBag()
     
     // MARK: Sign in action
-    func setSignInButtonAction (_ button : UIButton) {
+    func setSignInButtonAction (on button : UIButton, using emailField : UITextField, and passwordField : UITextField) {
         button.rx.tapGesture()
             .when(.recognized)
             .subscribe(onNext: { _ in
-                print("Signing in")
+                print("domp: Trying to sign in")
                 UIApplication.shared.statusBarStyle = .default
-                self.present(TabBarViewController(), animated: true, completion: { () in
-                    
-                })
+                
+                guard let email = emailField.text, let password = passwordField.text
+                    else {
+                        return
+                }
+                
+                Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
+                    if (error != nil) {
+                        print("domp: Error signing in")
+                        print(error)
+                        return
+                    } else {
+                        print("domp: Signed in")
+                        myProfile.uid = user?.user.uid
+                        myProfile.email = user?.user.email
+                        self.present(TabBarViewController(), animated: true, completion: { () in
+                            
+                        })
+
+                    }
+                }
+                
                 //appDelegate.window!.rootViewController = TabBarViewController()
             }).disposed(by: disposeBag)
     }
-    // MARK: Create Account action
-    func setCreateAccountAction (_ label : UILabel) {
+    // MARK: Go To Create Account View
+    func setGoToMakeAccAction (_ label : UILabel) {
         label.rx.tapGesture()
             .when(.recognized)
             .subscribe(onNext: { _ in
@@ -163,6 +183,9 @@ class LoginViewController : UIViewController {
             button.layer.borderColor = UIColor(r: 255, g: 255, b: 255).cgColor
             button.layer.borderWidth = 4.0
             button.layer.cornerRadius = 8.0
+            
+            setSignInButtonAction(on: button, using: emailField, and: pwField)
+
             return button
         }()
         
@@ -294,7 +317,6 @@ class LoginViewController : UIViewController {
         }
         
         // MARK: Constraints - Login button
-        setSignInButtonAction(loginButton)
         loginButton.snp.makeConstraints {(makeButton) in
             makeButton.top.equalTo(grayLine2.snp.bottom).offset(20)
             makeButton.height.equalTo(50)
@@ -310,7 +332,7 @@ class LoginViewController : UIViewController {
         }
         
         //MARK: Constraints - Create account label
-        setCreateAccountAction(createAccountLabel)
+        setGoToMakeAccAction(createAccountLabel)
         createAccountLabel.snp.makeConstraints{(makeNewAccLabel) in
             makeNewAccLabel.bottom.equalTo(bottomHalf.snp.bottom).offset(-20)
             makeNewAccLabel.centerX.equalTo(helpLoginLabel.snp.centerX)
