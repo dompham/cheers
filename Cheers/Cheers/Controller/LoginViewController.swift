@@ -29,6 +29,19 @@ class LoginViewController : UIViewController {
                 //appDelegate.window!.rootViewController = TabBarViewController()
             }).disposed(by: disposeBag)
     }
+    // MARK: Create Account action
+    func setCreateAccountAction (_ label : UILabel) {
+        label.rx.tapGesture()
+            .when(.recognized)
+            .subscribe(onNext: { _ in
+                print("Signing in")
+                UIApplication.shared.statusBarStyle = .default
+                self.present(SignUpViewController(), animated: true, completion: { () in
+                    
+                })
+                //appDelegate.window!.rootViewController = TabBarViewController()
+            }).disposed(by: disposeBag)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -292,6 +305,7 @@ class LoginViewController : UIViewController {
         
         //MARK: New account constraint
         bottomHalf.addSubview(createAccountLabel)
+        setCreateAccountAction(createAccountLabel)
         createAccountLabel.snp.makeConstraints{(makeNewAccLabel) in
             makeNewAccLabel.bottom.equalTo(bottomHalf.snp.bottom).offset(-20)
             makeNewAccLabel.centerX.equalTo(helpLoginLabel.snp.centerX)
