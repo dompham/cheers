@@ -17,7 +17,6 @@ class LoginViewController : UIViewController {
     
     // MARK: Sign in action
     func setSignInButtonAction (_ button : UIButton) {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         button.rx.tapGesture()
             .when(.recognized)
             .subscribe(onNext: { _ in
@@ -34,12 +33,13 @@ class LoginViewController : UIViewController {
         label.rx.tapGesture()
             .when(.recognized)
             .subscribe(onNext: { _ in
-                print("Signing in")
+                print("domp create account")
                 UIApplication.shared.statusBarStyle = .default
-                self.present(SignUpViewController(), animated: true, completion: { () in
+                let signUpView = SignUpViewController()
+                signUpView.modalTransitionStyle = .crossDissolve
+                self.present(signUpView, animated: true, completion: { () in
                     
                 })
-                //appDelegate.window!.rootViewController = TabBarViewController()
             }).disposed(by: disposeBag)
     }
 
@@ -72,7 +72,7 @@ class LoginViewController : UIViewController {
         let bottomHalf = UIView()
         //        bottomHalf.backgroundColor = .yellow
         
-        //Placeholder for image logo and title
+        // MARK: UI Element - Logo
         let logoImage : UIImageView = {
             let logo = UIImageView(image: #imageLiteral(resourceName: "applogo"))
             logo.contentMode = .scaleAspectFill
@@ -80,7 +80,7 @@ class LoginViewController : UIViewController {
             logo.clipsToBounds = true
             return logo
         }()
-        // MARK: Logo Title
+        // MARK: UI Element - Title
         let logoTitle : UILabel = {
             let title = UILabel()
             title.text = "Cheers"
@@ -90,7 +90,7 @@ class LoginViewController : UIViewController {
             return title
         }()
         
-        //MARK: Logo subtitle
+        // MARK: UI Element - Subtitle
         let logoSubTitle : UILabel = {
             let title = UILabel()
             title.text = "The Beer Network"
@@ -100,8 +100,7 @@ class LoginViewController : UIViewController {
             return title
         }()
         
-        // MARK: Email view setups
-        // Email field
+        // MARK: UI Element - Email text field
         let emailField : UITextField = {
             let field = UITextField()
             
@@ -115,7 +114,7 @@ class LoginViewController : UIViewController {
             return field
         }()
         
-        //Email image
+        // MARK: UI Element - Email image
         let emailImage : UIImageView = {
             let imageView = UIImageView()
             imageView.frame = CGRect(x: 0, y: 0, width: 32, height: 32)
@@ -127,8 +126,7 @@ class LoginViewController : UIViewController {
             return imageView
         }()
         
-        // MARK: Password view setup
-        // Password
+// MARK: UI Element - Password Text field
         let pwField : UITextField = {
             let field = UITextField()
             
@@ -143,7 +141,7 @@ class LoginViewController : UIViewController {
             return field
         }()
         
-        //pw image
+// MARK: UI Element - Password image
         let pwImage : UIImageView = {
             let imageView = UIImageView()
             imageView.frame = CGRect(x: 0, y: 0, width: 32, height: 32)
@@ -155,7 +153,7 @@ class LoginViewController : UIViewController {
             return imageView
         }()
         
-        // MARK: Login button
+        // MARK: UI Element - Log in button
         let loginButton : UIButton = {
             let button = UIButton()
             button.backgroundColor = .clear
@@ -168,7 +166,7 @@ class LoginViewController : UIViewController {
             return button
         }()
         
-        // MARK: Can't login label
+        // MARK: UI Element - Trouble logging in
         let helpLoginLabel : UILabel = {
             let label = UILabel()
             label.text = "Trouble logging in?"
@@ -176,7 +174,7 @@ class LoginViewController : UIViewController {
             return label
         }()
         
-        // MARK: createAccount
+        // MARK: UI Element - Create Account Label
         let createAccountLabel : UILabel = {
             let label = UILabel()
             label.text = "First timer? Make a new account"
@@ -184,7 +182,7 @@ class LoginViewController : UIViewController {
             return label
         }()
         
-        // MARK: Gray lines
+        // MARK: UI Element - Gray Lines
         let grayLine : UIView = {
             let line = UIView()
             line.backgroundColor = .white//UIColor(r: 127, g: 127, b: 127)
@@ -196,9 +194,25 @@ class LoginViewController : UIViewController {
             return line
         }()
         
-        let h:Double  = Double(view.bounds.size.height)
-        // Add and constraint to superview
+        // MARK: Assembling views
         v.addSubview(topHalf)
+        topHalf.addSubview(logoImage)
+        topHalf.addSubview(logoTitle)
+        topHalf.addSubview(logoSubTitle)
+
+        v.addSubview(bottomHalf)
+        bottomHalf.addSubview(emailField)
+        bottomHalf.addSubview(emailImage)
+        bottomHalf.addSubview(grayLine)
+        bottomHalf.addSubview(pwField)
+        bottomHalf.addSubview(loginButton)
+        bottomHalf.addSubview(grayLine2)
+        bottomHalf.addSubview(helpLoginLabel)
+        bottomHalf.addSubview(createAccountLabel)
+
+        
+        let h:Double  = Double(view.bounds.size.height)
+        // MARK: Constraints - Top Container
         topHalf.snp.makeConstraints { (makeTop) in
             makeTop.top.equalTo(v.snp.top)
             makeTop.width.equalTo(v.snp.width)
@@ -206,53 +220,47 @@ class LoginViewController : UIViewController {
             makeTop.bottom.equalTo(v.snp.bottom).offset((h/1.8) * -1)
         }
         
-        // MARK: Constrain logo in topHalf
-        topHalf.addSubview(logoImage)
+        // MARK: Constraints - Lower Container
         logoImage.snp.makeConstraints {(makeLogo) in
             makeLogo.center.equalTo(topHalf)
             makeLogo.height.width.equalTo(topHalf.snp.height).multipliedBy(0.180)
             //            makeLogo.width.equalTo()
         }
         
-        //MARK: Constrain title
-        topHalf.addSubview(logoTitle)
+        //MARK: Constraints - title
         logoTitle.snp.makeConstraints{(makeTitle) in
             makeTitle.centerX.equalTo(logoImage.snp.centerX)
             makeTitle.top.equalTo(logoImage.snp.bottom).offset(10)
         }
         
-        //MARK: Constrain subtitle
-        topHalf.addSubview(logoSubTitle)
+        //MARK: Constraints - subtitle
         logoSubTitle.snp.makeConstraints{(makeSubTitle) in
             makeSubTitle.centerX.equalTo(logoImage.snp.centerX)
             makeSubTitle.top.equalTo(logoTitle.snp.bottom).offset(5)
         }
         
-        
-        v.addSubview(bottomHalf)
+                // MARK: Constraints - Bottom Half
         bottomHalf.snp.makeConstraints( {(makeBot) in
             makeBot.top.equalTo(topHalf.snp.bottom)
             makeBot.width.equalTo(v.snp.width)
             makeBot.bottom.equalTo(v.snp.bottom)
         })
         
-        // MARK: Email Constraints
-        bottomHalf.addSubview(emailField)
+        // MARK: Constraints - Email field
         emailField.snp.makeConstraints {(makeEmail) in
             makeEmail.top.equalTo(bottomHalf.snp.top)
             makeEmail.centerX.equalTo(bottomHalf.snp.centerX).offset(15)
             makeEmail.height.equalTo(45)
             makeEmail.width.equalTo(bottomHalf.snp.width).multipliedBy(0.55)
         }
-        
-        bottomHalf.addSubview(emailImage)
+                // MARK: Constraints - Email Image
         emailImage.snp.makeConstraints { (makeImage) in
             makeImage.right.equalTo(emailField.snp.left)
             makeImage.bottom.equalTo(emailField.snp.bottom).offset(-10)
             makeImage.top.equalTo(emailField.snp.top).offset(5)
         }
         
-        bottomHalf.addSubview(grayLine)
+                // MARK: Constraints - Gray Line 1
         grayLine.snp.makeConstraints {(makeLine) in
             makeLine.top.equalTo(emailField.snp.bottom).offset(2)
             makeLine.left.equalTo(emailImage.snp.left)
@@ -261,8 +269,7 @@ class LoginViewController : UIViewController {
             makeLine.height.equalTo(0.5)
         }
         
-        // MARK: Password Constraints
-        bottomHalf.addSubview(pwField)
+        // MARK: Constraints - Password field
         pwField.snp.makeConstraints {(makePassword) in
             makePassword.top.equalTo(grayLine.snp.bottom).offset(15)
             makePassword.centerX.equalTo(bottomHalf.snp.centerX).offset(15)
@@ -270,6 +277,7 @@ class LoginViewController : UIViewController {
             makePassword.width.equalTo(bottomHalf.snp.width).multipliedBy(0.55)
         }
         
+                // MARK: Constraints - Password Image
         bottomHalf.addSubview(pwImage)
         pwImage.snp.makeConstraints { (makeImage) in
             makeImage.right.equalTo(emailField.snp.left)
@@ -277,7 +285,7 @@ class LoginViewController : UIViewController {
             makeImage.top.equalTo(pwField.snp.top).offset(5)
         }
         
-        bottomHalf.addSubview(grayLine2)
+                // MARK: Constraints - Gray line 2
         grayLine2.snp.makeConstraints {(makeLine2) in
             makeLine2.top.equalTo(pwField.snp.bottom).offset(1)//.offset(5)
             makeLine2.left.equalTo(pwImage.snp.left)
@@ -285,8 +293,7 @@ class LoginViewController : UIViewController {
             makeLine2.height.equalTo(0.5)
         }
         
-        // MARK: Login button constraint
-        bottomHalf.addSubview(loginButton)
+        // MARK: Constraints - Login button
         setSignInButtonAction(loginButton)
         loginButton.snp.makeConstraints {(makeButton) in
             makeButton.top.equalTo(grayLine2.snp.bottom).offset(20)
@@ -296,15 +303,13 @@ class LoginViewController : UIViewController {
         }
         
         
-        // MARK: help logging in constraints
-        bottomHalf.addSubview(helpLoginLabel)
+        // MARK: Constraints - Help log in label
         helpLoginLabel.snp.makeConstraints {(makeHelp) in
             makeHelp.top.equalTo(loginButton.snp.bottom).offset(15)
             makeHelp.centerX.equalTo(loginButton.snp.centerX)
         }
         
-        //MARK: New account constraint
-        bottomHalf.addSubview(createAccountLabel)
+        //MARK: Constraints - Create account label
         setCreateAccountAction(createAccountLabel)
         createAccountLabel.snp.makeConstraints{(makeNewAccLabel) in
             makeNewAccLabel.bottom.equalTo(bottomHalf.snp.bottom).offset(-20)
