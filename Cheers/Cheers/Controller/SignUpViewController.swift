@@ -100,10 +100,11 @@ class SignUpViewController : UIViewController {
                       "subScribedTo": "TBD" as String,
             "subscribers": "TBD" as String
         ]
-        // Set user key in myprofile
-//        myProfile.dbKey = key
-        
+        // Adding to user tree
         self.ref.child("users").child(myProfile.displayName).setValue(newUser)
+        
+        // Adding to user map
+        self.ref.child("nameEmailMaps").child(myProfile.displayName).setValue(myProfile.email)
     }
     
     func initViews(for v : UIView) {

@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import FirebaseDatabase
+import FirebaseAuth
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,13 +19,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
+        FirebaseApp.configure()
+
         window = UIWindow(frame: UIScreen.main.bounds);
         window?.makeKeyAndVisible();
-//        window?.rootViewController = TabBarViewController()
-        window?.rootViewController = LoginViewController()
+        self.window?.rootViewController = LoginViewController()
+        
+        // We will use splash screen time to figure this out later
+//        Auth.auth().addStateDidChangeListener { auth, user in
+//            if let user = user {
+//                print("User is signed in.")
+//                self.window?.rootViewController = TabBarViewController()
+//            } else {
+//                print("User is not signed in.")
+//                self.window?.rootViewController = LoginViewController()
+//            }
+//        }
+//
+        
 
-        FirebaseApp.configure()
+        
+
 
         
         return true

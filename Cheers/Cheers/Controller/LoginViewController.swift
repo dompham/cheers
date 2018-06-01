@@ -15,7 +15,8 @@ import FirebaseAuth
 
 class LoginViewController : UIViewController {
     let disposeBag = DisposeBag()
-    
+    var handle: AuthStateDidChangeListenerHandle?;
+
     // MARK: Sign in action
     func setSignInButtonAction (on button : UIButton, using emailField : UITextField, and passwordField : UITextField) {
         button.rx.tapGesture()
@@ -80,6 +81,21 @@ class LoginViewController : UIViewController {
         
         setupLoginContainers(for: self.view)
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+       handle = Auth.auth().addStateDidChangeListener { auth, user in
+            if let user = user {
+                print("User is signed in.")
+            } else {
+                print("User is not signed in.")
+            }
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        Auth.auth().removeStateDidChangeListener(handle!)
+
     }
     
     

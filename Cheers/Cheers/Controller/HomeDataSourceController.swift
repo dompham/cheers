@@ -10,10 +10,13 @@ import LBTAComponents
 import Firebase
 import FirebaseDatabase
 import FirebaseAuth
+import RxSwift
+import RxGesture
 
 class HomeDatasourceController: DatasourceController {
     var handle: AuthStateDidChangeListenerHandle?;
-    
+    let disposeBag = DisposeBag()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView?.backgroundColor = UIColor(r: 221, g: 245, b: 255)
@@ -69,6 +72,20 @@ class HomeDatasourceController: DatasourceController {
         // MARK: Settings Button
         
         let settingsButton = UIButton(type: .system)
+        settingsButton.rx.tapGesture()
+            .when(.recognized)
+            .subscribe(onNext: { _ in
+                print("domp: Logging out")
+                do{
+                    try Auth.auth().signOut()
+                    self.dismiss(animated: true, completion: {
+                        
+                    })
+                } catch let err{
+                    print(err)
+                }
+            }).disposed(by: disposeBag)
+        
         settingsButton.setImage(#imageLiteral(resourceName: "settings"), for: .normal)
         // iOS 11 buttons need constraints
         let widthConstraintSettings = settingsButton.widthAnchor.constraint(equalToConstant: 28)
