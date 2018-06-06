@@ -16,7 +16,8 @@ import FirebaseAuth
 class LoginViewController : UIViewController {
     let disposeBag = DisposeBag()
     var handle: AuthStateDidChangeListenerHandle?;
-
+    var wrongLoginLabel : UILabel?;
+    
     // MARK: Sign in action
     func setSignInButtonAction (on button : UIButton, using emailField : UITextField, and passwordField : UITextField) {
         button.rx.tapGesture()
@@ -34,6 +35,8 @@ class LoginViewController : UIViewController {
                     if (error != nil) {
                         print("domp: Error signing in")
                         print(error)
+                        self.fadeViewInThenOut(view: self.wrongLoginLabel!, delay: 1)
+
                         return
                     } else {
                         print("domp: Signed in")
@@ -221,6 +224,16 @@ class LoginViewController : UIViewController {
             return label
         }()
         
+        // MARK: UI Element - Wrong Sign In Label
+        wrongLoginLabel = {
+            let label = UILabel()
+            label.text = "Login Error"
+            label.textColor = .red
+            label.font = UIFont(name: "HoeflerText-Black", size: 22)
+            label.alpha = 0
+            return label
+        }()
+        
         // MARK: UI Element - Gray Lines
         let grayLine : UIView = {
             let line = UIView()
@@ -238,7 +251,8 @@ class LoginViewController : UIViewController {
         topHalf.addSubview(logoImage)
         topHalf.addSubview(logoTitle)
         topHalf.addSubview(logoSubTitle)
-
+        topHalf.addSubview(wrongLoginLabel!)
+        
         v.addSubview(bottomHalf)
         bottomHalf.addSubview(emailField)
         bottomHalf.addSubview(emailImage)
@@ -276,6 +290,11 @@ class LoginViewController : UIViewController {
         logoSubTitle.snp.makeConstraints{(makeSubTitle) in
             makeSubTitle.centerX.equalTo(logoImage.snp.centerX)
             makeSubTitle.top.equalTo(logoTitle.snp.bottom).offset(5)
+        }
+        //MARK: Constraints - Wrong Login Label
+        wrongLoginLabel!.snp.makeConstraints {(makeLabel) in
+            makeLabel.centerX.equalTo(logoImage.snp.centerX)
+            makeLabel.top.equalTo(logoSubTitle.snp.bottom).offset(15)
         }
         
                 // MARK: Constraints - Bottom Half
@@ -355,5 +374,22 @@ class LoginViewController : UIViewController {
         }
         
         
+    }
+    func fadeViewInThenOut(view : UIView, delay: TimeInterval) {
+        
+        let animationDuration = 0.5
+        
+        // Fade in the view
+        UIView.animate(withDuration: animationDuration, animations: { () -> Void in
+            view.alpha = 1
+        }) { (Bool) -> Void in
+            
+            // After the animation completes, fade out the view after a delay
+            
+            UIView.animate(withDuration: animationDuration, delay: delay, options: UIViewAnimationOptions.curveEaseInOut, animations: { () -> Void in
+                view.alpha = 0
+            },
+                                       completion: nil)
+        }
     }
 }
