@@ -12,6 +12,7 @@ import SnapKit
 import RxSwift
 import RxGesture
 import FirebaseAuth
+import MaterialComponents.MaterialActivityIndicator
 
 class LoginViewController : UIViewController {
     let disposeBag = DisposeBag()
@@ -23,6 +24,17 @@ class LoginViewController : UIViewController {
         button.rx.tapGesture()
             .when(.recognized)
             .subscribe(onNext: { _ in
+                // Set and constrain activity wheel
+                let activityIndicator = MDCActivityIndicator()
+                activityIndicator.sizeToFit()
+                self.view.addSubview(activityIndicator)
+                activityIndicator.snp.makeConstraints {(makeWheel) in
+                    makeWheel.center.equalTo(self.view.snp.center)
+                }
+                // To make the activity indicator appear:
+                activityIndicator.startAnimating()
+                
+
                 print("domp: Trying to sign in")
                 
                 guard let email = emailField.text, let password = passwordField.text
@@ -31,6 +43,8 @@ class LoginViewController : UIViewController {
                 }
                 
                 Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
+                    // To make the activity indicator disappear:
+                    activityIndicator.stopAnimating()
                     if (error != nil) {
                         print("domp: Error signing in")
                         print(error)

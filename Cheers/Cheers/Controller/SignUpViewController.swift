@@ -13,6 +13,8 @@ import RxSwift
 import SnapKit
 import FirebaseAuth
 import Firebase
+import MaterialComponents.MaterialActivityIndicator
+
 
 class SignUpViewController : UIViewController {
     let disposeBag = DisposeBag()
@@ -61,6 +63,16 @@ class SignUpViewController : UIViewController {
         button.rx.tapGesture()
             .when(.recognized)
             .subscribe(onNext: { _ in
+                // Set and constrain activity wheel
+                let activityIndicator = MDCActivityIndicator()
+                activityIndicator.sizeToFit()
+                self.view.addSubview(activityIndicator)
+                activityIndicator.snp.makeConstraints {(makeWheel) in
+                    makeWheel.center.equalTo(self.view.snp.center)
+                }
+                // To make the activity indicator appear:
+                activityIndicator.startAnimating()
+                
                 print("domp: Creating new account")
                 guard let email = emailField.text, let password = passwordField.text
                     else {
@@ -69,6 +81,9 @@ class SignUpViewController : UIViewController {
                 print(email)
                 print(password)
                 Auth.auth().createUser(withEmail: email, password: password) { (authResult, error) in
+                    // To make the activity indicator disappear:
+                    activityIndicator.stopAnimating()
+                    
                     if (error != nil) {
                         print(error!)
                         return

@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Cheers/Controller/SignUpViewController.swift"
-            timestampString = "550014868.982282"
+            timestampString = "550021979.350044"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
             landmarkName = "SignUpViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -58,13 +58,61 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Cheers/Controller/SignUpViewController.swift"
-            timestampString = "550014868.982754"
+            timestampString = "550021979.350137"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "236"
-            endingLineNumber = "236"
+            startingLineNumber = "251"
+            endingLineNumber = "251"
             landmarkName = "initViews(for:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Cheers/Controller/LoginViewController.swift"
+            timestampString = "550021979.350201"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "setSignInButtonAction(on:using:and:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__ObjC.UITapGestureRecognizer) -&gt; () in Cheers.LoginViewController.setSignInButtonAction(on: __ObjC.UIButton, using: __ObjC.UITextField, and: __ObjC.UITextField) -&gt; ()"
+                  moduleName = "Cheers"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dpham/Documents/cheers/Cheers/Cheers/Controller/LoginViewController.swift"
+                  timestampString = "550021438.179387"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
+                  offsetFromSymbolStart = "899">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__ObjC.AuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 (__ObjC.UITapGestureRecognizer) -&gt; () in Cheers.LoginViewController.setSignInButtonAction(on: __ObjC.UIButton, using: __ObjC.UITextField, and: __ObjC.UITextField) -&gt; ()"
+                  moduleName = "Cheers"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dpham/Documents/cheers/Cheers/Cheers/Controller/LoginViewController.swift"
+                  timestampString = "550021438.184307"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "35"
+                  endingLineNumber = "35"
+                  offsetFromSymbolStart = "26">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
