@@ -24,7 +24,6 @@ class LoginViewController : UIViewController {
             .when(.recognized)
             .subscribe(onNext: { _ in
                 print("domp: Trying to sign in")
-                UIApplication.shared.statusBarStyle = .default
                 
                 guard let email = emailField.text, let password = passwordField.text
                     else {
@@ -40,6 +39,8 @@ class LoginViewController : UIViewController {
                         return
                     } else {
                         print("domp: Signed in")
+                        UIApplication.shared.statusBarStyle = .default
+
                         myProfile.uid = user?.user.uid
                         myProfile.email = user?.user.email
                         self.present(TabBarViewController(), animated: true, completion: { () in
