@@ -78,7 +78,9 @@ class HomeDatasourceController: DatasourceController {
                 print("domp: Logging out")
                 do{
                     try Auth.auth().signOut()
-                    self.dismiss(animated: true, completion: {
+                    let loginView = LoginViewController()
+                    loginView.modalTransitionStyle = .coverVertical
+                    self.present(loginView, animated: true, completion: { () in
                         
                     })
                 } catch let err{
