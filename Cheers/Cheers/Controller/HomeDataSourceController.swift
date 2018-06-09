@@ -77,20 +77,22 @@ class HomeDatasourceController: DatasourceController {
             searchButton.rx.tapGesture()
             .when(.recognized)
             .subscribe(onNext: { _ in
-                print("domp: Creating post")
-                let key = self.ref.child("posts").child("dompham").childByAutoId().key
-                let newCheer = [
-                    "name": "dompham" as String,
-                    "beer": "Guinny Guinness" as String,
-                    "location": "Ugly dog" as String,
-                    "review": "It was good" as String,
-                    "author": "Do Testing" as String,
-                    "timestamp": "Timestamp" as String,
-                    "key": key as String
-                ]
-                // Adding to post tree
-                self.ref.child("posts").child("dompham").child(key).setValue(newCheer)
-                
+                var fbservice = DatabaseService()
+                fbservice.getPosts(for: "dompham")
+//                print("domp: Creating post")
+//                let key = self.ref.child("posts").child("dompham").childByAutoId().key
+//                let newCheer = [
+//                    "name": "dompham" as String,
+//                    "beer": "Some other beer" as String,
+//                    "location": "Clems Tap House" as String,
+//                    "review": "It was great" as String,
+//                    "author": "Do Testing" as String,
+//                    "timestamp": "Timestamp" as String,
+//                    "key": key as String
+//                ]
+//                // Adding to post tree
+//                self.ref.child("posts").child("dompham").child(key).setValue(newCheer)
+//
                
             }).disposed(by: disposeBag)
         

@@ -1,5 +1,5 @@
 //
-//  FirebaseService.swift
+//  LoggingService.swift
 //  Cheers
 //
 //  Created by Do Pham on 6/9/18.
@@ -7,4 +7,3 @@
 //
 
 import Foundation
-
