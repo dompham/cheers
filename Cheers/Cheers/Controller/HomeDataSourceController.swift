@@ -16,9 +16,14 @@ import RxGesture
 class HomeDatasourceController: DatasourceController {
     var handle: AuthStateDidChangeListenerHandle?;
     let disposeBag = DisposeBag()
+    var ref: DatabaseReference!
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Init db
+        ref = Database.database().reference()
+
         collectionView?.backgroundColor = UIColor(r: 221, g: 245, b: 255)
         collectionView?.showsVerticalScrollIndicator = false
         setupNavigationBarItems()
@@ -68,6 +73,27 @@ class HomeDatasourceController: DatasourceController {
         heightConstraintSearch.isActive = true
         widthConstraintSearch.isActive = true
         searchButton.contentMode = .scaleAspectFit
+        // MARK: Search button temporarily create post
+            searchButton.rx.tapGesture()
+            .when(.recognized)
+            .subscribe(onNext: { _ in
+                print("domp: Creating post")
+                let key = self.ref.child("posts").child("dompham").childByAutoId().key
+                let newCheer = [
+                    "name": "dompham" as String,
+                    "beer": "Guinny Guinness" as String,
+                    "location": "Ugly dog" as String,
+                    "review": "It was good" as String,
+                    "author": "Do Testing" as String,
+                    "timestamp": "Timestamp" as String,
+                    "key": key as String
+                ]
+                // Adding to post tree
+                self.ref.child("posts").child("dompham").child(key).setValue(newCheer)
+                
+               
+            }).disposed(by: disposeBag)
+        
         
         // MARK: Settings Button
         

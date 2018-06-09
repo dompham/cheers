@@ -112,7 +112,7 @@ class SignUpViewController : UIViewController {
                       "displayName": myProfile.displayName as String,
                       "email": user.email! as String,
                       "uid": user.uid as String,
-                      "subScribedTo": "TBD" as String,
+                      "subscribedTo": "TBD" as String,
             "subscribers": "TBD" as String
         ]
         // Adding to user tree
