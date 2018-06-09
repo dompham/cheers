@@ -43,7 +43,8 @@ import Foundation
  }
  }
  
- 
+ // Have async callbacks
+ //https://stackoverflow.com/questions/42300369/swift-service-class-to-retrieve-firebase-data
  
  
  
