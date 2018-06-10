@@ -11,13 +11,27 @@ import Firebase
 
 class DatabaseService {
     var ref = Database.database().reference()
-
-    func getPosts(for user: String) {
+    var arrOfCheers : [Cheer] = []
+    
+    func getPosts(for user: String, then cb: @escaping () -> Void) {
         ref.child("posts").child(user).observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
-            print(user)
-            print(snapshot)
             
+            if let resources = snapshot.value as? [String : AnyObject] {
+                for (_, obj) in resources {
+                    if let dataObject = obj as? [String : AnyObject] {
+                        let tempCheer = Cheer(name: dataObject["key"] as! String,
+                                              beer: dataObject["beer"] as! String,
+                                              location: dataObject["location"] as! String,
+                                              review: dataObject["review"] as! String,
+                                              profileImage: #imageLiteral(resourceName: "dpham_stub_pic"))
+                    self.arrOfCheers.append(tempCheer)
+                    }
+                }
+            }
+            
+            cb()
+            print(self.arrOfCheers)
             // ...
         }) { (error) in
             print(error.localizedDescription)

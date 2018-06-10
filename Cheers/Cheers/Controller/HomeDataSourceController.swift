@@ -78,7 +78,9 @@ class HomeDatasourceController: DatasourceController {
             .when(.recognized)
             .subscribe(onNext: { _ in
                 var fbservice = DatabaseService()
-                fbservice.getPosts(for: "dompham")
+                fbservice.getPosts(for: "dompham", then: {
+                    print("domp: done fetching my posts")
+                })
 //                print("domp: Creating post")
 //                let key = self.ref.child("posts").child("dompham").childByAutoId().key
 //                let newCheer = [
