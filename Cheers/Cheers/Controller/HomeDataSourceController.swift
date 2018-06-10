@@ -17,8 +17,8 @@ class HomeDatasourceController: DatasourceController {
     var handle: AuthStateDidChangeListenerHandle?;
     let disposeBag = DisposeBag()
     var ref: DatabaseReference!
+    var DBservice = DatabaseService()
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Init db
@@ -27,16 +27,26 @@ class HomeDatasourceController: DatasourceController {
         collectionView?.backgroundColor = UIColor(r: 221, g: 245, b: 255)
         collectionView?.showsVerticalScrollIndicator = false
         setupNavigationBarItems()
-        let homeDatasource = HomeDatasource()
-        self.datasource = homeDatasource
-        
+        // Fetch and set data source
+        fetchFeed()
+    }
+    
+    func fetchFeed() {
+        let arrCheers = DBservice.getPosts(for: myProfile.displayName) { (arrCheers) in
+            print("setting datasource")
+            myProfile.feedCheers = arrCheers
+            print(myProfile.feedCheers)
+            let homeDatasource = HomeDatasource()
+            self.datasource = homeDatasource
+        }
+//        print("returning")
+//        print(arrCheers)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         handle = Auth.auth().addStateDidChangeListener { (auth, user) in
             if let user = user {
-//                myProfile.uid = user.uid
-//                myProfile.email = user.email
+
                 print("domp: User signed in as ID: " + myProfile.uid! + " " + myProfile.email!)
             }
         }
@@ -78,7 +88,7 @@ class HomeDatasourceController: DatasourceController {
             .when(.recognized)
             .subscribe(onNext: { _ in
                 var fbservice = DatabaseService()
-                fbservice.getPosts(for: "dompham", then: {
+                var arrayOfCheers = fbservice.getPosts(for: "dompham", then: { (arr) in
                     print("domp: done fetching my posts")
                 })
 //                print("domp: Creating post")
