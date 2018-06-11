@@ -17,16 +17,19 @@ class HomeDatasourceController: DatasourceController {
     var handle: AuthStateDidChangeListenerHandle?;
     let disposeBag = DisposeBag()
     var ref: DatabaseReference!
-    var DBservice = DatabaseService()
+    var DBservice = DatabaseService.sharedInstance
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Init db
         ref = Database.database().reference()
+        
+
 
         collectionView?.backgroundColor = UIColor(r: 221, g: 245, b: 255)
         collectionView?.showsVerticalScrollIndicator = false
         setupNavigationBarItems()
+        setupRefresh()
         // Fetch and set data source
         fetchFeed()
     }
@@ -41,6 +44,23 @@ class HomeDatasourceController: DatasourceController {
         }
 //        print("returning")
 //        print(arrCheers)
+    }
+    
+    func setupRefresh() {
+        var refreshControl = self.getRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: #selector(refresh), for: UIControlEvents.valueChanged)
+        collectionView!.addSubview(refreshControl)
+    }
+    
+    @objc func refresh(){
+        print("refreshing")
+        stopRefreshing()
+    }
+    
+    func stopRefreshing(){
+        print("end refreshing")
+        self.getRefreshControl().endRefreshing()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -90,6 +110,7 @@ class HomeDatasourceController: DatasourceController {
                 var fbservice = DatabaseService()
                 var arrayOfCheers = fbservice.getPosts(for: "dompham", then: { (arr) in
                     print("domp: done fetching my posts")
+                    
                 })
 //                print("domp: Creating post")
 //                let key = self.ref.child("posts").child("dompham").childByAutoId().key

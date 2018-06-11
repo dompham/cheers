@@ -109,8 +109,6 @@
 				650CAB7720B0924600B143EB /* RecentCheer.swift */,
 				3EB141EC20B356AB00E4D853 /* Cheer.swift */,
 				3E8DED1420C0A7C80049D98E /* MyProfile.swift */,
-				65D59E7720CC6FED00BDE133 /* DatabaseService.swift */,
-				65D59E7920CC737000BDE133 /* LoggingService.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -150,6 +148,7 @@
 			children = (
 				3E8DED1620C0C02B0049D98E /* Notes.swift */,
 				6536C2B820AE7415002088A3 /* AppDelegate.swift */,
+				65DC496F20CD7E5A0029DC91 /* Services */,
 				3EEE24C220AF5018004BBE08 /* Model */,
 				3EEE24C320AF502B004BBE08 /* View */,
 				3EEE24C120AF500F004BBE08 /* Controller */,
@@ -159,6 +158,15 @@
 				6536C2C620AE7415002088A3 /* Info.plist */,
 			);
 			path = Cheers;
+			sourceTree = "<group>";
+		};
+		65DC496F20CD7E5A0029DC91 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				65D59E7720CC6FED00BDE133 /* DatabaseService.swift */,
+				65D59E7920CC737000BDE133 /* LoggingService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		B31D8E7B90F4747EDA7F5E0D /* Frameworks */ = {

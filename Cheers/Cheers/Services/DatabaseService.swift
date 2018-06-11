@@ -10,6 +10,7 @@ import Foundation
 import Firebase
 
 class DatabaseService {
+    static let sharedInstance = DatabaseService()
     var ref = Database.database().reference()
     var arrOfCheers : [Cheer] = []
     
