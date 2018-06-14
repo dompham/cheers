@@ -14,6 +14,7 @@ class DatabaseService {
     var ref = Database.database().reference()
     var arrOfCheers : [Cheer] = []
     
+    // MARK: Feed functions
     func getPosts(for user: String, then cb: @escaping (_ : [Cheer]) -> Void) -> [Cheer]{
         var tempCheers : [Cheer] = []
         ref.child("posts").child(user).observeSingleEvent(of: .value, with: { (snapshot) in
@@ -32,12 +33,16 @@ class DatabaseService {
                 }
             }
             self.arrOfCheers = tempCheers
-
             cb(tempCheers)
         }) { (error) in
             print(error.localizedDescription)
         }
-        
         return tempCheers
+    }
+    
+    // MARK: Subscription functions
+    func userSubscribe(to user : String, then cb: @escaping () -> Void) {
+        // Subscription is an addition to their sub list and yours
+        ref.child("users").child(myProfile.displayName)
     }
 }
