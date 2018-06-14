@@ -183,6 +183,33 @@ class SignUpViewController : UIViewController {
             return title
         }()
         
+        // MARK: UI Element - Name field
+        let nameField : UITextField = {
+            let field = UITextField()
+            
+            field.attributedPlaceholder = NSAttributedString(string: "Display Name", attributes: [NSAttributedStringKey.foregroundColor : UIColor.white])
+            field.borderStyle = .none
+            field.backgroundColor = .clear
+            field.textColor = .white//UIColor(r: 127, g: 127, b: 127)
+            field.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0);
+            field.clearButtonMode = .whileEditing
+            
+            return field
+        }()
+        
+        // MARK: UI Element - Name Image
+        let nameImage : UIImageView = {
+            let imageView = UIImageView()
+            imageView.frame = CGRect(x: 0, y: 0, width: 32, height: 32)
+            imageView.contentMode = .scaleAspectFit
+            let image = #imageLiteral(resourceName: "un")
+            imageView.tintColor = .white
+            imageView.image = image
+            
+            return imageView
+        }()
+        
+        
         // MARK: UI Element - Email field
         let emailField : UITextField = {
             let field = UITextField()
@@ -191,7 +218,7 @@ class SignUpViewController : UIViewController {
             field.borderStyle = .none
             field.backgroundColor = .clear
             field.textColor = .white//UIColor(r: 127, g: 127, b: 127)
-            field.layer.sublayerTransform = CATransform3DMakeTranslation(8, 0, 0);
+            field.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0);
             field.clearButtonMode = .whileEditing
             
             return field
@@ -202,7 +229,8 @@ class SignUpViewController : UIViewController {
             let imageView = UIImageView()
             imageView.frame = CGRect(x: 0, y: 0, width: 32, height: 32)
             imageView.contentMode = .scaleAspectFit
-            let image = #imageLiteral(resourceName: "un")
+//            let image = #imageLiteral(resourceName: "un")
+            let image = #imageLiteral(resourceName: "mail")
             imageView.tintColor = .white
             imageView.image = image
             
@@ -305,6 +333,11 @@ class SignUpViewController : UIViewController {
             line.backgroundColor = .white//UIColor(r: 127, g: 127, b: 127)
             return line
         }()
+        let grayLine4 : UIView = {
+            let line = UIView()
+            line.backgroundColor = .white//UIColor(r: 127, g: 127, b: 127)
+            return line
+        }()
         
         // MARK: Assembling views
         v.addSubview(topHalf)
@@ -313,6 +346,9 @@ class SignUpViewController : UIViewController {
         topHalf.addSubview(logoSubTitle)
         
         v.addSubview(bottomHalf)
+        bottomHalf.addSubview(nameField)
+        bottomHalf.addSubview(nameImage)
+        bottomHalf.addSubview(grayLine4)
         bottomHalf.addSubview(emailField)
         bottomHalf.addSubview(emailImage)
         bottomHalf.addSubview(grayLine)
@@ -361,9 +397,32 @@ class SignUpViewController : UIViewController {
             makeBot.bottom.equalTo(v.snp.bottom)
         })
         
+        // MARK: Constraints - Name Field
+        nameField.snp.makeConstraints {(makeName) in
+            makeName.top.equalTo(bottomHalf.snp.top)
+            makeName.centerX.equalTo(bottomHalf.snp.centerX).offset(15)
+            makeName.height.equalTo(45)
+            makeName.width.equalTo(bottomHalf.snp.width).multipliedBy(0.55)
+        }
+        
+        // MARK: Constraints - Name Image
+        nameImage.snp.makeConstraints { (makeImage) in
+            makeImage.right.equalTo(nameField.snp.left)
+            makeImage.bottom.equalTo(nameField.snp.bottom).offset(-10)
+            makeImage.top.equalTo(nameField.snp.top).offset(5)
+        }
+        
+        grayLine4.snp.makeConstraints {(makeLine) in
+            makeLine.top.equalTo(nameField.snp.bottom).offset(2)
+            makeLine.left.equalTo(nameImage.snp.left)
+            makeLine.right.equalTo(nameField.snp.right)
+            //makeLine.centerX.equalTo(bottomHalf.snp.centerX)
+            makeLine.height.equalTo(0.5)
+        }
+
         // MARK: Constraints - Email Field
         emailField.snp.makeConstraints {(makeEmail) in
-            makeEmail.top.equalTo(bottomHalf.snp.top)
+            makeEmail.top.equalTo(nameField.snp.bottom).offset(15)
             makeEmail.centerX.equalTo(bottomHalf.snp.centerX).offset(15)
             makeEmail.height.equalTo(45)
             makeEmail.width.equalTo(bottomHalf.snp.width).multipliedBy(0.55)

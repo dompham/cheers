@@ -162,7 +162,7 @@ class LoginViewController : UIViewController {
             field.borderStyle = .none
             field.backgroundColor = .clear
             field.textColor = .white//UIColor(r: 127, g: 127, b: 127)
-            field.layer.sublayerTransform = CATransform3DMakeTranslation(8, 0, 0);
+            field.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0);
             field.clearButtonMode = .whileEditing
             //remove
             field.text = "do.pham@outlook.com"
@@ -175,7 +175,8 @@ class LoginViewController : UIViewController {
             let imageView = UIImageView()
             imageView.frame = CGRect(x: 0, y: 0, width: 32, height: 32)
             imageView.contentMode = .scaleAspectFit
-            let image = #imageLiteral(resourceName: "un")
+            let image = #imageLiteral(resourceName: "mail")
+//            let image = #imageLiteral(resourceName: "un")
             imageView.tintColor = .white
             imageView.image = image
             
