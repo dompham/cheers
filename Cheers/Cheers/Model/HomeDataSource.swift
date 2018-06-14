@@ -42,7 +42,6 @@ class HomeDatasource : Datasource {
     }
     
     override func item(_ indexPath: IndexPath) -> Any? {
-        print("in item")
 
         if indexPath.section == 1 {
             return myProfile.feedCheers[indexPath.item]

@@ -18,6 +18,7 @@ class HomeDatasourceController: DatasourceController {
     let disposeBag = DisposeBag()
     var ref: DatabaseReference!
     var DBservice = DatabaseService.sharedInstance
+    var refreshControl: UIRefreshControl!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,20 +48,39 @@ class HomeDatasourceController: DatasourceController {
     }
     
     func setupRefresh() {
-        var refreshControl = self.getRefreshControl()
+        refreshControl = self.getRefreshControl()
         refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
         refreshControl.addTarget(self, action: #selector(refresh), for: UIControlEvents.valueChanged)
+        refreshControl.tag = 8
         collectionView!.addSubview(refreshControl)
     }
     
     @objc func refresh(){
         print("refreshing")
-        stopRefreshing()
+        updateFeed(then: stopRefreshing)
+    }
+    
+    func updateFeed(then cb: @escaping () -> Void){
+        DBservice.getPosts(for: myProfile.displayName) { (arrCheers) in
+            print("updating datasource")
+            myProfile.feedCheers = arrCheers
+            print(myProfile.feedCheers)
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 4, execute: {
+                cb()
+                // Put your code which should be executed with a delay here
+//            })
+
+            self.collectionView?.reloadData()
+//            let homeDatasource = HomeDatasource()
+//            self.datasource = homeDatasource
+
+        }
     }
     
     func stopRefreshing(){
         print("end refreshing")
-        self.getRefreshControl().endRefreshing()
+        self.refreshControl.endRefreshing()
+        self.activityIndicatorView.stopAnimating()
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -15,6 +15,7 @@ class DatabaseService {
     var arrOfCheers : [Cheer] = []
     
     func getPosts(for user: String, then cb: @escaping (_ : [Cheer]) -> Void) -> [Cheer]{
+        var tempCheers : [Cheer] = []
         ref.child("posts").child(user).observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
             
@@ -26,16 +27,17 @@ class DatabaseService {
                                               location: dataObject["location"] as! String,
                                               review: dataObject["review"] as! String,
                                               profileImage: #imageLiteral(resourceName: "dpham_stub_pic"))
-                    self.arrOfCheers.append(tempCheer)
+                    tempCheers.append(tempCheer)
                     }
                 }
             }
-            
-            cb(self.arrOfCheers)
+            self.arrOfCheers = tempCheers
+
+            cb(tempCheers)
         }) { (error) in
             print(error.localizedDescription)
         }
         
-        return arrOfCheers
+        return tempCheers
     }
 }
