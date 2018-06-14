@@ -14,6 +14,7 @@ import SnapKit
 import FirebaseAuth
 import Firebase
 import MaterialComponents.MaterialActivityIndicator
+import Onboard
 
 
 class SignUpViewController : UIViewController {
@@ -95,9 +96,34 @@ class SignUpViewController : UIViewController {
                         
                         // Create user in db?
                         self.createUserDB(for: user!)
-                        self.present(TabBarViewController(), animated: true, completion: { () in
+                        
+                        // MARK: Onboarding
+                        let firstOnboard = OnboardingContentViewController(title: "Drink.", body: "Enjoy beers, while posting to share with friends.", image: UIImage(named: "onboard1"), buttonText: nil) { () -> Void in}
+                        firstOnboard.underTitlePadding = 60
+                        firstOnboard.bodyLabel.font = UIFont.systemFont(ofSize: 22)
+                        
+                        let secondOnboard = OnboardingContentViewController(title: "Earn.", body: "Accumulate achievements as you go along.", image: UIImage(named: "onboard2"), buttonText: nil) { () -> Void in}
+                        secondOnboard.underTitlePadding = 60
+                        secondOnboard.bodyLabel.font = UIFont.systemFont(ofSize: 22)
+                        
+                        let thirdOnboard = OnboardingContentViewController(title: "Know.", body: "Receive analytics based on your beer enjoyment.", image: UIImage(named: "onboard3"), buttonText: "Got it!") { () -> Void in
+                            self.dismiss(animated: true, completion: { () in
+                                self.present(TabBarViewController(), animated: true, completion: { () in
+                                    
+                                })
+                            })
+                        }
+                        thirdOnboard.underTitlePadding = 60
+                        thirdOnboard.bodyLabel.font = UIFont.systemFont(ofSize: 22)
+                        
+                        //Set the onboards
+                        let onboardingVC = OnboardingViewController(backgroundImage: UIImage(named: "backgroundBlue"), contents: [firstOnboard, secondOnboard, thirdOnboard])
+                        onboardingVC!.shouldMaskBackground = false
+                        onboardingVC!.shouldFadeTransitions = true
+                        self.present(onboardingVC!, animated: true, completion: { () in
                             
                         })
+
                     }
                 }
             }).disposed(by: disposeBag)

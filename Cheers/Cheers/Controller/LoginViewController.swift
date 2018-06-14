@@ -47,7 +47,7 @@ class LoginViewController : UIViewController {
                     activityIndicator.stopAnimating()
                     if (error != nil) {
                         print("domp: Error signing in")
-                        print(error)
+                        print(error!)
                         self.fadeViewInThenOut(view: self.wrongLoginLabel!, delay: 1)
 
                         return
