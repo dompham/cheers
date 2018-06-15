@@ -43,13 +43,18 @@ class DatabaseService {
     // MARK: Subscription functions
     func userSubscribe(to user : String, then cb: @escaping () -> Void) {
         // Subscription is an addition to their sub list and yours
-        let pushKey = ref.child("users").child(myProfile.displayName).child("subscribedTo").childByAutoId().key
+        let subscribedToKey = ref.child("users").child(myProfile.displayName).child("subscribedTo").childByAutoId().key
+        let subscriberKey = ref.child("users").child(user).child("subscribers").childByAutoId().key
+
         if (user != "") {
-            ref.child("users").child(myProfile.displayName).child("subscribedTo").child(pushKey).setValue(user){ (error, reference) -> Void in
+            // Update my list
+            ref.child("users").child(myProfile.displayName).child("subscribedTo").child(subscribedToKey).setValue(user){ (error, reference) -> Void in
                 if let error = error {
                     print("Data could not be saved: \(error).")
                 } else {
                     print("Data saved successfully!")
+                    // Update your list
+                    self.ref.child("users").child(user).child("subscribers").child(subscriberKey).setValue(myProfile.displayName)
                 }
                 
             }

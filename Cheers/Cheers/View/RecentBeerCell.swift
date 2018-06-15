@@ -7,6 +7,9 @@
 //
 
 import LBTAComponents
+import UIKit
+import RxSwift
+import RxGesture
 
 //let cheersOrange : UIColor = UIColor(r: 255, g: 181, b: 69)
 let cheersOrange : UIColor = UIColor(r: 252, g: 211, b: 8)
@@ -15,7 +18,7 @@ let cheersBlue : UIColor = UIColor(r: 68, g: 142, b: 255)
 
 //AKA UserCell
 class RecentBeerCell: DatasourceCell {
-    
+    static let disposeBag = DisposeBag()
     
     // Profile picture
     let profileImageView : UIImageView = {
@@ -78,6 +81,14 @@ class RecentBeerCell: DatasourceCell {
         subButton.setImage(#imageLiteral(resourceName: "sub_button"), for: .normal)
         subButton.imageView?.contentMode = .scaleAspectFit
         subButton.imageEdgeInsets = UIEdgeInsetsMake(4, -6, 4, 0)
+        
+        subButton.rx.tapGesture()
+            .when(.recognized)
+            .subscribe(onNext: { _ in
+                print("domp: subscribe")
+
+            }).disposed(by: disposeBag)
+        
         return subButton
     }()
     
@@ -118,7 +129,7 @@ class RecentBeerCell: DatasourceCell {
             usernameLabel.text = recentCheer.name
             beerLabel.text = recentCheer.beer
             recentCheerText.text = recentCheer.review
-            locationLabel.text = recentCheer.location
+            locationLabel.text = "@ " + recentCheer.location
             profileImageView.image = recentCheer.profileImage
         }
     }

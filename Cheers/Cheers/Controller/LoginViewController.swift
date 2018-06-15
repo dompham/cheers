@@ -54,9 +54,11 @@ class LoginViewController : UIViewController {
                     } else {
                         print("domp: Signed in")
                         UIApplication.shared.statusBarStyle = .default
-
+                        
+                        // TODO: Reach into FB to pull out user data
                         myProfile.uid = user?.user.uid
                         myProfile.email = user?.user.email
+                        myProfile.displayName = "Hmykel"
                         self.present(TabBarViewController(), animated: true, completion: { () in
                             
                         })

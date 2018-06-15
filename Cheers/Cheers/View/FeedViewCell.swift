@@ -126,7 +126,7 @@ class FeedViewCall : DatasourceCell {
             usernameLabel.text = cheer.name
             beerLabel.text = cheer.beer
             feedCheerText.text = cheer.review
-            locationLabel.text = cheer.location
+            locationLabel.text = "@ " + cheer.location
             profileImageView.image = cheer.profileImage
         }
     }
