@@ -60,7 +60,7 @@ class SignUpViewController : UIViewController {
     }
     
     // MARK: Action - Create new account
-    func setCreateAccountAction (on button : UIButton, using emailField : UITextField, and passwordField : UITextField) {
+    func setCreateAccountAction (on button : UIButton, using emailField : UITextField, and passwordField : UITextField, for nameField : UITextField) {
         button.rx.tapGesture()
             .when(.recognized)
             .subscribe(onNext: { _ in
@@ -75,7 +75,7 @@ class SignUpViewController : UIViewController {
                 activityIndicator.startAnimating()
                 
                 print("domp: Creating new account")
-                guard let email = emailField.text, let password = passwordField.text
+                guard let email = emailField.text, let password = passwordField.text, let name = nameField.text
                     else {
                         return
                 }
@@ -93,7 +93,7 @@ class SignUpViewController : UIViewController {
                         let user = authResult?.user
                         myProfile.uid = user!.email
                         myProfile.email = user!.email
-                        
+                        myProfile.displayName = name
                         // Create user in db?
                         self.createUserDB(for: user!)
                         
@@ -302,7 +302,7 @@ class SignUpViewController : UIViewController {
             button.layer.borderWidth = 4.0
             button.layer.cornerRadius = 8.0
             
-            setCreateAccountAction(on: button, using: emailField, and: pwField)
+            setCreateAccountAction(on: button, using: emailField, and: pwField, for: nameField)
             return button
         }()
         
