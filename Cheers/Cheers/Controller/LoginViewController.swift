@@ -193,8 +193,10 @@ class LoginViewController : UIViewController {
                         print("domp: Signed in")
                         UIApplication.shared.statusBarStyle = .default
                         
+                        // TODO: Pull from firebase here - subscribers, name, etc. Actually I think it should be done in tab bar view
                         myProfile.uid = user?.user.uid
                         myProfile.email = user?.user.email
+                        
                         myProfile.displayName = "dompham"
                         self.present(TabBarViewController(), animated: true, completion: { () in
                             
