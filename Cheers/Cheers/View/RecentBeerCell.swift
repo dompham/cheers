@@ -18,7 +18,7 @@ let cheersBlue : UIColor = UIColor(r: 68, g: 142, b: 255)
 
 //AKA UserCell
 class RecentBeerCell: DatasourceCell {
-    static let disposeBag = DisposeBag()
+    let disposeBag = DisposeBag()
     
     // Profile picture
     let profileImageView : UIImageView = {
@@ -82,15 +82,24 @@ class RecentBeerCell: DatasourceCell {
         subButton.imageView?.contentMode = .scaleAspectFit
         subButton.imageEdgeInsets = UIEdgeInsetsMake(4, -6, 4, 0)
         
-        subButton.rx.tapGesture()
-            .when(.recognized)
-            .subscribe(onNext: { _ in
-                print("domp: subscribe")
-
-            }).disposed(by: disposeBag)
         
         return subButton
     }()
+    
+    func setUpSubscribeButton(){
+        subBuddyButton.rx.tapGesture()
+            .when(.recognized)
+            .subscribe(onNext: { _ in
+                print("domp: subscribe")
+                guard let name = self.usernameLabel.text
+                    else {
+                        return
+                }
+                DBservice.userSubscribe(to: name, then: {})
+                // userSubscribe()
+            }).disposed(by: disposeBag)
+        
+    }
     
     override func setupViews() {
         super.setupViews()
@@ -105,8 +114,8 @@ class RecentBeerCell: DatasourceCell {
         addSubview(recentCheerText)
         addSubview(locationLabel)
         addSubview(subBuddyButton)
-        
-        
+        setUpSubscribeButton()
+
         // MARK: Constraints for Recent Cell Subviews
         
         profileImageView.anchor(self.topAnchor, left: self.leftAnchor, bottom: nil, right: nil, topConstant: 12, leftConstant: 12, bottomConstant: 0, rightConstant: 0, widthConstant: 50, heightConstant: 50)

@@ -11,6 +11,9 @@ import Firebase
 import FirebaseDatabase
 import FirebaseAuth
 
+let DBservice = DatabaseService.sharedInstance
+
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 

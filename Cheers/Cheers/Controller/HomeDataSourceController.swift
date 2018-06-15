@@ -17,16 +17,12 @@ class HomeDatasourceController: DatasourceController {
     var handle: AuthStateDidChangeListenerHandle?;
     let disposeBag = DisposeBag()
     var ref: DatabaseReference!
-    var DBservice = DatabaseService.sharedInstance
     var refreshControl: UIRefreshControl!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Init db
         ref = Database.database().reference()
-        
-
-
         collectionView?.backgroundColor = UIColor(r: 221, g: 245, b: 255)
         collectionView?.showsVerticalScrollIndicator = false
         setupNavigationBarItems()
@@ -127,13 +123,10 @@ class HomeDatasourceController: DatasourceController {
             searchButton.rx.tapGesture()
             .when(.recognized)
             .subscribe(onNext: { _ in
-                var fbservice = DatabaseService()
-                var arrayOfCheers = fbservice.getPosts(for: "dompham", then: { (arr) in
-                    print("domp: done fetching my posts")
-                    
-                })
+                
+
 //                print("domp: Creating post")
-//                let key = self.ref.child("posts").child("dompham").childByAutoId().key
+//                let key = self.ref.child("posts").child("Hmykel").childByAutoId().key
 //                let newCheer = [
 //                    "name": "dompham" as String,
 //                    "beer": "Some other beer" as String,
@@ -144,8 +137,8 @@ class HomeDatasourceController: DatasourceController {
 //                    "key": key as String
 //                ]
 //                // Adding to post tree
-//                self.ref.child("posts").child("dompham").child(key).setValue(newCheer)
-//
+//                self.ref.child("posts").child("Hmykel").child(key).setValue(newCheer)
+
                
             }).disposed(by: disposeBag)
         

@@ -9,9 +9,9 @@
 import LBTAComponents
 import Firebase
 
+
 class HomeDatasource : Datasource {
     
-    let DBservice = DatabaseService.sharedInstance
     
     let recentCheers : [RecentCheer] = {
         let recentCheer1 = RecentCheer(name: "dompham", beer: "Sculpin IPA", location: "@ The Ugly Dog", review: "Beer was OK, but I prefer the grapefruit version.", profileImage: #imageLiteral(resourceName: "dpham_stub_pic") )

@@ -133,7 +133,6 @@ class SignUpViewController : UIViewController {
         // I dont think we need this for users
 //        let key = self.ref.child("users").childByAutoId().key
         
-        //creating artist with the given values
         let newUser = [
                       "displayName": myProfile.displayName as String,
                       "email": user.email! as String,

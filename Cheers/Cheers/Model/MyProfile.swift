@@ -13,6 +13,8 @@ struct myProfile {
     static var uid : String?
     static var email : String?
     static var displayName = "dompham"
+    static var subscribedTo : [String] = []
+    static var subscribers : [String] = []
     static var feedCheers : [Cheer] = []
 //    static var dbKey = ""
 }

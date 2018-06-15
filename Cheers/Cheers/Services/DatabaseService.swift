@@ -53,12 +53,13 @@ class DatabaseService {
                     print("Data could not be saved: \(error).")
                 } else {
                     print("Data saved successfully!")
-                    // Update your list
+                    // Update local list
+                    myProfile.subscribedTo.append(user)
+                    // Update other list
                     self.ref.child("users").child(user).child("subscribers").child(subscriberKey).setValue(myProfile.displayName)
                 }
                 
             }
         }
-        
     }
 }
