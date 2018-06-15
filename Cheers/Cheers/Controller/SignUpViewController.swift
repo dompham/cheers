@@ -368,7 +368,7 @@ class SignUpViewController : UIViewController {
             makeTop.top.equalTo(v.snp.top)
             makeTop.width.equalTo(v.snp.width)
             // Offset bottom by less than half
-            makeTop.bottom.equalTo(v.snp.bottom).offset((h/1.8) * -1)
+            makeTop.bottom.equalTo(v.snp.bottom).offset((h/1.6) * -1)
         }
         
         // MARK: Constrain logo in topHalf
