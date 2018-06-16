@@ -32,7 +32,7 @@ class TabBarViewController : UITabBarController {
             
             
             self.viewControllers = [homeNavController, exploreVC, cheersVC, honorsVC, profileVC]
-            print("domp: Loaded")
+            logService.log(volume: 2, say: "TabBarController has loaded")
     }
     
 }

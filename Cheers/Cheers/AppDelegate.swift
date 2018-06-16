@@ -31,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //         We will use splash screen time to figure this out later
         handle = Auth.auth().addStateDidChangeListener { auth, user in
             if let user = user {
-                logService.log(volume: 2, say: "AppDelegate: User already signed in.")
+                logService.log(volume: 2, say: "AppDelegate: User auto signed in.")
                 
                 DBservice.getDisplayName(for: user.email!, then: { (displayName) in
                     myProfile.displayName = displayName
@@ -42,7 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 })
                 
             } else {
-                print("User is not signed in.")
+                logService.log(volume: 2, say: "AppDelegate: User not auto signed in.")
                 self.window?.rootViewController = LoginViewController()
             }
         }

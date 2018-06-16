@@ -25,7 +25,7 @@ class DatabaseService {
             }
             cb()
         }) { (error) in
-            print(error.localizedDescription)
+            logService.log(volume: 1, say: "DB Service initProfile: " + error.localizedDescription)
         }
     }
     
@@ -61,7 +61,7 @@ class DatabaseService {
             self.arrOfCheers = tempCheers
             cb(tempCheers)
         }) { (error) in
-            print(error.localizedDescription)
+            logService.log(volume: 1, say: "DB Service GetPost: " + error.localizedDescription)
         }
         return tempCheers
     }
@@ -76,9 +76,8 @@ class DatabaseService {
             // Update my list
             ref.child("users").child(myProfile.displayName).child("subscribedTo").child(subscribedToKey).setValue(user){ (error, reference) -> Void in
                 if let error = error {
-                    print("Data could not be saved: \(error).")
+                    logService.log(volume: 1, say: "DB Service User Subscribe Error: " + error.localizedDescription)
                 } else {
-                    print("Data saved successfully!")
                     // Update local list
                     myProfile.subscribedTo.append(user)
                     // Update other list

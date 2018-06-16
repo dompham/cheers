@@ -90,11 +90,11 @@ class RecentBeerCell: DatasourceCell {
         subBuddyButton.rx.tapGesture()
             .when(.recognized)
             .subscribe(onNext: { _ in
-                print("domp: subscribe")
                 guard let name = self.usernameLabel.text
                     else {
                         return
                 }
+                logService.log(volume: 2, say: "RecentCell: Subscribing to \(name)")
                 DBservice.userSubscribe(to: name, then: {})
                 // userSubscribe()
             }).disposed(by: disposeBag)

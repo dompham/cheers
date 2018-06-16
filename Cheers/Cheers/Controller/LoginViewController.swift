@@ -171,10 +171,7 @@ class LoginViewController : UIViewController {
                 }
                 // To make the activity indicator appear:
                 activityIndicator.startAnimating()
-                
-
-                print("domp: Trying to sign in")
-                
+                                
                 guard let email = emailField.text, let password = passwordField.text
                     else {
                         return
@@ -184,19 +181,17 @@ class LoginViewController : UIViewController {
                     // To make the activity indicator disappear:
                     activityIndicator.stopAnimating()
                     if (error != nil) {
-                        print("domp: Error signing in")
-                        print(error!)
+                        logService.log(volume: 1, say: "Sign in error: " + (error?.localizedDescription)!)
                         self.fadeViewInThenOut(view: self.wrongLoginLabel, delay: 1)
 
                         return
                     } else {
-                        print("domp: Signed in")
+                        logService.log(volume: 2, say: "Signed In")
+                        
                         UIApplication.shared.statusBarStyle = .default
-                        myProfile.displayName = "dompham"
                         DBservice.getDisplayName(for: (user?.user.email!)!, then: { (displayName) in
                             myProfile.displayName = displayName
                             DBservice.initMyProfile {
-                                print("init profile from login")
                                 self.present(TabBarViewController(), animated: true, completion: { () in
                                 })
                             }
@@ -211,7 +206,6 @@ class LoginViewController : UIViewController {
         label.rx.tapGesture()
             .when(.recognized)
             .subscribe(onNext: { _ in
-                print("domp create account")
                 UIApplication.shared.statusBarStyle = .default
                 let signUpView = SignUpViewController()
                 signUpView.modalTransitionStyle = .crossDissolve
@@ -241,17 +235,17 @@ class LoginViewController : UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-       handle = Auth.auth().addStateDidChangeListener { auth, user in
-            if let user = user {
-                print("User is signed in.")
-            } else {
-                print("User is not signed in.")
-            }
-        }
+//       handle = Auth.auth().addStateDidChangeListener { auth, user in
+//            if let user = user {
+//                print("User is signed in.")
+//            } else {
+//                print("User is not signed in.")
+//            }
+//        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        Auth.auth().removeStateDidChangeListener(handle!)
+//        Auth.auth().removeStateDidChangeListener(handle!)
 
     }
     

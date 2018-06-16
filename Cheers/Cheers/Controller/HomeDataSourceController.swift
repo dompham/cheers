@@ -33,14 +33,11 @@ class HomeDatasourceController: DatasourceController {
     
     func fetchFeed() {
         let arrCheers = DBservice.getPosts(for: myProfile.displayName) { (arrCheers) in
-            print("setting datasource")
+            logService.log(volume: 2, say: "Fetched feed and updating home data source")
             myProfile.feedCheers = arrCheers
-            print(myProfile.feedCheers)
             let homeDatasource = HomeDatasource()
             self.datasource = homeDatasource
         }
-//        print("returning")
-//        print(arrCheers)
     }
     
     func setupRefresh() {
@@ -52,29 +49,19 @@ class HomeDatasourceController: DatasourceController {
     }
     
     @objc func refresh(){
-        print("refreshing")
         updateFeed(then: stopRefreshing)
     }
     
     func updateFeed(then cb: @escaping () -> Void){
         DBservice.getPosts(for: myProfile.displayName) { (arrCheers) in
-            print("updating datasource")
+            logService.log(volume: 2, say: "Updating home feed")
             myProfile.feedCheers = arrCheers
-            print(myProfile.feedCheers)
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 4, execute: {
                 cb()
-                // Put your code which should be executed with a delay here
-//            })
-
             self.collectionView?.reloadData()
-//            let homeDatasource = HomeDatasource()
-//            self.datasource = homeDatasource
-
         }
     }
     
     func stopRefreshing(){
-        print("end refreshing")
         self.refreshControl.endRefreshing()
         self.activityIndicatorView.stopAnimating()
     }
@@ -83,7 +70,6 @@ class HomeDatasourceController: DatasourceController {
         handle = Auth.auth().addStateDidChangeListener { (auth, user) in
             if let user = user {
 
-                print("domp: User signed in as ID: " + myProfile.uid! + " " + myProfile.email!)
             }
         }
     }
@@ -149,7 +135,6 @@ class HomeDatasourceController: DatasourceController {
         settingsButton.rx.tapGesture()
             .when(.recognized)
             .subscribe(onNext: { _ in
-                print("domp: Logging out")
                 do{
                     try Auth.auth().signOut()
                     let loginView = LoginViewController()
@@ -158,7 +143,7 @@ class HomeDatasourceController: DatasourceController {
                         
                     })
                 } catch let err{
-                    print(err)
+                    logService.log(volume: 1, say: "Error Loggin out: " + err.localizedDescription)
                 }
             }).disposed(by: disposeBag)
         
@@ -195,7 +180,6 @@ class HomeDatasourceController: DatasourceController {
             let attributes = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 15)]
             
             let estimateFrame = NSString(string: recentCheer.review).boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: attributes, context: nil)
-            print(estimateFrame.height)
             return CGSize(width: view.frame.width, height: estimateFrame.height + 90)
             
         } else if let cheer = self.datasource?.item(indexPath) as? Cheer {
@@ -205,7 +189,6 @@ class HomeDatasourceController: DatasourceController {
             let attributes = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 15)]
             
             let estimateFrame = NSString(string: cheer.review).boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: attributes, context: nil)
-            print(estimateFrame.height)
             return CGSize(width: view.frame.width, height: estimateFrame.height + 90)
             
         }

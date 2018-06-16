@@ -112,7 +112,6 @@ class FeedViewCall : DatasourceCell {
         button.rx.tapGesture()
             .when(.recognized)
             .subscribe(onNext: { _ in
-                print("Button tapped!")
             }).disposed(by: disposeBag)
     }
     

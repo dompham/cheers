@@ -10,7 +10,7 @@ import Foundation
 
 class LoggingService {
     static let sharedInstance = LoggingService()
-    // 0-3 Silence/General/Debug/All
+    // 0-3 Silence/Errors/Debug/All
     let volume = 3
     
     func log(volume lvl: Int, say str: String) {

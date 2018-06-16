@@ -235,7 +235,7 @@ class SignUpViewController : UIViewController {
         label.rx.tapGesture()
             .when(.recognized)
             .subscribe(onNext: { _ in
-                print("domp: Already have an acc")
+                logService.log(volume: 2, say: "Already have an account, transitioning back to log in")
                 UIApplication.shared.statusBarStyle = .default
                 let loginView = LoginViewController()
                 loginView.modalTransitionStyle = .crossDissolve
@@ -260,24 +260,22 @@ class SignUpViewController : UIViewController {
                 // To make the activity indicator appear:
                 activityIndicator.startAnimating()
                 
-                print("domp: Creating new account")
+                logService.log(volume: 2, say: "Attempting to create new account")
                 guard let email = emailField.text, let password = passwordField.text, let name = nameField.text
                     else {
                         return
                 }
-                print(email)
-                print(password)
+
                 Auth.auth().createUser(withEmail: email, password: password) { (authResult, error) in
                     // To make the activity indicator disappear:
                     activityIndicator.stopAnimating()
                     
                     if (error != nil) {
-                        print(error!)
+                        logService.log(volume: 1, say: "Account creation error: " + (error?.localizedDescription)! )
                         return
                     } else {
-                        print("domp: User Created and signed in for the first time, do something??")
                         let user = authResult?.user
-                        myProfile.uid = user!.email
+//                        myProfile.uid = user!.email
                         myProfile.email = user!.email
                         myProfile.displayName = name
                         // Create user in db?
