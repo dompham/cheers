@@ -36,6 +36,14 @@ class DatabaseService {
         }
     }
     
+    func getDisplayName(for email: String, then cb: @escaping (_ : String) -> Void){
+        ref.child("nameEmailMaps").observeSingleEvent(of: .value, with: { (snapshot) in
+            if let resources = snapshot.value as? [String : AnyObject] {
+                let displayName = (resources as NSDictionary).allKeys(for: email) as! String
+            }
+        })
+    }
+    
     
     // MARK: Feed functions
     func getPosts(for user: String, then cb: @escaping (_ : [Cheer]) -> Void) -> [Cheer]{
