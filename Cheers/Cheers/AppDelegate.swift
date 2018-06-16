@@ -16,7 +16,7 @@ let DBservice = DatabaseService.sharedInstance
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    var handle: AuthStateDidChangeListenerHandle?;
     var window: UIWindow?
 
 
@@ -29,12 +29,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
        self.window?.rootViewController = LoginViewController()
         
 //         We will use splash screen time to figure this out later
-        Auth.auth().addStateDidChangeListener { auth, user in
+        handle = Auth.auth().addStateDidChangeListener { auth, user in
             if let user = user {
                 print("User is signed in via listener")
+                print("init profile from listener")
+
                 myProfile.displayName = "dompham"
                 DBservice.initMyProfile {
                     self.window?.rootViewController = TabBarViewController()
+                    Auth.auth().removeStateDidChangeListener(self.handle!)
                 }
             } else {
                 print("User is not signed in.")
