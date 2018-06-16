@@ -12,7 +12,7 @@ import FirebaseDatabase
 import FirebaseAuth
 
 let DBservice = DatabaseService.sharedInstance
-
+let logService = LoggingService.sharedInstance
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -31,14 +31,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //         We will use splash screen time to figure this out later
         handle = Auth.auth().addStateDidChangeListener { auth, user in
             if let user = user {
-                print("User is signed in via listener")
-                print("init profile from listener")
-
-                myProfile.displayName = "dompham"
-                DBservice.initMyProfile {
-                    self.window?.rootViewController = TabBarViewController()
-                    Auth.auth().removeStateDidChangeListener(self.handle!)
-                }
+                logService.log(volume: 2, say: "AppDelegate: User already signed in.")
+                
+                DBservice.getDisplayName(for: user.email!, then: { (displayName) in
+                    myProfile.displayName = displayName
+                    DBservice.initMyProfile {
+                        self.window?.rootViewController = TabBarViewController()
+                        Auth.auth().removeStateDidChangeListener(self.handle!)
+                    }
+                })
+                
             } else {
                 print("User is not signed in.")
                 self.window?.rootViewController = LoginViewController()

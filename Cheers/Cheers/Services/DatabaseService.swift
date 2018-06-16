@@ -18,17 +18,10 @@ class DatabaseService {
     func initMyProfile(then cb: @escaping () -> Void){
         ref.child("users").child(myProfile.displayName).observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
-            
             if let resources = snapshot.value as? [String : AnyObject] {
-                //for (_, obj) in resources {
-                    //if let dataObject = obj as? [String : AnyObject] {
-                        myProfile.displayName =  resources["displayName"] as! String;
-                        myProfile.email = resources["email"] as! String;
-                        myProfile.uid = resources["uid"] as! String;
-                        //myProfile.subscribedTo = dataObject["subscribedTo"] as! String;
-//                        myProfile.subscribers = dataObject["subscribers"] as! String;
-                  //  }
-               // }
+                myProfile.displayName =  resources["displayName"] as! String;
+                myProfile.email = resources["email"] as? String;
+                myProfile.uid = resources["uid"] as? String;
             }
             cb()
         }) { (error) in
@@ -39,7 +32,9 @@ class DatabaseService {
     func getDisplayName(for email: String, then cb: @escaping (_ : String) -> Void){
         ref.child("nameEmailMaps").observeSingleEvent(of: .value, with: { (snapshot) in
             if let resources = snapshot.value as? [String : AnyObject] {
-                let displayName = (resources as NSDictionary).allKeys(for: email) as! String
+                let displayName = (resources as NSDictionary).allKeys(for: email) as! [String]
+                // There should only be one thing in the array anyways
+                cb(displayName[0])
             }
         })
     }

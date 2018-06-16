@@ -192,20 +192,15 @@ class LoginViewController : UIViewController {
                     } else {
                         print("domp: Signed in")
                         UIApplication.shared.statusBarStyle = .default
-                        
-                        // TODO: Pull from firebase here - subscribers, name, etc. Actually I think it should be done in tab bar view
-//                        myProfile.uid = user?.user.uid
-//                        myProfile.email = user?.user.email
                         myProfile.displayName = "dompham"
-
-                        DBservice.initMyProfile {
-                            print("init profile from login")
-                            self.present(TabBarViewController(), animated: true, completion: { () in
-                            })
-
-                        }
-                        
-
+                        DBservice.getDisplayName(for: (user?.user.email!)!, then: { (displayName) in
+                            myProfile.displayName = displayName
+                            DBservice.initMyProfile {
+                                print("init profile from login")
+                                self.present(TabBarViewController(), animated: true, completion: { () in
+                                })
+                            }
+                        })
                     }
                 }
                 
