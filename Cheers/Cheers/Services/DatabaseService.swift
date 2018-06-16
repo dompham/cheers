@@ -14,6 +14,29 @@ class DatabaseService {
     var ref = Database.database().reference()
     var arrOfCheers : [Cheer] = []
     
+    // MARK: User Profile Functions
+    func initMyProfile(then cb: @escaping () -> Void){
+        ref.child("users").child(myProfile.displayName).observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value
+            
+            if let resources = snapshot.value as? [String : AnyObject] {
+                //for (_, obj) in resources {
+                    //if let dataObject = obj as? [String : AnyObject] {
+                        myProfile.displayName =  resources["displayName"] as! String;
+                        myProfile.email = resources["email"] as! String;
+                        myProfile.uid = resources["uid"] as! String;
+                        //myProfile.subscribedTo = dataObject["subscribedTo"] as! String;
+//                        myProfile.subscribers = dataObject["subscribers"] as! String;
+                  //  }
+               // }
+            }
+            cb()
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+    }
+    
+    
     // MARK: Feed functions
     func getPosts(for user: String, then cb: @escaping (_ : [Cheer]) -> Void) -> [Cheer]{
         var tempCheers : [Cheer] = []

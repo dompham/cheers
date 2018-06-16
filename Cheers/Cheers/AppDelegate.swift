@@ -26,19 +26,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         window = UIWindow(frame: UIScreen.main.bounds);
         window?.makeKeyAndVisible();
-        self.window?.rootViewController = LoginViewController()
+       self.window?.rootViewController = LoginViewController()
         
-        // We will use splash screen time to figure this out later
-//        Auth.auth().addStateDidChangeListener { auth, user in
-//            if let user = user {
-//                print("User is signed in.")
-//                self.window?.rootViewController = TabBarViewController()
-//            } else {
-//                print("User is not signed in.")
-//                self.window?.rootViewController = LoginViewController()
-//            }
-//        }
-//
+//         We will use splash screen time to figure this out later
+        Auth.auth().addStateDidChangeListener { auth, user in
+            if let user = user {
+                print("User is signed in via listener")
+                myProfile.displayName = "dompham"
+                DBservice.initMyProfile {
+                    self.window?.rootViewController = TabBarViewController()
+                }
+            } else {
+                print("User is not signed in.")
+                self.window?.rootViewController = LoginViewController()
+            }
+        }
+
         
 
         
