@@ -107,12 +107,18 @@ class HomeDatasourceController: DatasourceController {
         
         titleImage.contentMode = .scaleAspectFit
         navigationItem.titleView = titleImage
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.barTintColor = cheersBlue
+        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.white]
 
+        navigationItem.title = "Home"
         
         // MARK: Search Button
         
         let searchButton = UIButton(type: .system)
+
         searchButton.setImage(#imageLiteral(resourceName: "search"), for: .normal)
+        searchButton.tintColor = cheersOrange
         // iOS 11 buttons need constraints
         let widthConstraintSearch = searchButton.widthAnchor.constraint(equalToConstant: 28)
         let heightConstraintSearch = searchButton.heightAnchor.constraint(equalToConstant: 28)
@@ -163,6 +169,7 @@ class HomeDatasourceController: DatasourceController {
             }).disposed(by: disposeBag)
         
         settingsButton.setImage(#imageLiteral(resourceName: "settings"), for: .normal)
+        settingsButton.tintColor = cheersOrange
         // iOS 11 buttons need constraints
         let widthConstraintSettings = settingsButton.widthAnchor.constraint(equalToConstant: 28)
         let heightConstraintSettings = settingsButton.heightAnchor.constraint(equalToConstant: 28)
@@ -173,9 +180,9 @@ class HomeDatasourceController: DatasourceController {
         navigationItem.rightBarButtonItems = [UIBarButtonItem(customView: settingsButton), UIBarButtonItem(customView: searchButton)]
         
         navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        //navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         
-        navigationController?.navigationBar.backgroundColor = .white
+        //navigationController?.navigationBar.backgroundColor = .white
         navigationController?.navigationBar.isTranslucent = false
         
         let navBarSeparator = UIView()

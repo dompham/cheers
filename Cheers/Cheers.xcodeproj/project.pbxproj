@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3E101DA120B632A60067C378 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E101DA020B632A60067C378 /* LogInView.swift */; };
+		3E85407320DC203D0030A77A /* CheersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E85407220DC203D0030A77A /* CheersView.swift */; };
 		3E8DED1520C0A7C80049D98E /* MyProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8DED1420C0A7C80049D98E /* MyProfile.swift */; };
 		3E8DED1720C0C02B0049D98E /* Notes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8DED1620C0C02B0049D98E /* Notes.swift */; };
 		3EB141ED20B356AB00E4D853 /* Cheer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB141EC20B356AB00E4D853 /* Cheer.swift */; };
@@ -37,6 +38,7 @@
 /* Begin PBXFileReference section */
 		21DD3CF7AE49E66C7CA978F5 /* Pods-Cheers.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cheers.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Cheers/Pods-Cheers.debug.xcconfig"; sourceTree = "<group>"; };
 		3E101DA020B632A60067C378 /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
+		3E85407220DC203D0030A77A /* CheersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheersView.swift; sourceTree = "<group>"; };
 		3E8DED1420C0A7C80049D98E /* MyProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfile.swift; sourceTree = "<group>"; };
 		3E8DED1620C0C02B0049D98E /* Notes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notes.swift; sourceTree = "<group>"; };
 		3EB141EC20B356AB00E4D853 /* Cheer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cheer.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 				3EEE24BF20AF4EE1004BBE08 /* RecentFooter.swift */,
 				65953B8920B0BA2C002B5774 /* FeedViewCell.swift */,
 				3E101DA020B632A60067C378 /* LogInView.swift */,
+				3E85407220DC203D0030A77A /* CheersView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -189,6 +192,7 @@
 				6536C2B220AE7415002088A3 /* Frameworks */,
 				6536C2B320AE7415002088A3 /* Resources */,
 				00710B9DF02750A81C7A5990 /* [CP] Embed Pods Frameworks */,
+				5295D4A29EF33DF06C20A770 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -312,6 +316,21 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		5295D4A29EF33DF06C20A770 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Cheers/Pods-Cheers-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -327,6 +346,7 @@
 				650CAB7820B0924600B143EB /* RecentCheer.swift in Sources */,
 				65D59E7820CC6FED00BDE133 /* DatabaseService.swift in Sources */,
 				65D59E7620BF844000BDE133 /* SignUpViewController.swift in Sources */,
+				3E85407320DC203D0030A77A /* CheersView.swift in Sources */,
 				3EB141F720B3699200E4D853 /* ProfileViewController.swift in Sources */,
 				3EEE24BC20AF4176004BBE08 /* RecentBeerCell.swift in Sources */,
 				65953B8A20B0BA2C002B5774 /* FeedViewCell.swift in Sources */,
@@ -480,10 +500,7 @@
 				DEVELOPMENT_TEAM = VUPJGYTX6Q;
 				INFOPLIST_FILE = Cheers/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dompham.Cheers;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -500,10 +517,7 @@
 				DEVELOPMENT_TEAM = VUPJGYTX6Q;
 				INFOPLIST_FILE = Cheers/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dompham.Cheers;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
