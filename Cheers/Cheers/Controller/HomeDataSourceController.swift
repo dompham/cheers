@@ -93,12 +93,18 @@ class HomeDatasourceController: DatasourceController {
         
         titleImage.contentMode = .scaleAspectFit
         navigationItem.titleView = titleImage
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.barTintColor = cheersBlue
+        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.white]
 
+        navigationItem.title = "Home"
         
         // MARK: Search Button
         
         let searchButton = UIButton(type: .system)
+
         searchButton.setImage(#imageLiteral(resourceName: "search"), for: .normal)
+        searchButton.tintColor = cheersOrange
         // iOS 11 buttons need constraints
         let widthConstraintSearch = searchButton.widthAnchor.constraint(equalToConstant: 28)
         let heightConstraintSearch = searchButton.heightAnchor.constraint(equalToConstant: 28)
@@ -110,20 +116,20 @@ class HomeDatasourceController: DatasourceController {
             .when(.recognized)
             .subscribe(onNext: { _ in
                 
-
+//
 //                print("domp: Creating post")
-//                let key = self.ref.child("posts").child("Hmykel").childByAutoId().key
+//                let key = self.ref.child("posts").child("dompham").childByAutoId().key
 //                let newCheer = [
 //                    "name": "dompham" as String,
-//                    "beer": "Some other beer" as String,
-//                    "location": "Clems Tap House" as String,
-//                    "review": "It was great" as String,
+//                    "beer": "yet another beer" as String,
+//                    "location": "Some bar" as String,
+//                    "review": "It was not as great" as String,
 //                    "author": "Do Testing" as String,
 //                    "timestamp": "Timestamp" as String,
 //                    "key": key as String
 //                ]
 //                // Adding to post tree
-//                self.ref.child("posts").child("Hmykel").child(key).setValue(newCheer)
+//                self.ref.child("posts").child("dompham").child(key).setValue(newCheer)
 
                
             }).disposed(by: disposeBag)
@@ -148,6 +154,7 @@ class HomeDatasourceController: DatasourceController {
             }).disposed(by: disposeBag)
         
         settingsButton.setImage(#imageLiteral(resourceName: "settings"), for: .normal)
+        settingsButton.tintColor = cheersOrange
         // iOS 11 buttons need constraints
         let widthConstraintSettings = settingsButton.widthAnchor.constraint(equalToConstant: 28)
         let heightConstraintSettings = settingsButton.heightAnchor.constraint(equalToConstant: 28)
@@ -158,9 +165,9 @@ class HomeDatasourceController: DatasourceController {
         navigationItem.rightBarButtonItems = [UIBarButtonItem(customView: settingsButton), UIBarButtonItem(customView: searchButton)]
         
         navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        //navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         
-        navigationController?.navigationBar.backgroundColor = .white
+        //navigationController?.navigationBar.backgroundColor = .white
         navigationController?.navigationBar.isTranslucent = false
         
         let navBarSeparator = UIView()

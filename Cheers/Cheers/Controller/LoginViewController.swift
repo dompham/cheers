@@ -217,6 +217,9 @@ class LoginViewController : UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Make sure keyboard dips
+        self.hideKeyboardWhenTappedAround()
+
         // Set to light because of dark BG
         UIApplication.shared.statusBarStyle = .lightContent
         
