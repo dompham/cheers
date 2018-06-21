@@ -130,20 +130,20 @@ class HomeDatasourceController: DatasourceController {
             .when(.recognized)
             .subscribe(onNext: { _ in
                 
-
+//
 //                print("domp: Creating post")
-//                let key = self.ref.child("posts").child("Hmykel").childByAutoId().key
+//                let key = self.ref.child("posts").child("dompham").childByAutoId().key
 //                let newCheer = [
 //                    "name": "dompham" as String,
-//                    "beer": "Some other beer" as String,
-//                    "location": "Clems Tap House" as String,
-//                    "review": "It was great" as String,
+//                    "beer": "yet another beer" as String,
+//                    "location": "Some bar" as String,
+//                    "review": "It was not as great" as String,
 //                    "author": "Do Testing" as String,
 //                    "timestamp": "Timestamp" as String,
 //                    "key": key as String
 //                ]
 //                // Adding to post tree
-//                self.ref.child("posts").child("Hmykel").child(key).setValue(newCheer)
+//                self.ref.child("posts").child("dompham").child(key).setValue(newCheer)
 
                
             }).disposed(by: disposeBag)

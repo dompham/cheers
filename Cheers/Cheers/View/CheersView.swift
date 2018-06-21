@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import DropDown
 
 class CheersView : UIView {
     // MARK: UI Element - Logo
@@ -43,17 +44,13 @@ class CheersView : UIView {
     }()
     
     // MARK: UI Element - Beer name
-//    let beerField : UITextField = {
-//        let field = UITextField()
-//        
-//        field.attributedPlaceholder = NSAttributedString(string: "Beer Name", attributes: [NSAttributedStringKey.foregroundColor : cheersOrange])
-//        field.borderStyle = .none
-//        field.backgroundColor = .clear
-//        field.textColor = cheersOrange
-//        field.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0);
-//        //remove
-//        //field.text = "Guinness IPA"
-//
-//        return field
-//    }()
+    let typeSelect : DropDown = {
+        let select = DropDown()
+        
+        select.dataSource = ["Car", "Motorcycle", "Truck"]
+        select.width = 200
+
+
+        return select
+    }()
 }

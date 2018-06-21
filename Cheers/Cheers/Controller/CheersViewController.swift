@@ -10,12 +10,18 @@ import Foundation
 import UIKit
 import SnapKit
 import MaterialComponents
+import RxGesture
+import RxSwift
+import DropDown
 
 class CheersViewController : UIViewController {
+    let disposeBag = DisposeBag()
+
     let viewElements = CheersView()
     var beerField : UITextField?
     var logoImage : UIImageView?
     var separator : UIView?
+    var typeSelect : DropDown?
     
     override func viewDidLoad() {
         view.backgroundColor = cheersBlue//UIColor(r: 0, g: 128, b: 255)
@@ -35,6 +41,15 @@ class CheersViewController : UIViewController {
 
         separator = viewElements.orangeSeparator
         view.addSubview(separator!)
+        separator!.rx.tapGesture()
+            .when(.recognized)
+            .subscribe(onNext: { _ in
+                print("show dropdown")
+                self.typeSelect?.show()
+            }).disposed(by: disposeBag)
+        
+        typeSelect = viewElements.typeSelect
+        view.addSubview(typeSelect!)
 
     }
 
@@ -59,6 +74,8 @@ class CheersViewController : UIViewController {
             makeLine.right.equalTo(beerField!.snp.right).offset(20)
             makeLine.height.equalTo(1)
         }
+        
+        typeSelect?.anchorView = separator
     }
     
     

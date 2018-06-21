@@ -1,4 +1,5 @@
 PODS:
+  - DropDown (2.3.2)
   - Firebase/Auth (5.0.1):
     - Firebase/CoreOnly
     - FirebaseAuth (= 5.0.0)
@@ -482,6 +483,7 @@ PODS:
   - SnapKit (4.0.0)
 
 DEPENDENCIES:
+  - DropDown
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
@@ -493,6 +495,7 @@ DEPENDENCIES:
   - SnapKit (~> 4.0.0)
 
 SPEC CHECKSUMS:
+  DropDown: 7f87abecc28f9b4edad810fe1211c5c018c257e5
   Firebase: d6861c2059d8c32d1e6dd8932e22ada346d90a3a
   FirebaseAnalytics: 19812b49fa5f283dd6b23edf8a14b5d477029ab8
   FirebaseAuth: acbeef02fe7c3a26624e309849f3fe30c84115af
@@ -516,6 +519,6 @@ SPEC CHECKSUMS:
   RxSwift: e49536837d9901277638493ea537394d4b55f570
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
 
-PODFILE CHECKSUM: cd653c95110744c6b1e19f0f255690b74f61593e
+PODFILE CHECKSUM: fedcfa8acafad9cb957dca567c114e15e82463ea
 
 COCOAPODS: 1.4.0
