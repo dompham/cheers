@@ -13,9 +13,9 @@ import MaterialComponents
 
 class CheersView : UIView {
     // MARK: UI Element - Segment Container
-    let segmentContainer : UIView = {
+    let container1 : UIView = {
        let container = UIView()
-        container.backgroundColor = cheersOrange
+        container.backgroundColor = .white
         return container
     }()
     
@@ -28,7 +28,7 @@ class CheersView : UIView {
         return logo
     }()
 
-    
+
     // MARK: UI Element - Beer name
     let beerField : UITextField = {
         let field = UITextField()

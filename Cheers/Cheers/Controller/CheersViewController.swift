@@ -17,9 +17,11 @@ import DropDown
 class CheersViewController : UIViewController, MDCTabBarDelegate {
     let disposeBag = DisposeBag()
     let viewElements = CheersView()
+    var beerFieldController = MDCTextInputControllerUnderline()
     var segmentBar : MDCTabBar?
-    var segmentContainer : UIView?
-    var beerField : UITextField?
+    var container : UIView?
+    var  beerField : MDCMultilineTextField?
+
     var logoImage : UIImageView?
     var separator : UIView?
     var typeSelect : DropDown?
@@ -30,8 +32,9 @@ class CheersViewController : UIViewController, MDCTabBarDelegate {
         self.hideKeyboardWhenTappedAround()
         
         setViews()
-        assembleViews()
         setupSegmentBar()
+        
+        assembleViews()
     }
     func setupSegmentBar(){
         let midX = view.bounds.midX
@@ -52,18 +55,22 @@ class CheersViewController : UIViewController, MDCTabBarDelegate {
         //segmentBar?.frame.origin = view.center
     }
     
+    func setupBeerField(){
+        beerField = MDCMultilineTextField()
+        beerField?.placeholder = "Beer Name"
+        //        textFieldFloating.textView?.delegate = self
+        beerFieldController = MDCTextInputControllerUnderline(textInput: beerField) // Hold on as a property
+        container?.addSubview(beerField!)
+    }
+    
     func setViews(){
         
-//        segmentContainer = viewElements.segmentContainer
-//        view.addSubview(segmentContainer!)
-//
-
-        
+        container = viewElements.container1
+        view.addSubview(container!)
         logoImage = viewElements.logoImage
-        view.addSubview(logoImage!)
+        container?.addSubview(logoImage!)
         
-        beerField = viewElements.beerField
-//        view.addSubview(beerField!)
+        setupBeerField()
         
         separator = viewElements.orangeSeparator
 //        view.addSubview(separator!)
@@ -81,25 +88,29 @@ class CheersViewController : UIViewController, MDCTabBarDelegate {
     
     func assembleViews(){
         
-//        segmentContainer?.snp.makeConstraints({ (makeContainer) in
-//            makeContainer.top.equalTo(view.snp.top).offset(20)
-//            makeContainer.width.equalTo(view.snp.width).multipliedBy(0.75)
-//            makeContainer.centerX.equalTo(view.snp.centerX)
-//            makeContainer.height.equalTo(view.snp.height).multipliedBy(0.07)
-//        })
+        container?.snp.makeConstraints({ (makeContainer) in
+            makeContainer.top.equalTo((segmentBar?.snp.bottom)!).offset(20)
+            makeContainer.width.equalTo(view.snp.width)
+            makeContainer.centerX.equalTo(view.snp.centerX)
+            makeContainer.height.equalTo(view.snp.height)
+        })
         
         // MARK: Constraints - Lower Container
         logoImage?.snp.makeConstraints {(makeLogo) in
+            makeLogo.top.equalTo((container?.snp.top)!).offset(15)
             makeLogo.centerX.equalTo(view.snp.centerX)
-            makeLogo.centerY.equalTo(view.snp.centerY).multipliedBy(0.35)
             makeLogo.height.width.equalTo(view.snp.height).multipliedBy(0.075)
         }
-//
-//        beerField?.snp.makeConstraints { (makeBeer) in
-//            makeBeer.top.equalTo(logoImage!.snp.bottom).offset(50)
-//            makeBeer.centerX.equalTo(view.snp.centerX)
-//            makeBeer.width.equalTo(view.snp.width).multipliedBy(0.5)
-//        }
+        
+        
+        
+        
+
+        beerField?.snp.makeConstraints { (makeBeer) in
+            makeBeer.top.equalTo(logoImage!.snp.bottom).offset(50)
+            makeBeer.centerX.equalTo(view.snp.centerX)
+            makeBeer.width.equalTo(view.snp.width).multipliedBy(0.5)
+        }
 //
 //        // MARK: Constraints - Gray Line 1
 //        separator?.snp.makeConstraints {(makeLine) in
