@@ -9,8 +9,16 @@
 import Foundation
 import UIKit
 import DropDown
+import MaterialComponents
 
 class CheersView : UIView {
+    // MARK: UI Element - Segment Container
+    let segmentContainer : UIView = {
+       let container = UIView()
+        container.backgroundColor = cheersOrange
+        return container
+    }()
+    
     // MARK: UI Element - Logo
     let logoImage : UIImageView = {
         let logo = UIImageView(image: #imageLiteral(resourceName: "main_icon"))
@@ -53,4 +61,6 @@ class CheersView : UIView {
 
         return select
     }()
+    
+    
 }
