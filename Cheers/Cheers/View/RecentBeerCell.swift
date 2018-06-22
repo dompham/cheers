@@ -11,7 +11,7 @@ import UIKit
 import RxSwift
 import RxGesture
 
-//let cheersOrange : UIColor = UIColor(r: 255, g: 181, b: 69)
+let tintCheersOrange : UIColor = UIColor(r: 253, g: 228, b: 105)
 let cheersOrange : UIColor = UIColor(r: 252, g: 211, b: 8)
 //252    211    8
 let cheersBlue : UIColor = UIColor(r: 68, g: 142, b: 255)

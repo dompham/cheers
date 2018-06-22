@@ -15,7 +15,7 @@ class CheersView : UIView {
     // MARK: UI Element - Segment Container
     let container1 : UIView = {
        let container = UIView()
-        container.backgroundColor = .white
+        container.backgroundColor = cheersBlue
         return container
     }()
     

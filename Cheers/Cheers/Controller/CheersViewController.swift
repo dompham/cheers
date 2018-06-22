@@ -17,10 +17,10 @@ import DropDown
 class CheersViewController : UIViewController, MDCTabBarDelegate {
     let disposeBag = DisposeBag()
     let viewElements = CheersView()
-    var beerFieldController = MDCTextInputControllerUnderline()
+    var beerFieldController = MDCTextInputControllerOutlined()
     var segmentBar : MDCTabBar?
     var container : UIView?
-    var  beerField : MDCMultilineTextField?
+    var  beerField : MDCTextField?
 
     var logoImage : UIImageView?
     var separator : UIView?
@@ -56,10 +56,20 @@ class CheersViewController : UIViewController, MDCTabBarDelegate {
     }
     
     func setupBeerField(){
-        beerField = MDCMultilineTextField()
+        beerField = MDCTextField()
         beerField?.placeholder = "Beer Name"
+        beerField?.textColor = tintCheersOrange
+        beerField?.cursorColor = tintCheersOrange
+//        beerField.transluc
         //        textFieldFloating.textView?.delegate = self
-        beerFieldController = MDCTextInputControllerUnderline(textInput: beerField) // Hold on as a property
+        beerFieldController = MDCTextInputControllerOutlined(textInput: beerField) // Hold on as a property
+        beerFieldController.normalColor = tintCheersOrange
+        beerFieldController.activeColor = tintCheersOrange
+        beerFieldController.floatingPlaceholderNormalColor = tintCheersOrange
+        beerFieldController.floatingPlaceholderActiveColor = tintCheersOrange
+        beerFieldController.inlinePlaceholderColor = tintCheersOrange
+        
+        //beerFieldController.font
         container?.addSubview(beerField!)
     }
     
@@ -103,13 +113,11 @@ class CheersViewController : UIViewController, MDCTabBarDelegate {
         }
         
         
-        
-        
 
         beerField?.snp.makeConstraints { (makeBeer) in
             makeBeer.top.equalTo(logoImage!.snp.bottom).offset(50)
             makeBeer.centerX.equalTo(view.snp.centerX)
-            makeBeer.width.equalTo(view.snp.width).multipliedBy(0.5)
+            makeBeer.width.equalTo(view.snp.width).multipliedBy(0.7)
         }
 //
 //        // MARK: Constraints - Gray Line 1
