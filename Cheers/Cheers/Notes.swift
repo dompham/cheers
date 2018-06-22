@@ -46,7 +46,7 @@ import Foundation
  // Have async callbacks
  //https://stackoverflow.com/questions/42300369/swift-service-class-to-retrieve-firebase-data
  
- 
+ // The implementation of this feature is quite easy. All you have to do is change "visibleHeight" in side the DropDown file to whatever size you need. If you need to see a sample i can upload my work
  
  
  

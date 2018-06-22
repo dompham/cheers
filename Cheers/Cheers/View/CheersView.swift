@@ -55,8 +55,10 @@ class CheersView : UIView {
     let typeSelect : DropDown = {
         let select = DropDown()
         
-        select.dataSource = ["Car", "Motorcycle", "Truck"]
-        select.width = 200
+        select.dataSource = ["India Pale Ale", "Amber Ale", "Lager", "Stout", "India Pale Ale", "Amber Ale", "Lager", "Stout", "India Pale Ale", "Amber Ale", "Lager", "Stout"]
+        select.direction = .bottom
+        
+        
 
 
         return select
