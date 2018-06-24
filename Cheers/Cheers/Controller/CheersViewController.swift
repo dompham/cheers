@@ -30,6 +30,7 @@ class CheersViewController : UIViewController, MDCTabBarDelegate {
     var separator : UIView?
     var typeSelect : DropDown?
     
+    
     override func viewDidLoad() {
         view.backgroundColor = cheersBlue//UIColor(r: 0, g: 128, b: 255)
         super.viewDidLoad()

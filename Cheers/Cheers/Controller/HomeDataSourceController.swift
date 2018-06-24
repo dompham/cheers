@@ -32,7 +32,7 @@ class HomeDatasourceController: DatasourceController {
     }
     
     func fetchFeed() {
-        let arrCheers = DBservice.getPosts(for: myProfile.displayName) { (arrCheers) in
+        _ = DBservice.getPosts(for: myProfile.displayName) { (arrCheers) in
             logService.log(volume: 2, say: "Fetched feed and updating home data source")
             myProfile.feedCheers = arrCheers
             let homeDatasource = HomeDatasource()

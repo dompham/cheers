@@ -210,6 +210,8 @@ class SignUpViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Make sure keyboard dips
+        self.hideKeyboardWhenTappedAround()
         // Set database reference
         ref = Database.database().reference()
         
