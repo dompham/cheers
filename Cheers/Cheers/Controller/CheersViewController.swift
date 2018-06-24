@@ -24,6 +24,7 @@ class CheersViewController : UIViewController, MDCTabBarDelegate {
     var container : UIView?
     var  beerField : MDCTextField?
     var styleField : MDCTextField?
+    var slider1 : MDCSlider!
 
     var logoImage : UIImageView?
     var separator : UIView?
@@ -38,6 +39,19 @@ class CheersViewController : UIViewController, MDCTabBarDelegate {
         
         assembleViews()
     }
+    
+    func setupSlider1(){
+        slider1 = MDCSlider(frame: CGRect(x: 50, y: 50, width: 100, height: 27))
+        slider1.addTarget(self,
+                         action: #selector(didChangeSliderValue(senderSlider:)),
+                         for: .valueChanged)
+        container?.addSubview(slider1)
+    }
+    
+    @objc func didChangeSliderValue(senderSlider:MDCSlider) {
+        print("Did change slider value to: %@", senderSlider.value)
+    }
+    
     func setupSegmentBar(){
         let midX = view.bounds.midX
         let midY = view.bounds.midY
@@ -100,6 +114,7 @@ class CheersViewController : UIViewController, MDCTabBarDelegate {
         setupBeerField()
         setupStyleField()
         
+        setupSlider1()
 
         styleField!.rx.tapGesture()
             .when(.recognized)
@@ -147,6 +162,8 @@ class CheersViewController : UIViewController, MDCTabBarDelegate {
             [unowned self] (index: Int, item: String) in
             self.styleField?.text = item
         }
+        
+        
     }
     
     override func viewDidLayoutSubviews() {

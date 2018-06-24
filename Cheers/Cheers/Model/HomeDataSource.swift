@@ -14,7 +14,7 @@ class HomeDatasource : Datasource {
     
     
     let recentCheers : [RecentCheer] = {
-        let recentCheer1 = RecentCheer(name: "dompham", beer: "Sculpin IPA", location: "@ The Ugly Dog", review: "Beer was OK, but I prefer the grapefruit version.", profileImage: #imageLiteral(resourceName: "dpham_stub_pic") )
+        let recentCheer1 = RecentCheer(name: "dompham", beer: "Sculpin IPA", location: "The Ugly Dog", review: "Beer was OK, but I prefer the grapefruit version.", profileImage: #imageLiteral(resourceName: "dpham_stub_pic") )
         return [recentCheer1]
     }()
     
