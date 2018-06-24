@@ -76,6 +76,12 @@ class FeedViewCall : DatasourceCell {
         viewPostButton.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 2)
         return viewPostButton
     }()
+    
+    let separatorView : UIView = {
+        let separator = UIView()
+        separator.backgroundColor = UIColor(r: 221, g: 245, b: 255)
+        return separator
+    }()
    
     override func setupViews() {
         super.setupViews()
@@ -91,6 +97,7 @@ class FeedViewCall : DatasourceCell {
         addSubview(feedCheerText)
         addSubview(locationLabel)
         addSubview(viewPostButton)
+        addSubview(separatorView)
         
         profileImageView.anchor(self.topAnchor, left: self.leftAnchor, bottom: nil, right: nil, topConstant: 12, leftConstant: 12, bottomConstant: 0, rightConstant: 0, widthConstant: 50, heightConstant: 50)
         
@@ -102,7 +109,9 @@ class FeedViewCall : DatasourceCell {
         
         viewPostButton.anchor(self.topAnchor, left: nil, bottom: nil, right: self.rightAnchor, topConstant: 16, leftConstant: 0, bottomConstant: 0, rightConstant: 12, widthConstant: 34, heightConstant: 36)
         
-        locationLabel.anchor(feedCheerText.bottomAnchor, left: beerLabel.leftAnchor, bottom: self.bottomAnchor, right: nil, topConstant: 0, leftConstant: 0, bottomConstant: 5, rightConstant: 0, widthConstant: 0, heightConstant: 0)
+        locationLabel.anchor(feedCheerText.bottomAnchor, left: beerLabel.leftAnchor, bottom: nil, right: nil, topConstant: 0, leftConstant: 0, bottomConstant: 5, rightConstant: 0, widthConstant: 0, heightConstant: 0)
+        
+        separatorView.anchor(locationLabel.bottomAnchor, left: self.leftAnchor, bottom: nil, right: self.rightAnchor, topConstant: 8, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 10)
         
         // MARK: UI Wiring
         setupViewPostButton(viewPostButton)
