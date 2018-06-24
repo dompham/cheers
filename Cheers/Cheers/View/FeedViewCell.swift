@@ -58,6 +58,7 @@ class FeedViewCall : DatasourceCell {
         feedCheer.isScrollEnabled = false
         feedCheer.showsVerticalScrollIndicator = false
         feedCheer.isEditable = false
+        feedCheer.backgroundColor = .green
         return feedCheer
     }()
     
@@ -103,7 +104,7 @@ class FeedViewCall : DatasourceCell {
         addSubview(usernameLabel)
         addSubview(beerLabel)
         addSubview(feedCheerText)
-        addSubview(locationLabel)
+//        addSubview(locationLabel)
         addSubview(beerPic)
         addSubview(viewPostButton)
         addSubview(separatorView)
@@ -117,11 +118,11 @@ class FeedViewCall : DatasourceCell {
         feedCheerText.anchor(beerLabel.bottomAnchor, left: beerLabel.leftAnchor, bottom: nil, right: self.rightAnchor, topConstant: -4, leftConstant: -4, bottomConstant: 0, rightConstant: 10, widthConstant: 0, heightConstant: 0)
         
         viewPostButton.anchor(self.topAnchor, left: nil, bottom: nil, right: self.rightAnchor, topConstant: 16, leftConstant: 0, bottomConstant: 0, rightConstant: 12, widthConstant: 34, heightConstant: 36)
-        
-        locationLabel.anchor(feedCheerText.bottomAnchor, left: beerLabel.leftAnchor, bottom: nil, right: nil, topConstant: 0, leftConstant: 0, bottomConstant: 5, rightConstant: 0, widthConstant: 0, heightConstant: 0)
+//
+//        locationLabel.anchor(feedCheerText.bottomAnchor, left: beerLabel.leftAnchor, bottom: nil, right: nil, topConstant: 0, leftConstant: 0, bottomConstant: 5, rightConstant: 0, widthConstant: 0, heightConstant: 0)
         
         beerPic.snp.makeConstraints { (makePic) in
-            makePic.top.equalTo(locationLabel.snp.bottom).offset(8)
+            makePic.top.equalTo(feedCheerText.snp.bottom).offset(0)
             makePic.centerX.equalTo(self.snp.centerX)
             makePic.height.width.equalTo(292)
         }
