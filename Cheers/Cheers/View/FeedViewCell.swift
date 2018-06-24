@@ -11,6 +11,7 @@ import RxGesture
 import RxSwift
 import FirebaseDatabase
 import Firebase
+import SnapKit
 
 class FeedViewCall : DatasourceCell {
     let disposeBag = DisposeBag()
@@ -60,6 +61,13 @@ class FeedViewCall : DatasourceCell {
         return feedCheer
     }()
     
+    //TODO: UIImage
+    let beerPic : UIView = {
+        let pic = UIView()
+        pic.backgroundColor = .gray
+        return pic
+    }()
+    
     // View post button
     let viewPostButton : UIButton = {
         let viewPostButton = UIButton()
@@ -96,6 +104,7 @@ class FeedViewCall : DatasourceCell {
         addSubview(beerLabel)
         addSubview(feedCheerText)
         addSubview(locationLabel)
+        addSubview(beerPic)
         addSubview(viewPostButton)
         addSubview(separatorView)
         
@@ -111,7 +120,14 @@ class FeedViewCall : DatasourceCell {
         
         locationLabel.anchor(feedCheerText.bottomAnchor, left: beerLabel.leftAnchor, bottom: nil, right: nil, topConstant: 0, leftConstant: 0, bottomConstant: 5, rightConstant: 0, widthConstant: 0, heightConstant: 0)
         
-        separatorView.anchor(locationLabel.bottomAnchor, left: self.leftAnchor, bottom: nil, right: self.rightAnchor, topConstant: 8, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 10)
+        beerPic.snp.makeConstraints { (makePic) in
+            makePic.top.equalTo(locationLabel.snp.bottom).offset(8)
+            makePic.centerX.equalTo(self.snp.centerX)
+            makePic.height.width.equalTo(292)
+        }
+//        beerPic.anchor(locationLabel.bottomAnchor, left: nil, bottom: nil, right: nil, topConstant: 8, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 300, heightConstant: 300)
+        
+        separatorView.anchor(beerPic.bottomAnchor, left: self.leftAnchor, bottom: self.bottomAnchor, right: self.rightAnchor, topConstant: 8, leftConstant: 0, bottomConstant: 8, rightConstant: 0, widthConstant: 0, heightConstant: 10)
         
         // MARK: UI Wiring
         setupViewPostButton(viewPostButton)

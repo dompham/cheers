@@ -196,7 +196,7 @@ class HomeDatasourceController: DatasourceController {
             let attributes = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 15)]
             
             let estimateFrame = NSString(string: cheer.review).boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: attributes, context: nil)
-            return CGSize(width: view.frame.width - 20, height: estimateFrame.height + 100)
+            return CGSize(width: view.frame.width - 20, height: estimateFrame.height + 400)
             
         }
         return CGSize(width: view.frame.width, height: 200)
