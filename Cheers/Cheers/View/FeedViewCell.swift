@@ -104,9 +104,6 @@ class FeedViewCall : DatasourceCell {
     let likeButton : UIButton = {
         let likeButton = UIButton()
         likeButton.backgroundColor = .white
-        //        viewPostButton.layer.cornerRadius = 5
-        //        viewPostButton.layer.borderColor = cheersBlue.cgColor
-        //        viewPostButton.layer.borderWidth = 1
         likeButton.setTitleColor(cheersBlue, for: .normal)
         likeButton.setImage(#imageLiteral(resourceName: "heart-outline"), for: .normal)
         likeButton.imageView?.contentMode = .scaleAspectFit
@@ -168,12 +165,6 @@ class FeedViewCall : DatasourceCell {
         usernameLabel.anchor(profileImageView.topAnchor, left: profileImageView.rightAnchor, bottom: nil, right: nil, topConstant: 0, leftConstant: 8, bottomConstant: 0, rightConstant: 12, widthConstant: 0, heightConstant: 22)
         
         beerLabel.anchor(usernameLabel.bottomAnchor, left: profileImageView.rightAnchor, bottom: nil, right: nil, topConstant: 0, leftConstant: 8, bottomConstant: 0, rightConstant: 12, widthConstant: 0, heightConstant: 22)
-        
-//        feedCheerText.anchor(beerLabel.bottomAnchor, left: beerLabel.leftAnchor, bottom: nil, right: self.rightAnchor, topConstant: -4, leftConstant: -4, bottomConstant: 0, rightConstant: 10, widthConstant: 0, heightConstant: 0)
-//
-//        viewPostButton.anchor(self.topAnchor, left: nil, bottom: nil, right: self.rightAnchor, topConstant: 16, leftConstant: 0, bottomConstant: 0, rightConstant: 12, widthConstant: 34, heightConstant: 36)
-//
-//        locationLabel.anchor(feedCheerText.bottomAnchor, left: beerLabel.leftAnchor, bottom: nil, right: nil, topConstant: 0, leftConstant: 0, bottomConstant: 5, rightConstant: 0, widthConstant: 0, heightConstant: 0)
         
         beerPic.snp.makeConstraints { (makePic) in
             makePic.top.equalTo(profileImageView.snp.bottom).offset(8)
@@ -248,9 +239,9 @@ class FeedViewCall : DatasourceCell {
         didSet {
             guard let cheer = datasourceItem as? Cheer else {return}
             usernameLabel.text = cheer.name
-            beerLabel.text = cheer.beer
+            beerLabel.text = cheer.beer + " @ " + cheer.location
 //            feedCheerText.text = cheer.review
-            locationLabel.text = "@ " + cheer.location
+//            locationLabel.text = "@ " + cheer.location
             profileImageView.image = cheer.profileImage
         }
     }
