@@ -63,11 +63,16 @@ class FeedViewCall : DatasourceCell {
 //    }()
     
     //TODO: UIImage
-    let beerPic : UIView = {
-        let pic = UIView()
-        pic.backgroundColor = .gray
+    let beerPic : UIImageView = {
+//        let pic = UIView()
+//        pic.backgroundColor = .gray
+        let pic = UIImageView()
+        pic.image = #imageLiteral(resourceName: "pabst")
+        
         return pic
     }()
+    
+
     
     // View post button
     let viewPostButton : UIButton = {
