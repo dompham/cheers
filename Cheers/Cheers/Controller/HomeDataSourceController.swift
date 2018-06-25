@@ -195,8 +195,14 @@ class HomeDatasourceController: DatasourceController {
             let size = CGSize(width: approxWidth, height: 1000)
             let attributes = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 15)]
             
-            let estimateFrame = NSString(string: cheer.review).boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: attributes, context: nil)
-            return CGSize(width: view.frame.width - 20, height: estimateFrame.height + 400)
+            //String estimation
+//            let estimateFrame = NSString(string: cheer.review).boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: attributes, context: nil)
+//            let estimatedHeight = estimateFrame.height + 445
+            let estimatedHeight = CGFloat(475.0)
+
+            logService.log(volume: 2, say: "Estimated height: \(estimatedHeight)" )
+
+            return CGSize(width: view.frame.width - 20, height: estimatedHeight)
             
         }
         return CGSize(width: view.frame.width, height: 200)

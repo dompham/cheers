@@ -51,16 +51,16 @@ class FeedViewCall : DatasourceCell {
         return label
     }()
     
-    let feedCheerText : UITextView = {
-        let feedCheer = UITextView()
-        feedCheer.font = UIFont.systemFont(ofSize: 15)
-        feedCheer.backgroundColor = .clear
-        feedCheer.isScrollEnabled = false
-        feedCheer.showsVerticalScrollIndicator = false
-        feedCheer.isEditable = false
-        feedCheer.backgroundColor = .green
-        return feedCheer
-    }()
+//    let feedCheerText : UITextView = {
+//        let feedCheer = UITextView()
+//        feedCheer.font = UIFont.systemFont(ofSize: 15)
+//        feedCheer.backgroundColor = .clear
+//        feedCheer.isScrollEnabled = false
+//        feedCheer.showsVerticalScrollIndicator = false
+//        feedCheer.isEditable = false
+//        feedCheer.backgroundColor = .green
+//        return feedCheer
+//    }()
     
     //TODO: UIImage
     let beerPic : UIView = {
@@ -95,7 +95,7 @@ class FeedViewCall : DatasourceCell {
     override func setupViews() {
         super.setupViews()
         connectDB()
-        backgroundColor = .white
+        backgroundColor = .red
         separatorLineView.isHidden = false
         separatorLineView.backgroundColor = .white
         
@@ -103,7 +103,7 @@ class FeedViewCall : DatasourceCell {
         addSubview(profileImageView)
         addSubview(usernameLabel)
         addSubview(beerLabel)
-        addSubview(feedCheerText)
+//        addSubview(feedCheerText)
 //        addSubview(locationLabel)
         addSubview(beerPic)
         addSubview(viewPostButton)
@@ -115,20 +115,21 @@ class FeedViewCall : DatasourceCell {
         
         beerLabel.anchor(usernameLabel.bottomAnchor, left: profileImageView.rightAnchor, bottom: nil, right: viewPostButton.leftAnchor, topConstant: 0, leftConstant: 8, bottomConstant: 0, rightConstant: 12, widthConstant: 0, heightConstant: 22)
         
-        feedCheerText.anchor(beerLabel.bottomAnchor, left: beerLabel.leftAnchor, bottom: nil, right: self.rightAnchor, topConstant: -4, leftConstant: -4, bottomConstant: 0, rightConstant: 10, widthConstant: 0, heightConstant: 0)
-        
+//        feedCheerText.anchor(beerLabel.bottomAnchor, left: beerLabel.leftAnchor, bottom: nil, right: self.rightAnchor, topConstant: -4, leftConstant: -4, bottomConstant: 0, rightConstant: 10, widthConstant: 0, heightConstant: 0)
+//
         viewPostButton.anchor(self.topAnchor, left: nil, bottom: nil, right: self.rightAnchor, topConstant: 16, leftConstant: 0, bottomConstant: 0, rightConstant: 12, widthConstant: 34, heightConstant: 36)
 //
 //        locationLabel.anchor(feedCheerText.bottomAnchor, left: beerLabel.leftAnchor, bottom: nil, right: nil, topConstant: 0, leftConstant: 0, bottomConstant: 5, rightConstant: 0, widthConstant: 0, heightConstant: 0)
         
         beerPic.snp.makeConstraints { (makePic) in
-            makePic.top.equalTo(feedCheerText.snp.bottom).offset(0)
+            makePic.top.equalTo(profileImageView.snp.bottom).offset(8)
             makePic.centerX.equalTo(self.snp.centerX)
-            makePic.height.width.equalTo(292)
+            makePic.height.equalTo(350)
+            makePic.width.equalTo(262)
         }
 //        beerPic.anchor(locationLabel.bottomAnchor, left: nil, bottom: nil, right: nil, topConstant: 8, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 300, heightConstant: 300)
         
-        separatorView.anchor(beerPic.bottomAnchor, left: self.leftAnchor, bottom: self.bottomAnchor, right: self.rightAnchor, topConstant: 8, leftConstant: 0, bottomConstant: 8, rightConstant: 0, widthConstant: 0, heightConstant: 10)
+        separatorView.anchor(nil, left: self.leftAnchor, bottom: self.bottomAnchor, right: self.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 10)
         
         // MARK: UI Wiring
         setupViewPostButton(viewPostButton)
@@ -150,7 +151,7 @@ class FeedViewCall : DatasourceCell {
             guard let cheer = datasourceItem as? Cheer else {return}
             usernameLabel.text = cheer.name
             beerLabel.text = cheer.beer
-            feedCheerText.text = cheer.review
+//            feedCheerText.text = cheer.review
             locationLabel.text = "@ " + cheer.location
             profileImageView.image = cheer.profileImage
         }
