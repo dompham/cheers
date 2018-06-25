@@ -73,29 +73,70 @@ class FeedViewCall : DatasourceCell {
     let viewPostButton : UIButton = {
         let viewPostButton = UIButton()
         viewPostButton.backgroundColor = .white
-        viewPostButton.layer.cornerRadius = 5
-        viewPostButton.layer.borderColor = cheersBlue.cgColor
-        viewPostButton.layer.borderWidth = 1
-//        viewPostButton.setTitle("Subscribe", for: .normal)
+//        viewPostButton.layer.cornerRadius = 5
+//        viewPostButton.layer.borderColor = cheersBlue.cgColor
+//        viewPostButton.layer.borderWidth = 1
         viewPostButton.setTitleColor(cheersBlue, for: .normal)
-//        viewPostButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 12)
-//        viewPostButton.titleEdgeInsets = UIEdgeInsetsMake(0, -28, 0, 0)
         viewPostButton.setImage(#imageLiteral(resourceName: "view-more"), for: .normal)
         viewPostButton.imageView?.contentMode = .scaleAspectFit
         viewPostButton.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 2)
         return viewPostButton
     }()
     
+    let commentButton : UIButton = {
+        let commentButton = UIButton()
+        commentButton.backgroundColor = .white
+        //        viewPostButton.layer.cornerRadius = 5
+        //        viewPostButton.layer.borderColor = cheersBlue.cgColor
+        //        viewPostButton.layer.borderWidth = 1
+        commentButton.setTitleColor(cheersBlue, for: .normal)
+        commentButton.setImage(#imageLiteral(resourceName: "speech-bubble-oval-shape-with-text-lines"), for: .normal)
+        commentButton.imageView?.contentMode = .scaleAspectFit
+        commentButton.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 2)
+        return commentButton
+    }()
+    
+    let likeButton : UIButton = {
+        let likeButton = UIButton()
+        likeButton.backgroundColor = .white
+        //        viewPostButton.layer.cornerRadius = 5
+        //        viewPostButton.layer.borderColor = cheersBlue.cgColor
+        //        viewPostButton.layer.borderWidth = 1
+        likeButton.setTitleColor(cheersBlue, for: .normal)
+        likeButton.setImage(#imageLiteral(resourceName: "heart-outline"), for: .normal)
+        likeButton.imageView?.contentMode = .scaleAspectFit
+        likeButton.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 2)
+        return likeButton
+    }()
+    
     let separatorView : UIView = {
         let separator = UIView()
-        separator.backgroundColor = UIColor(r: 221, g: 245, b: 255)
+        separator.backgroundColor = lightCheersBlue
         return separator
     }()
+    
+    let interactionContainer : UIView = {
+        let v = UIView()
+        v.backgroundColor = .clear
+        return v
+    }()
+    
+    let commentViewSeparator : UIView = {
+        let line = UIView()
+        line.backgroundColor = cheersBlue
+        return line
+    }()
+    let likeCommentSeparator : UIView = {
+        let line = UIView()
+        line.backgroundColor = cheersBlue
+        return line
+    }()
+
    
     override func setupViews() {
         super.setupViews()
         connectDB()
-        backgroundColor = .red
+        backgroundColor = .white
         separatorLineView.isHidden = false
         separatorLineView.backgroundColor = .white
         
@@ -106,18 +147,26 @@ class FeedViewCall : DatasourceCell {
 //        addSubview(feedCheerText)
 //        addSubview(locationLabel)
         addSubview(beerPic)
-        addSubview(viewPostButton)
         addSubview(separatorView)
+        addSubview(interactionContainer)
+        interactionContainer.addSubview(commentButton)
+        interactionContainer.addSubview(viewPostButton)
+        interactionContainer.addSubview(likeButton)
+
+        interactionContainer.addSubview(commentViewSeparator)
+        interactionContainer.addSubview(likeCommentSeparator)
+
+
         
         profileImageView.anchor(self.topAnchor, left: self.leftAnchor, bottom: nil, right: nil, topConstant: 12, leftConstant: 12, bottomConstant: 0, rightConstant: 0, widthConstant: 50, heightConstant: 50)
         
-        usernameLabel.anchor(profileImageView.topAnchor, left: profileImageView.rightAnchor, bottom: nil, right: viewPostButton.leftAnchor, topConstant: 0, leftConstant: 8, bottomConstant: 0, rightConstant: 12, widthConstant: 0, heightConstant: 22)
+        usernameLabel.anchor(profileImageView.topAnchor, left: profileImageView.rightAnchor, bottom: nil, right: nil, topConstant: 0, leftConstant: 8, bottomConstant: 0, rightConstant: 12, widthConstant: 0, heightConstant: 22)
         
-        beerLabel.anchor(usernameLabel.bottomAnchor, left: profileImageView.rightAnchor, bottom: nil, right: viewPostButton.leftAnchor, topConstant: 0, leftConstant: 8, bottomConstant: 0, rightConstant: 12, widthConstant: 0, heightConstant: 22)
+        beerLabel.anchor(usernameLabel.bottomAnchor, left: profileImageView.rightAnchor, bottom: nil, right: nil, topConstant: 0, leftConstant: 8, bottomConstant: 0, rightConstant: 12, widthConstant: 0, heightConstant: 22)
         
 //        feedCheerText.anchor(beerLabel.bottomAnchor, left: beerLabel.leftAnchor, bottom: nil, right: self.rightAnchor, topConstant: -4, leftConstant: -4, bottomConstant: 0, rightConstant: 10, widthConstant: 0, heightConstant: 0)
 //
-        viewPostButton.anchor(self.topAnchor, left: nil, bottom: nil, right: self.rightAnchor, topConstant: 16, leftConstant: 0, bottomConstant: 0, rightConstant: 12, widthConstant: 34, heightConstant: 36)
+//        viewPostButton.anchor(self.topAnchor, left: nil, bottom: nil, right: self.rightAnchor, topConstant: 16, leftConstant: 0, bottomConstant: 0, rightConstant: 12, widthConstant: 34, heightConstant: 36)
 //
 //        locationLabel.anchor(feedCheerText.bottomAnchor, left: beerLabel.leftAnchor, bottom: nil, right: nil, topConstant: 0, leftConstant: 0, bottomConstant: 5, rightConstant: 0, widthConstant: 0, heightConstant: 0)
         
@@ -127,6 +176,50 @@ class FeedViewCall : DatasourceCell {
             makePic.height.equalTo(350)
             makePic.width.equalTo(262)
         }
+        
+        interactionContainer.snp.makeConstraints { (makeCtn) in
+            makeCtn.top.equalTo(beerPic.snp.bottom).offset(4)
+            makeCtn.centerX.equalTo(beerPic.snp.centerX)
+            makeCtn.width.equalTo(beerPic.snp.width)
+            makeCtn.height.equalTo(44)
+        }
+        
+        commentButton.snp.makeConstraints { (makeBtn) in
+            makeBtn.top.equalTo(interactionContainer.snp.top)
+            makeBtn.centerY.equalTo(interactionContainer.snp.centerY)
+            makeBtn.centerX.equalTo(interactionContainer.snp.centerX)
+            makeBtn.height.width.equalTo(22)
+        }
+        
+        commentViewSeparator.snp.makeConstraints { (makeLine) in
+            makeLine.top.equalTo(interactionContainer.snp.top).offset(8)
+            makeLine.bottom.equalTo(interactionContainer.snp.bottom).offset(-8)
+            makeLine.width.equalTo(1)
+            makeLine.left.equalTo(commentButton.snp.right).offset(25)
+        }
+        
+        viewPostButton.snp.makeConstraints { (makeBtn) in
+            makeBtn.top.equalTo(interactionContainer.snp.top)
+            makeBtn.centerY.equalTo(interactionContainer.snp.centerY)
+            makeBtn.left.equalTo(commentViewSeparator.snp.right).offset(18)
+            makeBtn.height.width.equalTo(30)
+        }
+        
+        likeCommentSeparator.snp.makeConstraints { (makeLine) in
+            makeLine.top.equalTo(interactionContainer.snp.top).offset(8)
+            makeLine.bottom.equalTo(interactionContainer.snp.bottom).offset(-8)
+            makeLine.width.equalTo(1)
+            makeLine.right.equalTo(commentButton.snp.left).offset(-25)
+        }
+
+        likeButton.snp.makeConstraints { (makeBtn) in
+            makeBtn.top.equalTo(interactionContainer.snp.top)
+            makeBtn.centerY.equalTo(interactionContainer.snp.centerY)
+            makeBtn.right.equalTo(likeCommentSeparator.snp.left).offset(-25)
+            makeBtn.height.width.equalTo(22)
+        }
+        
+
 //        beerPic.anchor(locationLabel.bottomAnchor, left: nil, bottom: nil, right: nil, topConstant: 8, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 300, heightConstant: 300)
         
         separatorView.anchor(nil, left: self.leftAnchor, bottom: self.bottomAnchor, right: self.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 10)

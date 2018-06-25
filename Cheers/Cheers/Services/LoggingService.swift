@@ -11,7 +11,7 @@ import Foundation
 class LoggingService {
     static let sharedInstance = LoggingService()
     // 0-3 Silence/Errors/Debug/All
-    let volume = 3
+    let volume = 2
     
     func log(volume lvl: Int, say str: String) {
         if (lvl <= self.volume) {

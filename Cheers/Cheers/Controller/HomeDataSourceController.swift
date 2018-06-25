@@ -192,15 +192,19 @@ class HomeDatasourceController: DatasourceController {
         } else if let cheer = self.datasource?.item(indexPath) as? Cheer {
             // Dynamic height for review
             let approxWidth = view.frame.width - 12 - 50 - 12 - 2
-            let size = CGSize(width: approxWidth, height: 1000)
-            let attributes = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 15)]
+//            let size = CGSize(width: approxWidth, height: 1000)
+//            let attributes = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 15)]
             
             //String estimation
 //            let estimateFrame = NSString(string: cheer.review).boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: attributes, context: nil)
 //            let estimatedHeight = estimateFrame.height + 445
-            let estimatedHeight = CGFloat(475.0)
+           
+            let estimatedHeight = CGFloat(480.0)
 
-            logService.log(volume: 2, say: "Estimated height: \(estimatedHeight)" )
+//            let estimatedHeight = CGFloat(525)
+
+            
+            logService.log(volume: 3, say: "Estimated height: \(estimatedHeight)" )
 
             return CGSize(width: view.frame.width - 20, height: estimatedHeight)
             

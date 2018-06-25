@@ -15,6 +15,7 @@ let tintCheersOrange : UIColor = UIColor(r: 253, g: 228, b: 105)
 let cheersOrange : UIColor = UIColor(r: 252, g: 211, b: 8)
 //252    211    8
 let cheersBlue : UIColor = UIColor(r: 68, g: 142, b: 255)
+let lightCheersBlue : UIColor = UIColor(r: 221, g: 245, b: 255)
 
 //AKA UserCell
 class RecentBeerCell: DatasourceCell {
