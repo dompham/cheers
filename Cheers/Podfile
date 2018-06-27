@@ -17,5 +17,6 @@ target 'Cheers' do
   pod 'MaterialComponents/ActivityIndicator'
   pod 'Onboard'
   pod 'DropDown'
+  pod 'ALCameraViewController'
 
 end
