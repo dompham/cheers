@@ -163,7 +163,7 @@ class LoginViewController : UIViewController {
          createAccountLabel = viewCollection.createAccountLabel
          wrongLoginLabel = viewCollection.wrongLoginLabel
          grayLine = viewCollection.grayLine
-         grayLine2 = viewCollection.grayLine
+         grayLine2 = viewCollection.grayLine2
     }
     
     func setupLoginContainers(for v : UIView){
