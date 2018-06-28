@@ -30,17 +30,11 @@ class CreateCheersBasicView : UIView {
 
 
     // MARK: UI Element - Beer name
-    let beerField : UITextField = {
-        let field = UITextField()
-
-        field.attributedPlaceholder = NSAttributedString(string: "Beer Name", attributes: [NSAttributedStringKey.foregroundColor : cheersOrange])
-        field.borderStyle = .none
-        field.backgroundColor = .clear
-        field.textColor = cheersOrange
-        field.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0);
-        //remove
-        //field.text = "Guinness IPA"
-        
+    let beerField : MDCTextField = {
+        let field = MDCTextField()
+        field.placeholder = "Beer Name"
+        field.textColor = tintCheersOrange
+        field.cursorColor = tintCheersOrange
         return field
     }()
     
@@ -57,9 +51,6 @@ class CreateCheersBasicView : UIView {
         
         select.dataSource = ["India Pale Ale", "Amber Ale", "Lager", "Stout", "India Pale Ale", "Amber Ale", "Lager", "Stout", "India Pale Ale", "Amber Ale", "Lager", "Stout"]
         select.direction = .bottom
-        
-        
-
 
         return select
     }()
