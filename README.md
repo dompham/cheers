@@ -9,4 +9,4 @@ An iOS project to connect craft beer drinkers.  As a new iOS developer, I decide
 Do Pham
 
 #### Acknowledgements
-Kelvin Dean - For making himself available for UX Consulting
+Kelvin Dean -  UX & Marketing Consultant
