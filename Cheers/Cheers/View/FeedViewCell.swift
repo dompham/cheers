@@ -78,9 +78,7 @@ class FeedViewCall : DatasourceCell {
     let viewPostButton : UIButton = {
         let viewPostButton = UIButton()
         viewPostButton.backgroundColor = .white
-//        viewPostButton.layer.cornerRadius = 5
-//        viewPostButton.layer.borderColor = cheersBlue.cgColor
-//        viewPostButton.layer.borderWidth = 1
+
         viewPostButton.setTitleColor(cheersBlue, for: .normal)
         viewPostButton.setImage(#imageLiteral(resourceName: "view-more"), for: .normal)
         viewPostButton.imageView?.contentMode = .scaleAspectFit
@@ -91,9 +89,7 @@ class FeedViewCall : DatasourceCell {
     let commentButton : UIButton = {
         let commentButton = UIButton()
         commentButton.backgroundColor = .white
-        //        viewPostButton.layer.cornerRadius = 5
-        //        viewPostButton.layer.borderColor = cheersBlue.cgColor
-        //        viewPostButton.layer.borderWidth = 1
+
         commentButton.setTitleColor(cheersBlue, for: .normal)
         commentButton.setImage(#imageLiteral(resourceName: "speech-bubble-oval-shape-with-text-lines"), for: .normal)
         commentButton.imageView?.contentMode = .scaleAspectFit
@@ -181,7 +177,6 @@ class FeedViewCall : DatasourceCell {
         }
         
         commentButton.snp.makeConstraints { (makeBtn) in
-            makeBtn.top.equalTo(interactionContainer.snp.top)
             makeBtn.centerY.equalTo(interactionContainer.snp.centerY)
             makeBtn.centerX.equalTo(interactionContainer.snp.centerX)
             makeBtn.height.width.equalTo(22)
@@ -195,7 +190,6 @@ class FeedViewCall : DatasourceCell {
         }
         
         viewPostButton.snp.makeConstraints { (makeBtn) in
-            makeBtn.top.equalTo(interactionContainer.snp.top)
             makeBtn.centerY.equalTo(interactionContainer.snp.centerY)
             makeBtn.left.equalTo(commentViewSeparator.snp.right).offset(18)
             makeBtn.height.width.equalTo(30)
@@ -209,14 +203,10 @@ class FeedViewCall : DatasourceCell {
         }
 
         likeButton.snp.makeConstraints { (makeBtn) in
-            makeBtn.top.equalTo(interactionContainer.snp.top)
             makeBtn.centerY.equalTo(interactionContainer.snp.centerY)
             makeBtn.right.equalTo(likeCommentSeparator.snp.left).offset(-25)
             makeBtn.height.width.equalTo(22)
         }
-        
-
-//        beerPic.anchor(locationLabel.bottomAnchor, left: nil, bottom: nil, right: nil, topConstant: 8, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 300, heightConstant: 300)
         
         separatorView.anchor(nil, left: self.leftAnchor, bottom: self.bottomAnchor, right: self.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 10)
         
@@ -240,8 +230,7 @@ class FeedViewCall : DatasourceCell {
             guard let cheer = datasourceItem as? Cheer else {return}
             usernameLabel.text = cheer.name
             beerLabel.text = cheer.beer + " @ " + cheer.location
-//            feedCheerText.text = cheer.review
-//            locationLabel.text = "@ " + cheer.location
+
             profileImageView.image = cheer.profileImage
         }
     }

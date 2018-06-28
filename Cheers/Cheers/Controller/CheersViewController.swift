@@ -33,7 +33,7 @@ class CheersViewController : UIViewController, MDCTabBarDelegate {
         view.backgroundColor = cheersBlue//UIColor(r: 0, g: 128, b: 255)
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
-        setViews()
+        injectViews()
         assembleViews()
     }
     
@@ -50,20 +50,13 @@ class CheersViewController : UIViewController, MDCTabBarDelegate {
     }
     
     
-    func setViews(){
+    func injectViews(){
         setupSegmentBar()
         
         container = viewElements.container1
-        view.addSubview(container)
-        
         logoImage = viewElements.logoImage
-        container.addSubview(logoImage)
-        
         beerField = viewElements.beerField
-        container.addSubview(beerField)
-        
         styleField = viewElements.styleField
-        container.addSubview(styleField)
         
         //Setup controllers for the MDC classes that need it
         setupMDCControllers()
@@ -75,12 +68,16 @@ class CheersViewController : UIViewController, MDCTabBarDelegate {
             [unowned self] (index: Int, item: String) in
             self.styleField.text = item
         }
-        view.addSubview(typeSelect)
         
     }
     
     func assembleViews(){
-        
+        view.addSubview(container)
+        container.addSubview(logoImage)
+        container.addSubview(beerField)
+        container.addSubview(styleField)
+        view.addSubview(typeSelect)
+
         container.snp.makeConstraints({ (makeContainer) in
             makeContainer.top.equalTo((segmentBar.snp.bottom)).offset(20)
             makeContainer.width.equalTo(view.snp.width)

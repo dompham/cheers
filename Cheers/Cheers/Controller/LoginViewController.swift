@@ -21,35 +21,15 @@ class LoginViewController : UIViewController {
     // Start UI Elements
     var logoImage : UIImageView!
     var logoTitle : UILabel!
-    
-    // MARK: UI Element - Subtitle
     var logoSubTitle : UILabel!
-    
-    // MARK: UI Element - Email text field
     var emailField : UITextField!
-    
-    // MARK: UI Element - Email image
     var emailImage : UIImageView!
-    
-    // MARK: UI Element - Password Text field
     var pwField : UITextField!
-    
-    // MARK: UI Element - Password image
     var pwImage : UIImageView!
-    
-    // MARK: UI Element - Log in button
     var loginButton : UIButton!
-    
-    // MARK: UI Element - Trouble logging in
     var helpLoginLabel : UILabel!
-    
-    // MARK: UI Element - Create Account Label
     var createAccountLabel : UILabel!
-    
-    // MARK: UI Element - Wrong Sign In Label
     var wrongLoginLabel : UILabel!
-    
-    // MARK: UI Element - Gray Lines
     var grayLine : UIView!
     var grayLine2 : UIView!
     // End UI Elements
@@ -191,8 +171,6 @@ class LoginViewController : UIViewController {
         bottomHalf.addSubview(createAccountLabel)
         setGoToMakeAccAction(createAccountLabel)
 
-
-        
         let h:Double  = Double(view.bounds.size.height)
         // MARK: Constraints - Top Container
         topHalf.snp.makeConstraints { (makeTop) in
