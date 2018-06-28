@@ -17,15 +17,15 @@ import DropDown
 class CheersViewController : UIViewController, MDCTabBarDelegate {
     let disposeBag = DisposeBag()
     let viewElements = CreateCheersBasicView()
-    var beerFieldController = MDCTextInputControllerOutlined()
-    var beerStyleController = MDCTextInputControllerOutlined()
-
     var segmentBar : MDCTabBar!
     var container : UIView!
+    
     var beerField : MDCTextField!
+    var beerFieldController = MDCTextInputControllerOutlined()
     var styleField : MDCTextField!
+    var beerStyleController = MDCTextInputControllerOutlined()
+    
     var slider1 : MDCSlider!
-
     var logoImage : UIImageView!
     var typeSelect : DropDown!
     
@@ -49,54 +49,8 @@ class CheersViewController : UIViewController, MDCTabBarDelegate {
         print("Did change slider value to: %@", senderSlider.value)
     }
     
-    func setupSegmentBar(){
-        let midX = view.bounds.midX
-        let midY = view.bounds.midY
-        segmentBar = MDCTabBar(frame: CGRect(origin: CGPoint(x: (midX * 0.3), y: midY * 0.01), size: CGSize(width: view.bounds.width, height: 20.0)))
-        segmentBar.items = [
-            UITabBarItem(title: "Basic", image: UIImage(named: ""), tag: 0),
-            UITabBarItem(title: "Comments", image: UIImage(named: ""), tag: 0),
-            UITabBarItem(title: "Preview", image: UIImage(named: ""), tag: 0)
-        ]
-        segmentBar.itemAppearance = .titledImages
-        segmentBar.autoresizingMask = [.flexibleTopMargin, .flexibleWidth]
-        segmentBar.sizeToFit()
-        segmentBar.inkColor = .clear
-        segmentBar.tintColor = cheersOrange
-        view.addSubview(segmentBar)
-
-    }
-    
-    func setupBeerField(){
-        
-        beerFieldController = MDCTextInputControllerOutlined(textInput: beerField) // Hold on as a property
-        beerFieldController.normalColor = tintCheersOrange
-        beerFieldController.activeColor = tintCheersOrange
-        beerFieldController.floatingPlaceholderNormalColor = tintCheersOrange
-        beerFieldController.floatingPlaceholderActiveColor = tintCheersOrange
-        beerFieldController.inlinePlaceholderColor = tintCheersOrange
-        
-        //beerFieldController.font
-        container.addSubview(beerField)
-    }
-    
-    func setupStyleField(){
-        styleField = MDCTextField()
-        styleField.placeholder = "Beer Style"
-        styleField.textColor = tintCheersOrange
-        styleField.cursorColor = tintCheersOrange
-        beerStyleController = MDCTextInputControllerOutlined(textInput: styleField)
-        beerStyleController.normalColor = tintCheersOrange
-        beerStyleController.activeColor = tintCheersOrange
-        beerStyleController.floatingPlaceholderNormalColor = tintCheersOrange
-        beerStyleController.floatingPlaceholderActiveColor = tintCheersOrange
-        beerStyleController.inlinePlaceholderColor = tintCheersOrange
-        
-        container.addSubview(styleField)
-    }
     
     func setViews(){
-        //TODO: Move to V
         setupSegmentBar()
         
         container = viewElements.container1
@@ -108,20 +62,19 @@ class CheersViewController : UIViewController, MDCTabBarDelegate {
         beerField = viewElements.beerField
         container.addSubview(beerField)
         
-        setupBeerField()
-        setupStyleField()
+        styleField = viewElements.styleField
+        container.addSubview(styleField)
+        
+        //Setup controllers for the MDC classes that need it
+        setupMDCControllers()
         
         setupSlider1()
 
-        styleField.rx.tapGesture()
-            .when(.recognized)
-            .subscribe(onNext: { _ in
-                print("show dropdown")
-                self.styleField.endEditing(true)
-                self.typeSelect.show()
-            }).disposed(by: disposeBag)
-        
         typeSelect = viewElements.typeSelect
+        typeSelect.selectionAction = {
+            [unowned self] (index: Int, item: String) in
+            self.styleField.text = item
+        }
         view.addSubview(typeSelect)
         
     }
@@ -156,17 +109,55 @@ class CheersViewController : UIViewController, MDCTabBarDelegate {
         
         typeSelect.anchorView = styleField
         typeSelect.bottomOffset = CGPoint(x: 0, y: -(typeSelect.anchorView?.plainView.bounds.height)!)
-        typeSelect.selectionAction = {
-            [unowned self] (index: Int, item: String) in
-            self.styleField.text = item
-        }
-        
-        
+
     }
-    
+
     override func viewDidLayoutSubviews() {
         typeSelect.width = (container.frame.size.width) * 0.7
     }
+    
+    func setupSegmentBar(){
+        let midX = view.bounds.midX
+        let midY = view.bounds.midY
+        segmentBar = MDCTabBar(frame: CGRect(origin: CGPoint(x: (midX * 0.3), y: midY * 0.01), size: CGSize(width: view.bounds.width, height: 20.0)))
+        segmentBar.items = [
+            UITabBarItem(title: "Basic", image: UIImage(named: ""), tag: 0),
+            UITabBarItem(title: "Comments", image: UIImage(named: ""), tag: 0),
+            UITabBarItem(title: "Preview", image: UIImage(named: ""), tag: 0)
+        ]
+        segmentBar.itemAppearance = .titledImages
+        segmentBar.autoresizingMask = [.flexibleTopMargin, .flexibleWidth]
+        segmentBar.sizeToFit()
+        segmentBar.inkColor = .clear
+        segmentBar.tintColor = cheersOrange
+        view.addSubview(segmentBar)
+    }
+    
+    func setupMDCControllers(){
+        // MARK: Beer MDC controllers
+        beerFieldController = MDCTextInputControllerOutlined(textInput: beerField) //
+        beerFieldController.normalColor = tintCheersOrange
+        beerFieldController.activeColor = tintCheersOrange
+        beerFieldController.floatingPlaceholderNormalColor = tintCheersOrange
+        beerFieldController.floatingPlaceholderActiveColor = tintCheersOrange
+        beerFieldController.inlinePlaceholderColor = tintCheersOrange
+        
+        beerStyleController = MDCTextInputControllerOutlined(textInput: styleField)
+        beerStyleController.normalColor = tintCheersOrange
+        beerStyleController.activeColor = tintCheersOrange
+        beerStyleController.floatingPlaceholderNormalColor = tintCheersOrange
+        beerStyleController.floatingPlaceholderActiveColor = tintCheersOrange
+        beerStyleController.inlinePlaceholderColor = tintCheersOrange
+        
+        styleField.rx.tapGesture()
+            .when(.recognized)
+            .subscribe(onNext: { _ in
+                print("show dropdown")
+                self.styleField.endEditing(true)
+                self.typeSelect.show()
+            }).disposed(by: disposeBag)
+    }
+
     
     
 }

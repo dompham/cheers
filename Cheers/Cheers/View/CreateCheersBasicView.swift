@@ -38,6 +38,14 @@ class CreateCheersBasicView : UIView {
         return field
     }()
     
+    let styleField : MDCTextField = {
+        let styleField = MDCTextField()
+        styleField.placeholder = "Beer Style"
+        styleField.textColor = tintCheersOrange
+        styleField.cursorColor = tintCheersOrange
+        return styleField
+    }()
+    
     // MARK: UI Element - Gray Lines
     let orangeSeparator : UIView = {
         let line = UIView()
