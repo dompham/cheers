@@ -30,6 +30,7 @@
 		6591D8FF20BE148C00879EC5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6591D8FE20BE148C00879EC5 /* LoginViewController.swift */; };
 		65953B8A20B0BA2C002B5774 /* FeedViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65953B8920B0BA2C002B5774 /* FeedViewCell.swift */; };
 		65A232F120E580F200B3E6C5 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A232F020E580F200B3E6C5 /* LoginView.swift */; };
+		65A232F320E596B400B3E6C5 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A232F220E596B400B3E6C5 /* SignUpView.swift */; };
 		65D59E7620BF844000BDE133 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D59E7520BF844000BDE133 /* SignUpViewController.swift */; };
 		65D59E7820CC6FED00BDE133 /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D59E7720CC6FED00BDE133 /* DatabaseService.swift */; };
 		65D59E7A20CC737000BDE133 /* LoggingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D59E7920CC737000BDE133 /* LoggingService.swift */; };
@@ -62,6 +63,7 @@
 		6591D8FE20BE148C00879EC5 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		65953B8920B0BA2C002B5774 /* FeedViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewCell.swift; sourceTree = "<group>"; };
 		65A232F020E580F200B3E6C5 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		65A232F220E596B400B3E6C5 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		65D59E7520BF844000BDE133 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		65D59E7720CC6FED00BDE133 /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
 		65D59E7920CC737000BDE133 /* LoggingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingService.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 				65953B8920B0BA2C002B5774 /* FeedViewCell.swift */,
 				3E85407220DC203D0030A77A /* CreateCheersBasicView.swift */,
 				65A232F020E580F200B3E6C5 /* LoginView.swift */,
+				65A232F220E596B400B3E6C5 /* SignUpView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -331,6 +334,7 @@
 				3EEE24BA20AF411F004BBE08 /* HomeDataSource.swift in Sources */,
 				3EEFE51520AF3E3200FBCF92 /* HomeDataSourceController.swift in Sources */,
 				650CAB7820B0924600B143EB /* RecentCheer.swift in Sources */,
+				65A232F320E596B400B3E6C5 /* SignUpView.swift in Sources */,
 				65D59E7820CC6FED00BDE133 /* DatabaseService.swift in Sources */,
 				65D59E7620BF844000BDE133 /* SignUpViewController.swift in Sources */,
 				3E85407320DC203D0030A77A /* CreateCheersBasicView.swift in Sources */,
