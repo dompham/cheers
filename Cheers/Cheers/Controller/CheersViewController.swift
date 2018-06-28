@@ -109,7 +109,6 @@ class CheersViewController : UIViewController, MDCTabBarDelegate {
         
         typeSelect.anchorView = styleField
         typeSelect.bottomOffset = CGPoint(x: 0, y: -(typeSelect.anchorView?.plainView.bounds.height)!)
-
     }
 
     override func viewDidLayoutSubviews() {
