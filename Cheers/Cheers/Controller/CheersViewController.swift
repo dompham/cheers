@@ -16,7 +16,7 @@ import DropDown
 
 class CheersViewController : UIViewController, MDCTabBarDelegate {
     let disposeBag = DisposeBag()
-    let viewElements = CheersView()
+    let viewElements = CreateCheersBasicView()
     var beerFieldController = MDCTextInputControllerOutlined()
     var beerStyleController = MDCTextInputControllerOutlined()
 

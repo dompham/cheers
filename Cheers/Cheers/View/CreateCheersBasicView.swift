@@ -11,7 +11,7 @@ import UIKit
 import DropDown
 import MaterialComponents
 
-class CheersView : UIView {
+class CreateCheersBasicView : UIView {
     // MARK: UI Element - Segment Container
     let container1 : UIView = {
        let container = UIView()
