@@ -3,7 +3,7 @@ Cheers is an application and network for craft beer enthusiasts.  Drink great be
 
 ### Notes
 
-An iOS project to connect craft beer drinkers.  As a new iOS developer, I decided to choose a few core features that I wanted to learn, then pull it all together for a product that I know (and love). 
+An iOS project to connect craft beer drinkers.  As a new iOS developer, I decided to choose a few core features that I wanted to learn, then pull it all together for a product that I know (and love) :beer:. 
 
 ### Author
 Do Pham
