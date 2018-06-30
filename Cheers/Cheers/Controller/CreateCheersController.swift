@@ -13,7 +13,6 @@ import MaterialComponents
 import RxGesture
 import RxSwift
 import DropDown
-
 class CreateCheersController : UIViewController, MDCTabBarDelegate {
     let disposeBag = DisposeBag()
     let viewElements = CreateCheersBasicView()
@@ -61,7 +60,7 @@ class CreateCheersController : UIViewController, MDCTabBarDelegate {
         //Setup controllers for the MDC classes that need it
         setupMDCControllers()
         
-        setupSlider1()
+//        setupSlider1()
         
         typeSelect = viewElements.typeSelect
         typeSelect.selectionAction = {
