@@ -53,6 +53,93 @@ class CreateCheersBasicView : UIView {
         return line
     }()
     
+    let hoppyLabel : UILabel = {
+        let label = UILabel()
+        label.text = "Hoppiness (Bitter): 0/100"
+        label.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 14)
+        label.textColor = cheersOrange
+        return label
+    }()
+    
+    let hoppySlider : MDCSlider = {
+        let slider = MDCSlider()
+        slider.trackBackgroundColor = lightCheersBlue;
+        slider.color = cheersOrange
+        return slider
+    }()
+    
+    let crispyLabel : UILabel = {
+        let label = UILabel()
+        label.text = "Crispness (Clean): 0/100"
+        label.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 14)
+        label.textColor = cheersOrange
+        return label
+    }()
+    
+    let crispySlider : MDCSlider = {
+        let slider = MDCSlider()
+        slider.trackBackgroundColor = lightCheersBlue;
+        slider.color = cheersOrange
+        return slider
+    }()
+    
+    let maltyLabel : UILabel = {
+        let label = UILabel()
+        label.text = "Maltiness (Sweet/Salty): 0/100"
+        label.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 14)
+        label.textColor = cheersOrange
+        return label
+    }()
+    
+    let maltySlider : MDCSlider = {
+        let slider = MDCSlider()
+        slider.trackBackgroundColor = lightCheersBlue;
+        slider.color = cheersOrange
+        return slider
+    }()
+    
+    let darkLabel : UILabel = {
+        let label = UILabel()
+        label.text = "Darkness (Roasty): 0/100"
+        label.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 14)
+        label.textColor = cheersOrange
+        return label
+    }()
+    
+    let darkSlider : MDCSlider = {
+        let slider = MDCSlider()
+        slider.trackBackgroundColor = lightCheersBlue;
+        slider.color = cheersOrange
+        return slider
+    }()
+    
+    let tartLabel : UILabel = {
+        let label = UILabel()
+        label.text = "Tartness (Fruity/Sour): 0/100"
+        label.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 14)
+        label.textColor = cheersOrange
+        return label
+    }()
+    
+    let tartSlider : MDCSlider = {
+        let slider = MDCSlider()
+        slider.trackBackgroundColor = lightCheersBlue;
+        slider.color = cheersOrange
+        return slider
+    }()
+    
+    let discardButton : MDCFloatingButton = {
+        let xImage = UIImage(named: "cancel")
+        let button = MDCFloatingButton()
+        button.backgroundColor = cheersBlue
+        //rgb(145,188,255)
+        button.setImage(xImage, for: .normal)
+        button.imageView?.contentMode = UIViewContentMode.scaleToFill
+        button.setElevation(ShadowElevation(rawValue: 0), for: .normal)
+        button.setElevation(ShadowElevation(rawValue: 2), for: .highlighted)
+        return button
+    }()
+    
     // MARK: UI Element - Beer name
     let typeSelect : DropDown = {
         let select = DropDown()
