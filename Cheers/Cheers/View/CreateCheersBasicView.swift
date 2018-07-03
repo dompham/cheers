@@ -57,7 +57,33 @@ class CreateCheersBasicView : UIView {
     let typeSelect : DropDown = {
         let select = DropDown()
         
-        select.dataSource = ["India Pale Ale", "Amber Ale", "Lager", "Stout", "India Pale Ale", "Amber Ale", "Lager", "Stout", "India Pale Ale", "Amber Ale", "Lager", "Stout"]
+        select.dataSource = ["Amber / Red Ale",
+                             "Barleywine",
+                             "Black & Tan",
+                             "Black Ale",
+                             "Blonde Ale",
+                             "Brown Ale",
+                             "Chile Beer",
+                             "Cream Ale",
+                             "Dark Wheat Ale",
+                             "Double / Imperial IPA",
+                             "Double / Imperial Pilsner",
+                             "Double / Imperial Stout",
+                             "IPA",
+                             "Light Lager",
+                             "Low Alcohol Beer",
+                             "Malt Liquor",
+                             "Pale Ale (APA)",
+                             "Pale Lager",
+                             "Pale Wheat Ale",
+                             "Porter",
+                             "Pumpkin Ale",
+                             "Red Lager",
+                             "Rye Beer",
+                             "Stout",
+                             "Strong Ale",
+                             "Wheatwine",
+                             "Wild Ale"]
         select.direction = .bottom
 
         return select
