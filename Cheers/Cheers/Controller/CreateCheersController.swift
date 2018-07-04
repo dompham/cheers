@@ -51,9 +51,22 @@ class CreateCheersController : UIViewController, MDCTabBarDelegate {
     }
     
     @objc func didChangeHoppySliderValue(senderSlider:MDCSlider) {
-        print("Did change slider value to: %d", senderSlider.value)
+        print("Slider tag: %d", senderSlider.tag)
         let val = senderSlider.value * 100
-        self.hoppyLabel.text = "Hoppiness (Bitter): \(Int(val))/100"
+        switch senderSlider.tag {
+            case 1:
+                self.hoppyLabel.text = "Hoppiness (Bitter): \(Int(val))/100"
+            case 2:
+                self.crispyLabel.text = "Crispness (Clean): \(Int(val))/100"
+            case 3:
+                self.maltyLabel.text = "Maltiness (Salty/Sweet): \(Int(val))/100"
+            case 4:
+                self.darkLabel.text = "Darkness (Roasty): \(Int(val))/100"
+            case 5:
+                self.tartLabel.text = "Tartness (Fruity/Sour): \(Int(val))/100"
+            default:
+                logService.log(volume: 2, say: "Error: Slider tag unrecognized")
+        }
     }
     
     func injectViews(){
@@ -65,14 +78,19 @@ class CreateCheersController : UIViewController, MDCTabBarDelegate {
         styleField = viewElements.styleField
         hoppyLabel = viewElements.hoppyLabel
         hoppySlider = viewElements.hoppySlider
+        hoppySlider.tag = 1
         crispyLabel = viewElements.crispyLabel
         crispySlider = viewElements.crispySlider
+        crispySlider.tag = 2
         maltyLabel = viewElements.maltyLabel
         maltySlider = viewElements.maltySlider
+        maltySlider.tag = 3
         darkLabel = viewElements.darkLabel
         darkSlider = viewElements.darkSlider
+        darkSlider.tag = 4
         tartLabel = viewElements.tartLabel
         tartSlider = viewElements.tartSlider
+        tartSlider.tag = 5
         
         discardButton = viewElements.discardButton
         //Setup controllers for the MDC classes that need it
@@ -251,6 +269,18 @@ class CreateCheersController : UIViewController, MDCTabBarDelegate {
             }).disposed(by: disposeBag)
         
         hoppySlider.addTarget(self,
+                              action: #selector(didChangeHoppySliderValue(senderSlider:)),
+                              for: .valueChanged)
+        crispySlider.addTarget(self,
+                              action: #selector(didChangeHoppySliderValue(senderSlider:)),
+                              for: .valueChanged)
+        maltySlider.addTarget(self,
+                              action: #selector(didChangeHoppySliderValue(senderSlider:)),
+                              for: .valueChanged)
+        darkSlider.addTarget(self,
+                              action: #selector(didChangeHoppySliderValue(senderSlider:)),
+                              for: .valueChanged)
+        tartSlider.addTarget(self,
                               action: #selector(didChangeHoppySliderValue(senderSlider:)),
                               for: .valueChanged)
         

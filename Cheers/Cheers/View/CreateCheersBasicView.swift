@@ -85,7 +85,7 @@ class CreateCheersBasicView : UIView {
     
     let maltyLabel : UILabel = {
         let label = UILabel()
-        label.text = "Maltiness (Sweet/Salty): 0/100"
+        label.text = "Maltiness (Salty/Sweet): 0/100"
         label.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 14)
         label.textColor = cheersOrange
         return label
