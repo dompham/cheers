@@ -44,7 +44,7 @@ class HonorsViewController : UIViewController, MDCTabBarDelegate {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
         // Dont show
-        self.tabBarController?.tabBar.isHidden = true
+//        self.tabBarController?.tabBar.isHidden = true
 
         injectViews()
         assembleViews()

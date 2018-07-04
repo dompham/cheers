@@ -253,6 +253,12 @@ class CreateCheersController : UIViewController, MDCTabBarDelegate {
         hoppySlider.addTarget(self,
                               action: #selector(didChangeHoppySliderValue(senderSlider:)),
                               for: .valueChanged)
+        
+        discardButton.rx.tapGesture()
+            .when(.recognized)
+            .subscribe(onNext: { _ in
+                self.dismiss(animated: true, completion: nil)
+            }).disposed(by: disposeBag)
     }
     
     
