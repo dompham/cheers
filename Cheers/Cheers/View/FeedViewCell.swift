@@ -229,8 +229,16 @@ class FeedViewCall : DatasourceCell {
         didSet {
             guard let cheer = datasourceItem as? Cheer else {return}
             usernameLabel.text = cheer.name
-            beerLabel.text = cheer.beer + " @ " + cheer.location
+            if (cheer.beer == "Saigon Saison") {
+                beerPic.image = #imageLiteral(resourceName: "vnBeer")
+            } else if (cheer.beer == "VN Ice Lager"){
+                beerPic.image = #imageLiteral(resourceName: "septemberfest")
+            }
+            else {
+                beerPic.image = #imageLiteral(resourceName: "pabst")
+            }
 
+            beerLabel.text = cheer.beer + " @ " + cheer.location
             profileImageView.image = cheer.profileImage
         }
     }
